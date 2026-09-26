@@ -1,39 +1,228 @@
-<svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="512"
-    height="512"
-    viewBox="0 0 512 512"
->
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
 
-    <rect
-        width="512"
-        height="512"
-        rx="110"
-        fill="#701a32"
-    />
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7A0625"/>
+      <stop offset="1" stop-color="#4B0619"/>
+    </linearGradient>
 
-    <rect
-        x="28"
-        y="28"
-        width="456"
-        height="456"
-        rx="88"
-        fill="none"
-        stroke="#f2c14e"
-        stroke-width="24"
-    />
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF06A"/>
+      <stop offset="0.28" stop-color="#FFD449"/>
+      <stop offset="0.55" stop-color="#F2B51B"/>
+      <stop offset="0.82" stop-color="#D88D00"/>
+      <stop offset="1" stop-color="#FFD950"/>
+    </linearGradient>
 
-    <text
-        x="256"
-        y="315"
-        text-anchor="middle"
-        font-family="Arial, Helvetica, sans-serif"
-        font-size="175"
-        font-weight="900"
-        letter-spacing="-8"
-        fill="#f2c14e"
-    >
-        PF
-    </text>
+    <linearGradient id="cream" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFDF1"/>
+      <stop offset="1" stop-color="#F5E8BF"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#26030D" flood-opacity=".5"/>
+    </filter>
+
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="100" fill="url(#bg)"/>
+
+  <!-- Outer badge -->
+  <circle cx="256" cy="256" r="203"
+          fill="none"
+          stroke="url(#gold)"
+          stroke-width="10"/>
+
+  <circle cx="256" cy="256" r="185"
+          fill="none"
+          stroke="#F3B92B"
+          stroke-width="2.5"
+          opacity=".75"/>
+
+  <!-- Subtle glow -->
+  <circle cx="256" cy="256" r="180"
+          fill="none"
+          stroke="#FFD95A"
+          stroke-width="2"
+          opacity=".15"
+          filter="url(#soft)"/>
+
+  <!-- Graduation cap -->
+  <g filter="url(#shadow)">
+
+    <!-- Top diamond -->
+    <path d="M91 146 L256 66 L421 146 L256 227 Z"
+          fill="url(#gold)"
+          stroke="#FFD85A"
+          stroke-width="5"
+          stroke-linejoin="round"/>
+
+    <!-- Inner top -->
+    <path d="M119 146 L256 88 L393 146 L256 207 Z"
+          fill="#65091F"
+          stroke="#D8940C"
+          stroke-width="3"/>
+
+    <!-- Main maroon cap -->
+    <path d="M139 178
+             L256 235
+             L373 178
+             V225
+             C373 260 323 284 256 284
+             C189 284 139 260 139 225Z"
+          fill="#65091F"
+          stroke="url(#gold)"
+          stroke-width="6"
+          stroke-linejoin="round"/>
+
+    <!-- Large PF -->
+    <text x="256" y="194"
+          text-anchor="middle"
+          font-family="Georgia, 'Times New Roman', serif"
+          font-size="118"
+          font-weight="900"
+          letter-spacing="-14"
+          fill="url(#cream)"
+          stroke="#E0A51A"
+          stroke-width="4"
+          paint-order="stroke"
+          filter="url(#shadow)">PF</text>
+
+    <!-- Cap seam -->
+    <path d="M256 235 V282"
+          stroke="#F4C542"
+          stroke-width="5"
+          stroke-linecap="round"/>
+
+    <!-- Tassel -->
+    <path d="M421 146 V221"
+          stroke="#F4C542"
+          stroke-width="7"
+          stroke-linecap="round"/>
+
+    <circle cx="421" cy="221" r="11" fill="url(#gold)"/>
+
+    <path d="M421 232 V290"
+          stroke="#F4C542"
+          stroke-width="7"
+          stroke-linecap="round"/>
+
+    <path d="M399 290
+             C399 304 409 317 421 317
+             C433 317 443 304 443 290"
+          fill="none"
+          stroke="#F4C542"
+          stroke-width="7"
+          stroke-linecap="round"/>
+
+    <path d="M409 290 V311 M421 290 V317 M433 290 V311"
+          stroke="#F4C542"
+          stroke-width="4"
+          stroke-linecap="round"/>
+  </g>
+
+  <!-- Open book -->
+  <g filter="url(#shadow)">
+
+    <!-- Left cover -->
+    <path d="M82 326
+             C136 291 194 296 256 327
+             V430
+             C199 398 139 394 82 419Z"
+          fill="#B97800"
+          stroke="#F4C542"
+          stroke-width="5"
+          stroke-linejoin="round"/>
+
+    <!-- Right cover -->
+    <path d="M430 326
+             C376 291 318 296 256 327
+             V430
+             C313 398 373 394 430 419Z"
+          fill="#B97800"
+          stroke="#F4C542"
+          stroke-width="5"
+          stroke-linejoin="round"/>
+
+    <!-- Left page -->
+    <path d="M94 315
+             C143 290 199 297 256 325
+             V415
+             C201 386 147 382 94 402Z"
+          fill="url(#cream)"
+          stroke="#F4C542"
+          stroke-width="5"
+          stroke-linejoin="round"/>
+
+    <!-- Right page -->
+    <path d="M418 315
+             C369 290 313 297 256 325
+             V415
+             C311 386 365 382 418 402Z"
+          fill="url(#cream)"
+          stroke="#F4C542"
+          stroke-width="5"
+          stroke-linejoin="round"/>
+
+    <!-- Center -->
+    <path d="M256 325 V415"
+          stroke="#D99C13"
+          stroke-width="6"
+          stroke-linecap="round"/>
+
+    <!-- Left page lines -->
+    <path d="M119 331 C151 321 187 325 218 339"
+          stroke="#6F1025"
+          stroke-width="5"
+          stroke-linecap="round"/>
+
+    <path d="M119 355 C151 345 187 349 218 363"
+          stroke="#6F1025"
+          stroke-width="5"
+          stroke-linecap="round"/>
+
+    <path d="M119 379 C151 369 187 373 218 387"
+          stroke="#6F1025"
+          stroke-width="5"
+          stroke-linecap="round"/>
+
+    <!-- Right page lines -->
+    <path d="M393 331 C361 321 325 325 294 339"
+          stroke="#6F1025"
+          stroke-width="5"
+          stroke-linecap="round"/>
+
+    <path d="M393 355 C361 345 325 349 294 363"
+          stroke="#6F1025"
+          stroke-width="5"
+          stroke-linecap="round"/>
+
+    <path d="M393 379 C361 369 325 373 294 387"
+          stroke="#6F1025"
+          stroke-width="5"
+          stroke-linecap="round"/>
+
+    <!-- Bottom book accents -->
+    <path d="M89 403 C145 382 199 388 256 416"
+          stroke="#E8AE1C"
+          stroke-width="4"
+          stroke-linecap="round"/>
+
+    <path d="M423 403 C367 382 313 388 256 416"
+          stroke="#E8AE1C"
+          stroke-width="4"
+          stroke-linecap="round"/>
+  </g>
+
+  <!-- Decorative stars -->
+  <path d="M83 235 L89 249 L103 255 L89 261 L83 275 L77 261 L63 255 L77 249 Z"
+        fill="#FFD64A"/>
+
+  <path d="M429 235 L435 249 L449 255 L435 261 L429 275 L423 261 L409 255 L423 249 Z"
+        fill="#FFD64A"/>
 
 </svg>
