@@ -1,12 +1,10 @@
-const CACHE_NAME = "pathfinder-cache-v1";
+const CACHE_NAME = "pathfinder-v1";
 
-const APP_FILES = [
+const FILES_TO_CACHE = [
     "./",
     "./index.html",
     "./manifest.webmanifest",
-    "./icons/icon-192.png",
-    "./icons/icon-512.png",
-    "./icons/apple-touch-icon.png"
+    "./icon.svg"
 ];
 
 
@@ -26,7 +24,7 @@ self.addEventListener(
                     cache => {
 
                         return cache.addAll(
-                            APP_FILES
+                            FILES_TO_CACHE
                         );
 
                     }
@@ -91,6 +89,16 @@ self.addEventListener(
     "fetch",
     event => {
 
+        if(
+            event.request.method !==
+            "GET"
+        ){
+
+            return;
+
+        }
+
+
         event.respondWith(
 
             caches
@@ -113,9 +121,9 @@ self.addEventListener(
                             event.request
                         )
                         .then(
-                            response => {
+                            networkResponse => {
 
-                                return response;
+                                return networkResponse;
 
                             }
                         )
