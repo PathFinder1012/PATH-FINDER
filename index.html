@@ -1,62 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
 
-    <meta
-        name="theme-color"
-        content="#701a32"
-    >
+<meta
+    name="theme-color"
+    content="#701a32"
+>
 
-    <meta
-        name="description"
-        content="PATHFINDER helps students explore SHS pathways, college programs, careers, and job opportunities."
-    >
+<meta
+    name="description"
+    content="PATHFINDER - Find your path. Understand your choices. Build your future."
+>
 
-    <!-- iPhone / iPad -->
-    <meta
-        name="apple-mobile-web-app-capable"
-        content="yes"
-    >
+<meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+>
 
-    <meta
-        name="apple-mobile-web-app-status-bar-style"
-        content="black-translucent"
-    >
+<meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+>
 
-    <meta
-        name="apple-mobile-web-app-title"
-        content="PATHFINDER"
-    >
+<meta
+    name="apple-mobile-web-app-title"
+    content="PATHFINDER"
+>
 
-    <!-- PWA -->
-    <link
-        rel="manifest"
-        href="manifest.webmanifest"
-    >
+<link
+    rel="manifest"
+    href="manifest.webmanifest"
+>
 
-    <link
-        rel="icon"
-        type="image/png"
-        sizes="192x192"
-        href="icons/icon-192.png"
-    >
+<link
+    rel="icon"
+    type="image/svg+xml"
+    href="icon.svg"
+>
 
-    <link
-        rel="apple-touch-icon"
-        href="icons/apple-touch-icon.png"
-    >
+<link
+    rel="apple-touch-icon"
+    href="icon.svg"
+>
 
-    <title>
-        PATHFINDER | Find Your Path
-    </title>
+<title>
+    PATHFINDER | Education & Career Guide
+</title>
 
 
 <style>
@@ -66,30 +62,23 @@
 ========================================================= */
 
 :root{
-
     --maroon:#701a32;
     --dark-maroon:#4d1021;
     --deep-maroon:#2e0814;
 
     --gold:#f2c14e;
     --light-gold:#fff3cb;
-    --soft-gold:#fbf0d8;
 
     --cream:#fffaf2;
     --white:#ffffff;
 
-    --text:#282426;
+    --text:#292528;
     --muted:#71676a;
 
-    --border:#e9ddc7;
-
-    --green:#317a53;
+    --border:#e8ddc8;
 
     --shadow:
         0 18px 50px rgba(46,8,20,.10);
-
-    --small-shadow:
-        0 7px 24px rgba(46,8,20,.06);
 }
 
 
@@ -98,9 +87,9 @@
 ========================================================= */
 
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
 
 html{
@@ -108,7 +97,6 @@ html{
 }
 
 body{
-
     font-family:
         Inter,
         system-ui,
@@ -124,10 +112,9 @@ body{
     line-height:1.65;
 
     min-height:100vh;
-
 }
 
-body.modal-open{
+body.lock{
     overflow:hidden;
 }
 
@@ -141,8 +128,12 @@ button{
 }
 
 a{
-    text-decoration:none;
     color:inherit;
+    text-decoration:none;
+}
+
+[hidden]{
+    display:none !important;
 }
 
 
@@ -151,42 +142,37 @@ a{
 ========================================================= */
 
 .container{
-
-    width:
-        min(
-            1180px,
-            calc(100% - 32px)
-        );
+    width:min(
+        1180px,
+        calc(100% - 32px)
+    );
 
     margin:auto;
-
 }
 
 
 /* =========================================================
-   NAVBAR
+   NAVIGATION
 ========================================================= */
 
 .navbar{
-
     position:sticky;
     top:0;
 
     z-index:1000;
 
     background:
-        rgba(255,250,242,.95);
+        rgba(255,250,242,.96);
 
     backdrop-filter:
-        blur(16px);
+        blur(15px);
 
     border-bottom:
-        1px solid rgba(112,26,50,.10);
-
+        1px solid
+        rgba(112,26,50,.10);
 }
 
 .nav-inner{
-
     min-height:76px;
 
     display:flex;
@@ -196,26 +182,22 @@ a{
     justify-content:space-between;
 
     gap:20px;
-
 }
 
 .brand{
-
     display:flex;
-
     align-items:center;
-
     gap:11px;
-
 }
 
-.brand-mark{
-
+.logo{
     width:47px;
     height:47px;
 
     display:grid;
     place-items:center;
+
+    border-radius:14px;
 
     background:var(--maroon);
 
@@ -225,15 +207,11 @@ a{
         2px solid
         var(--gold);
 
-    border-radius:14px;
-
     font-weight:950;
-
-    letter-spacing:-.5px;
-
 }
 
 .brand-name{
+    display:block;
 
     color:var(--maroon);
 
@@ -241,81 +219,66 @@ a{
 
     font-weight:950;
 
-    line-height:1.1;
-
+    line-height:1;
 }
 
 .brand-sub{
+    display:block;
+
+    margin-top:5px;
 
     color:var(--muted);
 
     font-size:9px;
 
+    letter-spacing:1.3px;
+
     font-weight:800;
-
-    letter-spacing:1.5px;
-
-    margin-top:4px;
-
 }
 
 .nav-links{
-
     display:flex;
-
     align-items:center;
-
     gap:5px;
-
 }
 
 .nav-links a,
-.nav-install{
-
+.install-nav{
     border:0;
 
     background:none;
 
+    color:#664b54;
+
     padding:10px 13px;
 
-    color:#624953;
-
-    border-radius:11px;
+    border-radius:10px;
 
     font-size:13px;
 
     font-weight:850;
-
 }
 
 .nav-links a:hover{
-
     background:var(--light-gold);
-
     color:var(--maroon);
-
 }
 
-.nav-install{
-
-    display:none;
+.install-nav{
+    display:inline-flex;
 
     background:var(--maroon);
 
     color:white;
-
 }
 
-.nav-install:hover{
-
+.install-nav:hover{
     background:var(--dark-maroon);
 
     color:white;
-
 }
 
 .menu-button{
-
     display:none;
 
     border:0;
@@ -324,18 +287,14 @@ a{
 
     color:var(--maroon);
 
-    font-size:25px;
-
+    font-size:26px;
 }
 
 .mobile-menu{
-
     display:none;
-
 }
 
 .mobile-menu.show{
-
     display:grid;
 
     gap:7px;
@@ -344,25 +303,22 @@ a{
         0
         16px
         16px;
-
 }
 
 .mobile-menu a{
+    padding:11px 13px;
 
     background:white;
+
+    color:var(--maroon);
 
     border:
         1px solid
         var(--border);
 
-    color:var(--maroon);
-
-    padding:11px 13px;
-
-    border-radius:11px;
+    border-radius:10px;
 
     font-weight:800;
-
 }
 
 
@@ -371,89 +327,73 @@ a{
 ========================================================= */
 
 .hero{
-
-    padding:
-        85px
-        0
-        75px;
+    padding:85px 0 75px;
 
     background:
 
         radial-gradient(
             circle at 88% 12%,
             rgba(242,193,78,.22),
-            transparent 29%
+            transparent 28%
         ),
 
         linear-gradient(
             135deg,
-            #fffaf2 0%,
-            #fff0d6 100%
+            #fffaf2,
+            #fff0d8
         );
-
-    overflow:hidden;
-
 }
 
 .hero-grid{
-
     display:grid;
 
     grid-template-columns:
         1.05fr
         .95fr;
 
-    gap:52px;
+    gap:50px;
 
     align-items:center;
-
 }
 
 .eyebrow{
-
     display:inline-flex;
 
     align-items:center;
 
     gap:8px;
 
+    padding:7px 12px;
+
+    margin-bottom:20px;
+
+    border:
+        1px solid
+        #ecd58b;
+
+    border-radius:999px;
+
     background:var(--light-gold);
 
     color:var(--maroon);
 
-    border:
-        1px solid
-        #ecd58d;
-
-    border-radius:999px;
-
-    padding:
-        7px
-        12px;
-
     font-size:11px;
 
-    font-weight:900;
+    font-weight:950;
 
     letter-spacing:1px;
-
-    margin-bottom:20px;
-
 }
 
 .eyebrow-dot{
-
     width:8px;
     height:8px;
 
-    background:var(--maroon);
-
     border-radius:50%;
 
+    background:var(--maroon);
 }
 
 .hero h1{
-
     color:var(--deep-maroon);
 
     font-size:
@@ -463,22 +403,18 @@ a{
             84px
         );
 
-    line-height:.92;
+    line-height:.94;
 
-    letter-spacing:-3.5px;
+    letter-spacing:-3px;
 
-    margin-bottom:21px;
-
+    margin-bottom:20px;
 }
 
 .hero h1 span{
-
     color:var(--maroon);
-
 }
 
-.hero-tagline{
-
+.tagline{
     color:#644751;
 
     font-size:
@@ -491,59 +427,45 @@ a{
     font-weight:900;
 
     margin-bottom:14px;
-
 }
 
 .hero-description{
-
-    max-width:700px;
+    max-width:690px;
 
     color:var(--muted);
 
     font-size:16px;
 
     margin-bottom:27px;
-
 }
 
 .hero-actions{
-
     display:flex;
 
     flex-wrap:wrap;
 
     gap:10px;
-
 }
 
 .btn{
-
     display:inline-flex;
 
     align-items:center;
 
     justify-content:center;
 
-    border:0;
-
-    border-radius:13px;
-
     padding:
         13px
         18px;
 
+    border-radius:13px;
+
     font-size:13px;
 
     font-weight:900;
-
-    transition:
-        .2s
-        ease;
-
 }
 
 .btn-primary{
-
     background:var(--maroon);
 
     color:white;
@@ -553,20 +475,13 @@ a{
         10px
         23px
         rgba(112,26,50,.18);
-
 }
 
 .btn-primary:hover{
-
     background:var(--dark-maroon);
-
-    transform:
-        translateY(-2px);
-
 }
 
 .btn-secondary{
-
     background:white;
 
     border:
@@ -574,16 +489,14 @@ a{
         var(--border);
 
     color:var(--maroon);
-
 }
 
 .btn-secondary:hover{
-
     background:var(--light-gold);
-
 }
 
-.hero-card{
+.journey-card{
+    padding:30px;
 
     background:var(--maroon);
 
@@ -591,92 +504,47 @@ a{
 
     border-radius:29px;
 
-    padding:30px;
-
     box-shadow:
         0
-        28px
+        27px
         60px
-        rgba(46,8,20,.19);
-
-    position:relative;
-
-    overflow:hidden;
-
+        rgba(46,8,20,.18);
 }
 
-.hero-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:220px;
-    height:220px;
-
-    right:-85px;
-    top:-90px;
-
-    background:
-        rgba(242,193,78,.14);
-
-    border-radius:50%;
-
-}
-
-.hero-card-head{
-
+.journey-head{
     display:flex;
 
     justify-content:space-between;
 
-    align-items:center;
-
     gap:15px;
 
     margin-bottom:22px;
-
-    position:relative;
-
-    z-index:2;
-
 }
 
-.hero-card-head h2{
-
+.journey-head h2{
     font-size:23px;
-
 }
 
-.hero-card-head span{
-
-    color:#f7df9b;
+.journey-head span{
+    color:#f5df9e;
 
     font-size:10px;
 
     font-weight:900;
-
-    letter-spacing:1px;
-
 }
 
 .journey{
-
     display:grid;
 
     gap:10px;
-
-    position:relative;
-
-    z-index:2;
-
 }
 
 .journey-item{
-
     display:grid;
 
-    grid-template-columns:44px 1fr;
+    grid-template-columns:
+        42px
+        1fr;
 
     gap:12px;
 
@@ -684,19 +552,17 @@ a{
 
     padding:12px;
 
+    border-radius:15px;
+
     background:
         rgba(255,255,255,.09);
 
     border:
         1px solid
         rgba(255,255,255,.08);
-
-    border-radius:15px;
-
 }
 
 .journey-number{
-
     width:38px;
     height:38px;
 
@@ -712,42 +578,38 @@ a{
     font-size:11px;
 
     font-weight:950;
-
 }
 
 .journey-item strong{
-
     display:block;
 
     font-size:14px;
-
 }
 
 .journey-item small{
-
     display:block;
 
     color:#efdce2;
 
     font-size:11px;
-
 }
 
 
 /* =========================================================
-   GENERAL SECTIONS
+   SECTION
 ========================================================= */
 
 section{
+    padding:82px 0;
+}
 
-    padding:
-        82px
-        0;
+.section-title{
+    max-width:780px;
 
+    margin-bottom:30px;
 }
 
 .section-kicker{
-
     color:var(--maroon);
 
     font-size:11px;
@@ -756,22 +618,10 @@ section{
 
     letter-spacing:1.2px;
 
-    text-transform:uppercase;
-
-    margin-bottom:8px;
-
-}
-
-.section-title{
-
-    max-width:780px;
-
-    margin-bottom:30px;
-
+    margin-bottom:9px;
 }
 
 .section-title h2{
-
     color:var(--deep-maroon);
 
     font-size:
@@ -786,36 +636,29 @@ section{
     letter-spacing:-1.5px;
 
     margin-bottom:12px;
-
 }
 
 .section-title p{
-
     color:var(--muted);
 
     font-size:15px;
-
 }
 
 
 /* =========================================================
-   INFORMATION NOTE
+   INFO NOTE
 ========================================================= */
 
 .info-note{
-
     display:flex;
 
     align-items:flex-start;
 
     gap:13px;
 
-    background:
-        linear-gradient(
-            135deg,
-            white,
-            #fff3d9
-        );
+    padding:18px;
+
+    margin-bottom:23px;
 
     border:
         1px solid
@@ -823,14 +666,15 @@ section{
 
     border-radius:18px;
 
-    padding:18px;
-
-    margin-bottom:22px;
-
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #fff3d8
+        );
 }
 
 .info-icon{
-
     width:37px;
     height:37px;
 
@@ -839,22 +683,19 @@ section{
     display:grid;
     place-items:center;
 
+    border-radius:11px;
+
     background:var(--maroon);
 
     color:var(--gold);
 
-    border-radius:11px;
-
     font-weight:950;
-
 }
 
 .info-note p{
-
-    color:#665c5f;
+    color:#655c5f;
 
     font-size:13px;
-
 }
 
 
@@ -862,19 +703,16 @@ section{
    SEARCH
 ========================================================= */
 
-.search-wrapper{
-
+.search-wrap{
     position:relative;
 
     margin-bottom:13px;
-
 }
 
-.search-wrapper .icon{
-
+.search-icon{
     position:absolute;
 
-    left:15px;
+    left:16px;
 
     top:50%;
 
@@ -884,14 +722,18 @@ section{
     color:var(--maroon);
 
     font-size:21px;
-
 }
 
-.search-wrapper input{
-
+.search-wrap input{
     width:100%;
 
     height:56px;
+
+    padding:
+        0
+        17px
+        0
+        47px;
 
     border:
         1px solid
@@ -902,22 +744,9 @@ section{
     background:white;
 
     outline:none;
-
-    padding:
-        0
-        17px
-        0
-        47px;
-
-    box-shadow:
-        var(--small-shadow);
-
-    color:var(--text);
-
 }
 
-.search-wrapper input:focus{
-
+.search-wrap input:focus{
     border-color:var(--maroon);
 
     box-shadow:
@@ -926,11 +755,9 @@ section{
         0
         4px
         rgba(112,26,50,.08);
-
 }
 
 .filters{
-
     display:flex;
 
     flex-wrap:wrap;
@@ -938,18 +765,16 @@ section{
     gap:8px;
 
     margin-bottom:27px;
-
 }
 
-.filter-button{
-
+.filter{
     border:
         1px solid
         var(--border);
 
     background:white;
 
-    color:#6c565d;
+    color:#6a555d;
 
     padding:
         8px
@@ -960,27 +785,23 @@ section{
     font-size:11px;
 
     font-weight:900;
-
 }
 
-.filter-button:hover,
-.filter-button.active{
+.filter:hover,
+.filter.active{
+    background:var(--maroon);
 
     color:white;
 
-    background:var(--maroon);
-
     border-color:var(--maroon);
-
 }
 
 
 /* =========================================================
-   TRACK CARDS
+   TRACKS
 ========================================================= */
 
 .track-grid{
-
     display:grid;
 
     grid-template-columns:
@@ -990,18 +811,16 @@ section{
         );
 
     gap:16px;
-
 }
 
 .track-card{
-
-    text-align:left;
-
     position:relative;
 
     overflow:hidden;
 
-    background:white;
+    padding:22px;
+
+    text-align:left;
 
     border:
         1px solid
@@ -1009,51 +828,37 @@ section{
 
     border-radius:20px;
 
-    padding:22px;
+    background:white;
 
-    box-shadow:
-        0
-        5px
-        18px
-        rgba(46,8,20,.04);
-
-    transition:
-        transform .2s,
-        box-shadow .2s,
-        border-color .2s;
-
+    transition:.2s;
 }
 
 .track-card:hover{
-
     transform:
         translateY(-5px);
 
-    border-color:#dcc478;
+    border-color:#dbc273;
 
-    box-shadow:
-        var(--shadow);
-
+    box-shadow:var(--shadow);
 }
 
-.track-decoration{
-
+.track-circle{
     position:absolute;
 
-    width:86px;
-    height:86px;
+    width:85px;
+    height:85px;
+
+    right:-29px;
+    top:-29px;
 
     border-radius:50%;
 
-    right:-30px;
-    top:-30px;
-
     background:
         rgba(242,193,78,.18);
-
 }
 
 .track-icon{
+    position:relative;
 
     width:49px;
     height:49px;
@@ -1072,23 +877,17 @@ section{
     font-weight:950;
 
     margin-bottom:15px;
-
-    position:relative;
-
 }
 
 .track-card h3{
-
     color:var(--deep-maroon);
 
     font-size:20px;
 
-    margin-bottom:2px;
-
+    margin-bottom:3px;
 }
 
 .track-full{
-
     color:var(--maroon);
 
     font-size:11px;
@@ -1096,27 +895,38 @@ section{
     font-weight:900;
 
     margin-bottom:8px;
-
 }
 
 .track-card p{
-
     color:var(--muted);
 
     font-size:13px;
 
     margin-bottom:15px;
-
 }
 
-.explore-label{
-
+.track-open{
     color:var(--maroon);
 
     font-size:12px;
 
     font-weight:950;
+}
 
+.no-results{
+    padding:28px;
+
+    background:white;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:18px;
+
+    text-align:center;
+
+    color:var(--muted);
 }
 
 
@@ -1125,73 +935,61 @@ section{
 ========================================================= */
 
 .details-section{
-
     background:
         linear-gradient(
-            180deg,
             #fffaf2,
-            #f8eed8
+            #f8efd9
         );
 
     border-top:
         1px solid
         var(--border);
-
 }
 
 .details-header{
-
     position:relative;
 
     overflow:hidden;
 
-    background:var(--maroon);
+    padding:30px;
 
-    color:white;
+    margin-bottom:30px;
 
     border-radius:27px;
 
-    padding:30px;
+    background:var(--maroon);
 
-    margin-bottom:31px;
-
+    color:white;
 }
 
 .details-header::after{
-
     content:"";
 
     position:absolute;
 
-    width:240px;
-    height:240px;
+    width:220px;
+    height:220px;
+
+    right:-80px;
+    top:-80px;
 
     border-radius:50%;
 
-    right:-95px;
-    top:-100px;
-
     background:
         rgba(242,193,78,.14);
-
 }
 
 .details-header > *{
-
     position:relative;
 
     z-index:2;
-
 }
 
 .details-header .section-kicker{
-
     color:var(--gold);
-
 }
 
 .details-header h2{
-
     font-size:
         clamp(
             32px,
@@ -1201,55 +999,48 @@ section{
 
     line-height:1;
 
-    margin-bottom:8px;
-
+    margin-bottom:7px;
 }
 
 .details-full{
-
-    color:#f5dc93;
-
-    font-weight:900;
+    color:#f5dc94;
 
     font-size:13px;
 
-    margin-bottom:12px;
+    font-weight:900;
 
+    margin-bottom:12px;
 }
 
 .details-description{
-
-    color:#f0dce1;
-
     max-width:900px;
 
-    font-size:14px;
+    color:#efdce2;
 
+    font-size:14px;
 }
 
 .close-details{
-
     margin-top:17px;
+
+    padding:
+        9px
+        13px;
 
     border:
         1px solid
         rgba(255,255,255,.15);
+
+    border-radius:10px;
 
     background:
         rgba(255,255,255,.08);
 
     color:white;
 
-    border-radius:10px;
-
-    padding:
-        9px
-        13px;
-
     font-size:11px;
 
     font-weight:900;
-
 }
 
 
@@ -1258,13 +1049,10 @@ section{
 ========================================================= */
 
 .college-group{
-
     margin-bottom:32px;
-
 }
 
 .college-heading{
-
     display:flex;
 
     align-items:center;
@@ -1272,11 +1060,9 @@ section{
     gap:11px;
 
     margin-bottom:14px;
-
 }
 
 .college-number{
-
     width:39px;
     height:39px;
 
@@ -1292,32 +1078,21 @@ section{
     font-size:11px;
 
     font-weight:950;
-
 }
 
 .college-heading h3{
-
     color:var(--deep-maroon);
 
     font-size:21px;
-
 }
 
-
-/* =========================================================
-   COURSE
-========================================================= */
-
 .course-grid{
-
     display:grid;
 
     gap:14px;
-
 }
 
 .course-card{
-
     background:white;
 
     border:
@@ -1329,18 +1104,17 @@ section{
     overflow:hidden;
 
     box-shadow:
-        var(--small-shadow);
-
+        0
+        5px
+        18px
+        rgba(46,8,20,.04);
 }
 
 .course-main{
-
     padding:21px;
-
 }
 
-.course-number{
-
+.course-label{
     color:var(--maroon);
 
     font-size:10px;
@@ -1350,14 +1124,14 @@ section{
     letter-spacing:1px;
 
     text-transform:uppercase;
-
 }
 
 .course-name{
-
     color:var(--deep-maroon);
 
     font-size:18px;
+
+    font-weight:900;
 
     line-height:1.25;
 
@@ -1365,35 +1139,29 @@ section{
         4px
         0
         8px;
-
 }
 
 .course-description{
-
     color:var(--muted);
 
     font-size:13px;
-
 }
 
 .course-actions{
-
     padding:
         0
         21px
         19px;
-
 }
 
 .jobs-button{
-
     border:0;
+
+    border-radius:10px;
 
     background:var(--maroon);
 
     color:white;
-
-    border-radius:10px;
 
     padding:
         10px
@@ -1402,18 +1170,10 @@ section{
     font-size:11px;
 
     font-weight:950;
-
-    transition:.2s;
-
 }
 
 .jobs-button:hover{
-
     background:var(--dark-maroon);
-
-    transform:
-        translateY(-1px);
-
 }
 
 
@@ -1422,7 +1182,6 @@ section{
 ========================================================= */
 
 .jobs-panel{
-
     display:none;
 
     background:#fff8e7;
@@ -1432,70 +1191,31 @@ section{
         #ddca8b;
 
     padding:19px;
-
 }
 
 .jobs-panel.show{
-
     display:block;
-
-    animation:
-        fadeSlide
-        .25s
-        ease;
-
-}
-
-@keyframes fadeSlide{
-
-    from{
-
-        opacity:0;
-
-        transform:
-            translateY(
-                8px
-            );
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-            translateY(0);
-
-    }
-
 }
 
 .jobs-intro{
-
     margin-bottom:14px;
-
 }
 
 .jobs-intro strong{
-
     display:block;
 
     color:var(--deep-maroon);
 
     font-size:14px;
-
 }
 
 .jobs-intro span{
-
     color:var(--muted);
 
     font-size:12px;
-
 }
 
 .job-grid{
-
     display:grid;
 
     grid-template-columns:
@@ -1505,16 +1225,16 @@ section{
         );
 
     gap:11px;
-
 }
 
 .job-card{
-
     min-height:193px;
 
     display:flex;
 
     flex-direction:column;
+
+    padding:16px;
 
     background:white;
 
@@ -1523,13 +1243,9 @@ section{
         var(--border);
 
     border-radius:15px;
-
-    padding:16px;
-
 }
 
 .job-card h4{
-
     color:var(--deep-maroon);
 
     font-size:15px;
@@ -1537,23 +1253,19 @@ section{
     line-height:1.3;
 
     margin-bottom:7px;
-
 }
 
 .job-card p{
-
     color:var(--muted);
 
     font-size:12px;
 
-    margin-bottom:12px;
-
     flex:1;
 
+    margin-bottom:12px;
 }
 
-.learn-button{
-
+.learn-more{
     align-self:flex-start;
 
     border:
@@ -1573,15 +1285,12 @@ section{
     font-size:11px;
 
     font-weight:950;
-
 }
 
-.learn-button:hover{
-
+.learn-more:hover{
     background:var(--maroon);
 
     color:white;
-
 }
 
 
@@ -1590,17 +1299,14 @@ section{
 ========================================================= */
 
 .how-section{
-
     background:white;
 
     border-top:
         1px solid
         var(--border);
-
 }
 
-.steps-grid{
-
+.steps{
     display:grid;
 
     grid-template-columns:
@@ -1610,12 +1316,10 @@ section{
         );
 
     gap:15px;
-
 }
 
-.step-card{
-
-    background:var(--cream);
+.step{
+    padding:22px;
 
     border:
         1px solid
@@ -1623,17 +1327,14 @@ section{
 
     border-radius:19px;
 
-    padding:22px;
-
+    background:var(--cream);
 }
 
 .step-number{
-
     width:41px;
     height:41px;
 
     display:grid;
-
     place-items:center;
 
     border-radius:11px;
@@ -1651,48 +1352,32 @@ section{
     font-weight:950;
 
     margin-bottom:14px;
-
 }
 
-.step-card h3{
-
+.step h3{
     color:var(--deep-maroon);
 
     font-size:17px;
 
     margin-bottom:5px;
-
 }
 
-.step-card p{
-
+.step p{
     color:var(--muted);
 
     font-size:13px;
-
 }
 
 
 /* =========================================================
-   EXPLORE BOX
+   EXPLORE
 ========================================================= */
 
 .explore-section{
-
-    padding-top:28px;
-
+    padding-top:30px;
 }
 
 .explore-box{
-
-    background:var(--maroon);
-
-    color:white;
-
-    border-radius:28px;
-
-    padding:39px;
-
     display:grid;
 
     grid-template-columns:
@@ -1701,12 +1386,18 @@ section{
 
     align-items:center;
 
-    gap:26px;
+    gap:25px;
 
+    padding:39px;
+
+    border-radius:28px;
+
+    background:var(--maroon);
+
+    color:white;
 }
 
 .explore-box h2{
-
     font-size:
         clamp(
             29px,
@@ -1717,15 +1408,12 @@ section{
     line-height:1.04;
 
     margin-bottom:10px;
-
 }
 
 .explore-box p{
+    color:#eedce2;
 
-    color:#eddbe1;
-
-    max-width:730px;
-
+    max-width:720px;
 }
 
 
@@ -1734,96 +1422,79 @@ section{
 ========================================================= */
 
 footer{
-
     background:var(--deep-maroon);
 
     padding:
         42px
         0
         20px;
-
 }
 
 .footer-grid{
-
     display:grid;
 
     grid-template-columns:
-        1.4fr
+        1.3fr
         1fr
         1fr;
 
     gap:30px;
-
 }
 
 .footer-brand{
-
     color:white;
 
     font-size:21px;
 
     font-weight:950;
-
 }
 
 .footer-grid h4{
-
     color:var(--gold);
 
     font-size:11px;
 
     letter-spacing:1px;
 
-    text-transform:uppercase;
-
-    margin-bottom:7px;
-
+    margin-bottom:8px;
 }
 
 .footer-grid p,
 .footer-grid a,
 .footer-grid span{
-
-    color:#c9afb8;
-
     display:block;
+
+    color:#c8afb8;
 
     font-size:12px;
 
     margin-top:5px;
-
 }
 
 .footer-grid a:hover{
-
     color:var(--gold);
-
 }
 
 .footer-bottom{
+    margin-top:28px;
+
+    padding-top:17px;
 
     border-top:
         1px solid
         rgba(255,255,255,.09);
 
-    margin-top:29px;
-
-    padding-top:17px;
-
     color:#a98a96;
 
     font-size:11px;
-
 }
 
 
 /* =========================================================
-   MODAL
+   CAREER MODAL
 ========================================================= */
 
 .modal{
-
     position:fixed;
 
     inset:0;
@@ -1836,55 +1507,42 @@ footer{
 
     justify-content:center;
 
+    padding:9px;
+
     background:
-        rgba(25,7,13,.74);
+        rgba(22,5,11,.76);
 
     backdrop-filter:
         blur(7px);
-
-    padding:10px;
-
 }
 
 .modal-card{
-
     width:
         min(
             920px,
             100%
         );
 
-    max-height:95vh;
-
-    overflow:hidden;
+    max-height:96vh;
 
     display:flex;
 
     flex-direction:column;
 
-    background:var(--cream);
+    overflow:hidden;
 
     border-radius:25px;
+
+    background:var(--cream);
 
     box-shadow:
         0
         30px
         85px
-        rgba(0,0,0,.27);
-
+        rgba(0,0,0,.30);
 }
 
 .modal-header{
-
-    background:var(--maroon);
-
-    color:white;
-
-    padding:
-        27px
-        29px
-        22px;
-
     display:flex;
 
     align-items:flex-start;
@@ -1893,22 +1551,27 @@ footer{
 
     gap:20px;
 
+    padding:
+        27px
+        29px
+        22px;
+
+    background:var(--maroon);
+
+    color:white;
 }
 
 .modal-kicker{
-
     color:var(--gold);
 
     font-size:10px;
 
+    letter-spacing:1px;
+
     font-weight:950;
-
-    letter-spacing:1.1px;
-
 }
 
 .modal-header h2{
-
     font-size:
         clamp(
             27px,
@@ -1922,21 +1585,17 @@ footer{
         6px
         0
         8px;
-
 }
 
 .modal-header p{
-
-    color:#efdde2;
-
-    font-size:13px;
-
     max-width:720px;
 
+    color:#efdce2;
+
+    font-size:13px;
 }
 
 .modal-close{
-
     width:38px;
     height:38px;
 
@@ -1944,35 +1603,33 @@ footer{
 
     border:
         1px solid
-        rgba(255,255,255,.14);
+        rgba(255,255,255,.15);
 
     background:
         rgba(255,255,255,.08);
 
-    color:white;
-
     border-radius:10px;
 
-    font-size:20px;
+    color:white;
 
+    font-size:20px;
 }
 
 .modal-close:hover{
-
     background:
         rgba(255,255,255,.16);
-
 }
 
 .modal-body{
-
     overflow:auto;
 
     padding:23px;
-
 }
 
 .career-section{
+    padding:21px;
+
+    margin-bottom:15px;
 
     background:white;
 
@@ -1981,62 +1638,46 @@ footer{
         var(--border);
 
     border-radius:18px;
-
-    padding:21px;
-
-    margin-bottom:15px;
-
 }
 
 .career-section h3{
-
     color:var(--deep-maroon);
 
     font-size:18px;
 
     margin-bottom:10px;
-
 }
 
 .career-section p{
-
     color:#625b5d;
 
     font-size:13px;
-
 }
 
 .career-section p+p{
-
     margin-top:12px;
-
 }
 
 .career-list{
-
     padding-left:20px;
 
     margin-top:12px;
-
 }
 
 .career-list li{
-
     color:#5c5658;
 
     font-size:12px;
 
     margin-bottom:6px;
-
 }
 
 .career-list li::marker{
-
     color:var(--maroon);
-
 }
 
-.important-note{
+.note{
+    padding:17px;
 
     background:var(--light-gold);
 
@@ -2045,145 +1686,130 @@ footer{
         #ead48b;
 
     border-radius:16px;
-
-    padding:17px;
-
 }
 
-.important-note strong{
-
+.note strong{
     display:block;
 
     color:var(--maroon);
 
     margin-bottom:5px;
-
 }
 
-.important-note p{
-
+.note p{
     color:#6a5a40;
 
     font-size:12px;
-
 }
 
 
 /* =========================================================
-   INSTALL BANNER
+   INSTALL HELP
 ========================================================= */
 
-.install-banner{
-
+.install-help{
     position:fixed;
 
-    left:50%;
-    bottom:16px;
+    inset:0;
 
-    transform:
-        translateX(-50%);
-
-    z-index:3500;
-
-    width:
-        min(
-            520px,
-            calc(100% - 20px)
-        );
+    z-index:5000;
 
     display:flex;
 
     align-items:center;
 
-    gap:11px;
+    justify-content:center;
+
+    padding:18px;
+
+    background:
+        rgba(20,5,10,.78);
+
+    backdrop-filter:
+        blur(7px);
+}
+
+.install-box{
+    width:
+        min(
+            500px,
+            100%
+        );
+
+    padding:25px;
+
+    background:var(--cream);
+
+    border-radius:22px;
+
+    box-shadow:
+        0
+        25px
+        80px
+        rgba(0,0,0,.3);
+}
+
+.install-box-head{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+}
+
+.install-box-head h2{
+    color:var(--deep-maroon);
+
+    font-size:24px;
+}
+
+.close-install{
+    width:36px;
+    height:36px;
+
+    border:0;
+
+    border-radius:9px;
 
     background:var(--maroon);
 
     color:white;
 
-    padding:13px;
-
-    border-radius:17px;
-
-    box-shadow:
-        0
-        18px
-        55px
-        rgba(46,8,20,.30);
-
+    font-size:20px;
 }
 
-.install-icon{
+.install-content{
+    margin-top:18px;
 
-    width:46px;
-    height:46px;
-
-    flex:none;
-
-    border-radius:12px;
-
-}
-
-.install-text{
-
-    flex:1;
-
-}
-
-.install-text strong{
-
-    display:block;
+    color:#625b5d;
 
     font-size:14px;
 
+    line-height:1.8;
 }
 
-.install-text small{
-
-    display:block;
-
-    color:#efdce1;
-
-    font-size:10px;
-
+.install-content p{
+    margin-bottom:10px;
 }
 
-.install-button{
+.install-ok{
+    width:100%;
+
+    margin-top:17px;
+
+    padding:12px;
 
     border:0;
 
-    background:var(--gold);
+    border-radius:11px;
 
-    color:var(--deep-maroon);
-
-    border-radius:9px;
-
-    padding:
-        9px
-        12px;
-
-    font-size:11px;
-
-    font-weight:950;
-
-}
-
-.dismiss-install{
-
-    width:28px;
-    height:28px;
-
-    border:0;
-
-    background:
-        rgba(255,255,255,.10);
+    background:var(--maroon);
 
     color:white;
 
-    border-radius:8px;
-
-    font-size:18px;
-
+    font-weight:900;
 }
 
 
@@ -2192,7 +1818,6 @@ footer{
 ========================================================= */
 
 .toast{
-
     position:fixed;
 
     left:50%;
@@ -2206,30 +1831,28 @@ footer{
 
     opacity:0;
 
+    z-index:6000;
+
     pointer-events:none;
-
-    z-index:5000;
-
-    background:var(--deep-maroon);
-
-    color:white;
-
-    border-radius:11px;
 
     padding:
         9px
         14px;
+
+    border-radius:11px;
+
+    background:var(--deep-maroon);
+
+    color:white;
 
     font-size:11px;
 
     font-weight:900;
 
     transition:.25s;
-
 }
 
 .toast.show{
-
     opacity:1;
 
     transform:
@@ -2237,7 +1860,6 @@ footer{
             -50%,
             0
         );
-
 }
 
 
@@ -2245,72 +1867,56 @@ footer{
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:1080px){
+@media(max-width:1050px){
 
     .track-grid{
-
         grid-template-columns:
             repeat(
                 2,
                 1fr
             );
-
     }
 
     .job-grid{
-
         grid-template-columns:
             repeat(
                 2,
                 1fr
             );
-
     }
 
-    .steps-grid{
-
+    .steps{
         grid-template-columns:
             repeat(
                 2,
                 1fr
             );
-
     }
 
 }
 
-@media(max-width:860px){
+@media(max-width:850px){
 
     .nav-links{
-
         display:none;
-
     }
 
     .menu-button{
-
         display:block;
-
     }
 
     .hero-grid{
-
         grid-template-columns:1fr;
-
     }
 
     .explore-box{
-
         grid-template-columns:1fr;
-
     }
 
     .footer-grid{
-
         grid-template-columns:
             1fr
             1fr;
-
     }
 
 }
@@ -2318,100 +1924,63 @@ footer{
 @media(max-width:620px){
 
     .container{
-
         width:
             calc(100% - 24px);
-
     }
 
     section{
-
         padding:
             62px
             0;
-
     }
 
     .hero{
-
         padding-top:58px;
-
     }
 
     .track-grid,
     .job-grid,
-    .steps-grid,
+    .steps,
     .footer-grid{
-
         grid-template-columns:1fr;
-
     }
 
     .hero h1{
-
         letter-spacing:-2.5px;
-
     }
 
-    .hero-card,
+    .journey-card,
     .details-header,
     .explore-box{
-
         border-radius:21px;
-
     }
 
     .details-header{
-
         padding:23px;
-
     }
 
     .modal{
-
         padding:7px;
-
     }
 
     .modal-card{
-
         max-height:97vh;
 
         border-radius:19px;
-
     }
 
     .modal-header{
-
-        padding:
-            21px;
-
+        padding:21px;
     }
 
     .modal-body{
-
-        padding:
-            15px;
-
+        padding:15px;
     }
 
     .career-section{
-
-        padding:
-            17px;
-
+        padding:17px;
     }
 
-    .install-banner{
-
-        bottom:10px;
-
-    }
-
-}
-
-[hidden]{
-    display:none !important;
 }
 
 </style>
@@ -2431,15 +2000,16 @@ footer{
     <div class="container nav-inner">
 
         <a
-            href="#home"
             class="brand"
+            href="#home"
         >
 
-            <span class="brand-mark">
+            <span class="logo">
                 PF
             </span>
 
             <span>
+
                 <span class="brand-name">
                     PATHFINDER
                 </span>
@@ -2447,6 +2017,7 @@ footer{
                 <span class="brand-sub">
                     EDUCATION & CAREER GUIDE
                 </span>
+
             </span>
 
         </a>
@@ -2472,10 +2043,10 @@ footer{
 
             <button
                 id="navInstall"
-                class="nav-install"
+                class="install-nav"
                 type="button"
             >
-                Install App
+                📲 Install App
             </button>
 
         </nav>
@@ -2486,7 +2057,6 @@ footer{
             class="menu-button"
             type="button"
             aria-expanded="false"
-            aria-label="Open menu"
         >
             ☰
         </button>
@@ -2524,8 +2094,6 @@ footer{
      HERO
 ========================================================= -->
 
-<main>
-
 <section
     id="home"
     class="hero"
@@ -2546,13 +2114,17 @@ footer{
 
 
             <h1>
+
                 Find Your
                 <span>Path.</span>
+
             </h1>
 
 
-            <p class="hero-tagline">
+            <p class="tagline">
+
                 Understand your choices. Build your future.
+
             </p>
 
 
@@ -2562,8 +2134,8 @@ footer{
                 exploration guide for incoming Senior High School
                 and college students. Explore SHS pathways,
                 understand possible college programs, discover
-                careers, and learn what different jobs may involve
-                before making important decisions about your future.
+                job opportunities, and learn about different careers
+                before planning your next step.
 
             </p>
 
@@ -2577,6 +2149,7 @@ footer{
                     Explore SHS Tracks
                 </a>
 
+
                 <a
                     href="#how"
                     class="btn btn-secondary"
@@ -2589,9 +2162,9 @@ footer{
         </div>
 
 
-        <div class="hero-card">
+        <div class="journey-card">
 
-            <div class="hero-card-head">
+            <div class="journey-head">
 
                 <h2>
                     Your Guided Journey
@@ -2641,7 +2214,7 @@ footer{
                         </strong>
 
                         <small>
-                            Read possible college programs.
+                            Explore college programs.
                         </small>
 
                     </div>
@@ -2683,7 +2256,7 @@ footer{
                         </strong>
 
                         <small>
-                            Open a full career profile.
+                            Read complete career profiles.
                         </small>
 
                     </div>
@@ -2701,7 +2274,7 @@ footer{
 
 
 <!-- =========================================================
-     TRACK SECTION
+     TRACKS
 ========================================================= -->
 
 <section id="tracks">
@@ -2720,8 +2293,8 @@ footer{
             </h2>
 
             <p>
-                Choose a pathway below to explore its description,
-                possible college courses, and career opportunities.
+                Choose a pathway to explore possible college
+                programs and careers.
             </p>
 
         </div>
@@ -2735,22 +2308,21 @@ footer{
 
             <p>
 
-                PATHFINDER presents familiar SHS pathways and
-                strand names for educational exploration.
-                A pathway does not guarantee one specific career.
-                Actual programs, admission requirements,
-                professional qualifications, and job opportunities
-                can differ by school, employer, location,
-                and profession.
+                PATHFINDER presents SHS pathways and strand names
+                for educational exploration. A pathway does not
+                guarantee one specific college course or career.
+                Actual course availability, admission requirements,
+                professional qualifications, and employment
+                opportunities may differ.
 
             </p>
 
         </div>
 
 
-        <div class="search-wrapper">
+        <div class="search-wrap">
 
-            <span class="icon">
+            <span class="search-icon">
                 ⌕
             </span>
 
@@ -2778,7 +2350,7 @@ footer{
 
         <div
             id="noResults"
-            class="empty"
+            class="no-results"
             hidden
         >
             No matching pathway, course, or career was found.
@@ -2791,7 +2363,7 @@ footer{
 
 
 <!-- =========================================================
-     DETAILS SECTION
+     DETAILS
 ========================================================= -->
 
 <section
@@ -2804,7 +2376,6 @@ footer{
 
 
         <div class="details-header">
-
 
             <div class="section-kicker">
                 SELECTED PATHWAY
@@ -2840,9 +2411,7 @@ footer{
         </div>
 
 
-        <div
-            id="courseGroups"
-        ></div>
+        <div id="courseGroups"></div>
 
 
     </div>
@@ -2873,17 +2442,17 @@ footer{
             </h2>
 
             <p>
-                PATHFINDER does not show everything at once.
-                You decide how deep you want to explore.
+                PATHFINDER lets students explore information
+                one level at a time.
             </p>
 
         </div>
 
 
-        <div class="steps-grid">
+        <div class="steps">
 
 
-            <article class="step-card">
+            <article class="step">
 
                 <div class="step-number">
                     01
@@ -2894,14 +2463,13 @@ footer{
                 </h3>
 
                 <p>
-                    Start by selecting an SHS pathway that
-                    interests you.
+                    Select an SHS pathway that interests you.
                 </p>
 
             </article>
 
 
-            <article class="step-card">
+            <article class="step">
 
                 <div class="step-number">
                     02
@@ -2912,32 +2480,31 @@ footer{
                 </h3>
 
                 <p>
-                    Read the description of possible college
-                    programs.
+                    Read what possible college programs focus on.
                 </p>
 
             </article>
 
 
-            <article class="step-card">
+            <article class="step">
 
                 <div class="step-number">
                     03
                 </div>
 
                 <h3>
-                    Reveal jobs
+                    Reveal careers
                 </h3>
 
                 <p>
-                    Click "Show Job Opportunities" to see
-                    possible careers.
+                    Click Show Job Opportunities to see possible
+                    career directions.
                 </p>
 
             </article>
 
 
-            <article class="step-card">
+            <article class="step">
 
                 <div class="step-number">
                     04
@@ -2948,8 +2515,7 @@ footer{
                 </h3>
 
                 <p>
-                    Open a detailed career profile to understand
-                    the actual work.
+                    Read a detailed profile for the selected career.
                 </p>
 
             </article>
@@ -2978,14 +2544,14 @@ footer{
             <div>
 
                 <h2>
-                    Your future is easier to understand
-                    when your choices are clear.
+                    Your future is easier to understand when your
+                    choices are clear.
                 </h2>
 
                 <p>
-                    Explore different pathways, understand
-                    possible programs, and learn about careers
-                    before planning your next step.
+                    Explore pathways, compare possible programs,
+                    and learn more about careers before making
+                    your next educational plan.
                 </p>
 
             </div>
@@ -3007,6 +2573,7 @@ footer{
     </div>
 
 </section>
+
 
 </main>
 
@@ -3093,56 +2660,6 @@ footer{
 
 
 <!-- =========================================================
-     INSTALL BANNER
-========================================================= -->
-
-<div
-    id="installBanner"
-    class="install-banner"
-    hidden
->
-
-    <img
-        class="install-icon"
-        src="icons/icon-192.png"
-        alt="PATHFINDER"
-    >
-
-    <div class="install-text">
-
-        <strong>
-            Install PATHFINDER
-        </strong>
-
-        <small>
-            Add PATHFINDER to your device like an app.
-        </small>
-
-    </div>
-
-
-    <button
-        id="installButton"
-        class="install-button"
-        type="button"
-    >
-        Install
-    </button>
-
-
-    <button
-        id="dismissInstall"
-        class="dismiss-install"
-        type="button"
-        aria-label="Close"
-    >
-        ×
-    </button>
-
-</div>
-
-
-<!-- =========================================================
      CAREER MODAL
 ========================================================= -->
 
@@ -3152,12 +2669,7 @@ footer{
     hidden
 >
 
-    <div
-        class="modal-card"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="careerTitle"
-    >
+    <div class="modal-card">
 
 
         <div class="modal-header">
@@ -3183,7 +2695,6 @@ footer{
                 id="modalClose"
                 class="modal-close"
                 type="button"
-                aria-label="Close"
             >
                 ×
             </button>
@@ -3195,6 +2706,57 @@ footer{
             id="careerBody"
             class="modal-body"
         ></div>
+
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     INSTALL HELP
+========================================================= -->
+
+<div
+    id="installHelp"
+    class="install-help"
+    hidden
+>
+
+    <div class="install-box">
+
+
+        <div class="install-box-head">
+
+            <h2 id="installTitle">
+                Install PATHFINDER
+            </h2>
+
+
+            <button
+                id="closeInstall"
+                class="close-install"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="installContent"
+            class="install-content"
+        ></div>
+
+
+        <button
+            id="installOkay"
+            class="install-ok"
+            type="button"
+        >
+            Got It
+        </button>
 
 
     </div>
@@ -3262,7 +2824,7 @@ const TRACKS = {
                             "BS Electrical Engineering",
 
                         description:
-                            "Focuses on electricity, power systems, circuits, electrical equipment, testing, maintenance, and electrical technologies.",
+                            "Focuses on electrical systems, power, circuits, equipment, testing, maintenance, and electrical technology.",
 
                         jobs:[
                             "Electrical Engineer",
@@ -3277,7 +2839,7 @@ const TRACKS = {
                             "BS Electronics Engineering",
 
                         description:
-                            "Focuses on electronic circuits, communication systems, devices, digital technologies, and electronic systems.",
+                            "Deals with electronic circuits, communication systems, digital technology, electronic devices, and related systems.",
 
                         jobs:[
                             "Electronics Engineer",
@@ -3318,8 +2880,8 @@ const TRACKS = {
                     }
 
                 ]
-
             },
+
 
             {
                 college:
@@ -3332,7 +2894,7 @@ const TRACKS = {
                             "BS Information Technology – Network Administration",
 
                         description:
-                            "Focuses on computer networks, servers, connectivity, network administration, troubleshooting, and network-related systems.",
+                            "Focuses on computer networks, servers, connectivity, administration, troubleshooting, and network systems.",
 
                         jobs:[
                             "Network Administrator",
@@ -3362,7 +2924,7 @@ const TRACKS = {
                             "BS Information Technology – Technical Service Management",
 
                         description:
-                            "Combines IT knowledge with technical support, service operations, troubleshooting, and management of technology services.",
+                            "Combines IT knowledge with technical support, service operations, troubleshooting, and IT service management.",
 
                         jobs:[
                             "Technical Support Specialist",
@@ -3377,7 +2939,7 @@ const TRACKS = {
                             "BS Information Systems – Business Analytics",
 
                         description:
-                            "Connects business, technology, data, systems, and decision-making through information analysis.",
+                            "Connects business, technology, data, systems, and organizational decision-making.",
 
                         jobs:[
                             "Business Analyst",
@@ -3403,8 +2965,8 @@ const TRACKS = {
                     }
 
                 ]
-
             },
+
 
             {
                 college:
@@ -3432,7 +2994,7 @@ const TRACKS = {
                             "BS Nursing",
 
                         description:
-                            "Prepares students for health-care and nursing work involving patient care, assessment, communication, safety, and clinical practice.",
+                            "Prepares students for nursing and health-care work involving patient care, assessment, communication, safety, and clinical practice.",
 
                         jobs:[
                             "Registered Nurse",
@@ -3447,7 +3009,7 @@ const TRACKS = {
                             "BS Environmental Science",
 
                         description:
-                            "Examines ecosystems, pollution, conservation, natural resources, environmental problems, and sustainability.",
+                            "Examines ecosystems, pollution, environmental problems, conservation, natural resources, and sustainability.",
 
                         jobs:[
                             "Environmental Specialist",
@@ -3462,7 +3024,7 @@ const TRACKS = {
                             "BS Mathematics",
 
                         description:
-                            "Develops mathematical reasoning, logic, quantitative analysis, statistics, and problem-solving abilities.",
+                            "Develops mathematical reasoning, quantitative analysis, logic, statistics, and problem-solving skills.",
 
                         jobs:[
                             "Mathematician",
@@ -3477,7 +3039,7 @@ const TRACKS = {
                             "BS Food Technology",
 
                         description:
-                            "Applies science and technology to food processing, quality, safety, preservation, testing, and product development.",
+                            "Applies science and technology to food processing, safety, quality, preservation, testing, and product development.",
 
                         jobs:[
                             "Food Technologist",
@@ -3488,8 +3050,8 @@ const TRACKS = {
                     }
 
                 ]
-
             },
+
 
             {
                 college:
@@ -3517,7 +3079,7 @@ const TRACKS = {
                             "BFA – Visual Communication",
 
                         description:
-                            "Uses design, visual media, typography, layout, imagery, and creative communication to present ideas.",
+                            "Uses design, imagery, typography, layout, branding, and visual media to communicate ideas.",
 
                         jobs:[
                             "Graphic Designer",
@@ -3528,8 +3090,8 @@ const TRACKS = {
                     }
 
                 ]
-
             },
+
 
             {
                 college:
@@ -3542,7 +3104,7 @@ const TRACKS = {
                             "BIT – Automotive Technology",
 
                         description:
-                            "Focuses on vehicle systems, maintenance, diagnostics, repair, tools, and automotive technical service.",
+                            "Focuses on vehicle systems, maintenance, diagnostics, repair, tools, and automotive service.",
 
                         jobs:[
                             "Automotive Technician",
@@ -3572,7 +3134,7 @@ const TRACKS = {
                             "BIT – Mechatronics Technology",
 
                         description:
-                            "Combines mechanical, electrical, electronic, computer, sensor, control, and automation concepts.",
+                            "Combines mechanical, electrical, electronic, sensor, control, and automation concepts.",
 
                         jobs:[
                             "Mechatronics Technician",
@@ -3583,7 +3145,6 @@ const TRACKS = {
                     }
 
                 ]
-
             }
 
         ]
@@ -3603,7 +3164,7 @@ const TRACKS = {
             "AB",
 
         description:
-            "A pathway for students interested in accounting, business, finance, entrepreneurship, management, marketing, hospitality, and organizational work.",
+            "A pathway for students interested in accounting, finance, business, marketing, entrepreneurship, management, hospitality, and organizational work.",
 
         groups:[
 
@@ -3678,7 +3239,7 @@ const TRACKS = {
                             "BSBA – Business Economics",
 
                         description:
-                            "Applies economic ideas to business decisions, markets, consumers, resources, and organizational conditions.",
+                            "Applies economics to business decisions, markets, consumers, resources, and organizational conditions.",
 
                         jobs:[
                             "Economic Research Assistant",
@@ -3693,7 +3254,7 @@ const TRACKS = {
                             "BSBA – Financial Management",
 
                         description:
-                            "Focuses on financial planning, budgeting, investments, financial resources, analysis, and financial decision-making.",
+                            "Focuses on financial planning, budgeting, investments, financial resources, analysis, and financial decisions.",
 
                         jobs:[
                             "Financial Analyst",
@@ -3708,7 +3269,7 @@ const TRACKS = {
                             "BSBA – Marketing Management",
 
                         description:
-                            "Focuses on customers, markets, branding, promotion, communication, strategy, and market research.",
+                            "Focuses on customers, markets, branding, promotion, communication, strategy, and marketing research.",
 
                         jobs:[
                             "Marketing Assistant",
@@ -3719,8 +3280,8 @@ const TRACKS = {
                     }
 
                 ]
-
             },
+
 
             {
                 college:
@@ -3744,7 +3305,6 @@ const TRACKS = {
                     }
 
                 ]
-
             }
 
         ]
@@ -3779,7 +3339,7 @@ const TRACKS = {
                             "BA Communication",
 
                         description:
-                            "Develops communication, writing, speaking, media, audience analysis, content creation, and strategic communication skills.",
+                            "Develops writing, speaking, media, communication, content creation, audience analysis, and strategic communication skills.",
 
                         jobs:[
                             "Communication Specialist",
@@ -3794,7 +3354,7 @@ const TRACKS = {
                             "BA English Language Studies",
 
                         description:
-                            "Develops advanced knowledge of English language, writing, communication, research, and language analysis.",
+                            "Develops advanced knowledge in English language, writing, communication, research, editing, and language analysis.",
 
                         jobs:[
                             "Writer",
@@ -3835,8 +3395,8 @@ const TRACKS = {
                     }
 
                 ]
-
             },
+
 
             {
                 college:
@@ -3909,7 +3469,7 @@ const TRACKS = {
                             "BSEd – Sciences",
 
                         description:
-                            "Prepares students to teach science through scientific knowledge, inquiry, laboratory activities, and teaching methods.",
+                            "Prepares students to teach science through scientific concepts, inquiry, experiments, assessment, and instructional methods.",
 
                         jobs:[
                             "Science Teacher",
@@ -3924,7 +3484,7 @@ const TRACKS = {
                             "BECEd – Early Childhood Education",
 
                         description:
-                            "Focuses on early childhood development, learning, age-appropriate activities, classroom environments, and young learners.",
+                            "Focuses on child development, early learning, age-appropriate activities, classroom environments, and young learners.",
 
                         jobs:[
                             "Early Childhood Teacher",
@@ -3954,7 +3514,7 @@ const TRACKS = {
                             "Bachelor of Physical Education",
 
                         description:
-                            "Focuses on physical activity, movement, fitness, sports, health, physical education, and teaching.",
+                            "Focuses on physical activity, movement, fitness, sports, health, teaching, and learner development.",
 
                         jobs:[
                             "Physical Education Teacher",
@@ -3965,8 +3525,8 @@ const TRACKS = {
                     }
 
                 ]
-
             },
+
 
             {
                 college:
@@ -3979,7 +3539,7 @@ const TRACKS = {
                             "BS Criminology",
 
                         description:
-                            "Studies crime, criminal behavior, public safety, law enforcement, investigation, justice, and corrections.",
+                            "Studies crime, criminal behavior, law enforcement, public safety, investigation, justice, and corrections.",
 
                         jobs:[
                             "Criminology Professional",
@@ -3990,8 +3550,8 @@ const TRACKS = {
                     }
 
                 ]
-
             },
+
 
             {
                 college:
@@ -4015,7 +3575,6 @@ const TRACKS = {
                     }
 
                 ]
-
             }
 
         ]
@@ -4080,7 +3639,7 @@ const TRACKS = {
                             "BA Psychology",
 
                         description:
-                            "Examines human behavior, development, emotions, relationships, and research.",
+                            "Examines human behavior, development, thoughts, emotions, relationships, and research.",
 
                         jobs:[
                             "Psychology Associate",
@@ -4106,8 +3665,8 @@ const TRACKS = {
                     }
 
                 ]
-
             },
+
 
             {
                 college:
@@ -4135,7 +3694,7 @@ const TRACKS = {
                             "BS Hospitality Management",
 
                         description:
-                            "Develops skills in hospitality operations, food service, accommodation, guest relations, and events.",
+                            "Develops skills in hospitality operations, accommodation, food service, guest relations, and events.",
 
                         jobs:[
                             "Hospitality Supervisor",
@@ -4161,8 +3720,8 @@ const TRACKS = {
                     }
 
                 ]
-
             },
+
 
             {
                 college:
@@ -4190,7 +3749,7 @@ const TRACKS = {
                             "BSEd programs",
 
                         description:
-                            "Prepares students to teach secondary-level subjects through specialized subject knowledge and professional education.",
+                            "Prepares students to teach secondary-level subjects through subject knowledge and professional education.",
 
                         jobs:[
                             "Secondary Teacher",
@@ -4205,7 +3764,7 @@ const TRACKS = {
                             "BECEd",
 
                         description:
-                            "Focuses on early childhood learning, development, teaching activities, and young learners.",
+                            "Focuses on early childhood learning, child development, teaching activities, and young learners.",
 
                         jobs:[
                             "Early Childhood Teacher",
@@ -4231,8 +3790,8 @@ const TRACKS = {
                     }
 
                 ]
-
             },
+
 
             {
                 college:
@@ -4256,8 +3815,8 @@ const TRACKS = {
                     }
 
                 ]
-
             },
+
 
             {
                 college:
@@ -4281,7 +3840,6 @@ const TRACKS = {
                     }
 
                 ]
-
             }
 
         ]
@@ -4316,7 +3874,7 @@ const TRACKS = {
                             "BIT – Automotive Technology",
 
                         description:
-                            "Focuses on vehicle systems, diagnostics, repair, maintenance, tools, and automotive service.",
+                            "Focuses on vehicle systems, diagnostics, maintenance, repair, tools, and automotive service.",
 
                         jobs:[
                             "Automotive Technician",
@@ -4357,8 +3915,8 @@ const TRACKS = {
                     }
 
                 ]
-
             },
+
 
             {
                 college:
@@ -4397,8 +3955,8 @@ const TRACKS = {
                     }
 
                 ]
-
             },
+
 
             {
                 college:
@@ -4452,8 +4010,8 @@ const TRACKS = {
                     }
 
                 ]
-
             },
+
 
             {
                 college:
@@ -4466,7 +4024,7 @@ const TRACKS = {
                             "BS Hospitality Management",
 
                         description:
-                            "Develops hospitality, service, accommodation, food service, guest relations, and event management skills.",
+                            "Develops practical skills for hospitality, accommodation, food service, guest relations, and events.",
 
                         jobs:[
                             "Hospitality Supervisor",
@@ -4481,7 +4039,7 @@ const TRACKS = {
                             "BS Entrepreneurship",
 
                         description:
-                            "Focuses on business ideas, opportunity recognition, customers, resources, planning, and venture development.",
+                            "Focuses on opportunity recognition, business planning, innovation, customers, and venture development.",
 
                         jobs:[
                             "Entrepreneur",
@@ -4492,7 +4050,6 @@ const TRACKS = {
                     }
 
                 ]
-
             }
 
         ]
@@ -4553,8 +4110,8 @@ const TRACKS = {
                     }
 
                 ]
-
             },
+
 
             {
                 college:
@@ -4582,7 +4139,7 @@ const TRACKS = {
                             "BA English Language Studies",
 
                         description:
-                            "Develops English language, writing, research, editing, and communication abilities.",
+                            "Develops language, writing, research, editing, and communication abilities.",
 
                         jobs:[
                             "Writer",
@@ -4593,7 +4150,6 @@ const TRACKS = {
                     }
 
                 ]
-
             }
 
         ]
@@ -4643,7 +4199,7 @@ const TRACKS = {
                             "Bachelor of Elementary Education",
 
                         description:
-                            "Prepares students to teach elementary learners using child development, teaching methods, assessment, and classroom practice.",
+                            "Prepares students to teach elementary learners through child development, teaching methods, assessment, and classroom practice.",
 
                         jobs:[
                             "Elementary Teacher",
@@ -4669,8 +4225,8 @@ const TRACKS = {
                     }
 
                 ]
-
             },
+
 
             {
                 college:
@@ -4683,7 +4239,7 @@ const TRACKS = {
                             "BS Nursing",
 
                         description:
-                            "Prepares students for health-care and nursing work involving patient care, health assessment, communication, and safety.",
+                            "Prepares students for health-care and nursing work involving patient care, assessment, communication, and safety.",
 
                         jobs:[
                             "Registered Nurse",
@@ -4709,7 +4265,6 @@ const TRACKS = {
                     }
 
                 ]
-
             }
 
         ]
@@ -4720,25 +4275,15 @@ const TRACKS = {
 
 
 /* =========================================================
-   FILTER CATEGORIES
-========================================================= */
-
-const FILTERS = [
-    "All",
-    "Academic",
-    "TVL",
-    "Arts & Design",
-    "Sports"
-];
-
-
-/* =========================================================
-   CAREER TYPE SYSTEM
+   CAREER TYPE DATA
 ========================================================= */
 
 const CAREER_TYPES = {
 
     engineering:{
+
+        focus:
+            "engineering, design, technical systems, and problem-solving",
 
         workplaces:[
             "Engineering firms",
@@ -4749,7 +4294,7 @@ const CAREER_TYPES = {
         ],
 
         skills:[
-            "Mathematics and analytical thinking",
+            "Mathematical and analytical thinking",
             "Technical problem-solving",
             "Attention to detail",
             "Project coordination",
@@ -4758,7 +4303,11 @@ const CAREER_TYPES = {
 
     },
 
+
     technology:{
+
+        focus:
+            "information technology, software, networks, digital systems, and technical services",
 
         workplaces:[
             "Technology companies",
@@ -4778,7 +4327,11 @@ const CAREER_TYPES = {
 
     },
 
+
     business:{
+
+        focus:
+            "business operations, finance, management, marketing, economics, or organizational decision-making",
 
         workplaces:[
             "Businesses",
@@ -4798,7 +4351,11 @@ const CAREER_TYPES = {
 
     },
 
+
     education:{
+
+        focus:
+            "education, teaching, learning, and student development",
 
         workplaces:[
             "Public schools",
@@ -4810,7 +4367,7 @@ const CAREER_TYPES = {
 
         skills:[
             "Communication",
-            "Teaching or facilitation",
+            "Teaching",
             "Patience",
             "Organization",
             "Classroom management"
@@ -4818,7 +4375,11 @@ const CAREER_TYPES = {
 
     },
 
+
     health:{
+
+        focus:
+            "health care, patient support, health services, and community health",
 
         workplaces:[
             "Hospitals",
@@ -4838,7 +4399,11 @@ const CAREER_TYPES = {
 
     },
 
+
     creative:{
+
+        focus:
+            "communication, design, writing, visual expression, media, or creative production",
 
         workplaces:[
             "Design studios",
@@ -4850,7 +4415,7 @@ const CAREER_TYPES = {
 
         skills:[
             "Creativity",
-            "Visual or written communication",
+            "Communication",
             "Attention to detail",
             "Digital tools",
             "Audience awareness"
@@ -4858,7 +4423,11 @@ const CAREER_TYPES = {
 
     },
 
+
     public:{
+
+        focus:
+            "public service, government administration, organizational support, and community programs",
 
         workplaces:[
             "Government offices",
@@ -4878,7 +4447,11 @@ const CAREER_TYPES = {
 
     },
 
+
     service:{
+
+        focus:
+            "hospitality, customer service, events, food service, and service operations",
 
         workplaces:[
             "Hotels",
@@ -4898,7 +4471,11 @@ const CAREER_TYPES = {
 
     },
 
+
     science:{
+
+        focus:
+            "scientific research, laboratory work, environmental study, mathematics, data, or quality",
 
         workplaces:[
             "Laboratories",
@@ -4918,7 +4495,11 @@ const CAREER_TYPES = {
 
     },
 
+
     justice:{
+
+        focus:
+            "public safety, crime-related work, justice, investigation, or law enforcement",
 
         workplaces:[
             "Government agencies",
@@ -4942,7 +4523,7 @@ const CAREER_TYPES = {
 
 
 /* =========================================================
-   DETECT CAREER TYPE
+   CAREER TYPE DETECTION
 ========================================================= */
 
 function detectCareerType(job){
@@ -4950,41 +4531,43 @@ function detectCareerType(job){
     const j =
         job.toLowerCase();
 
+
     if(
-        j.includes("engineer") ||
-        j.includes("engineering")
+        j.includes("engineer")
     ){
-
         return "engineering";
-
     }
+
 
     if(
         j.includes("developer") ||
         j.includes("programmer") ||
         j.includes("network") ||
         j.includes("software") ||
-        j.includes("it ")
+        j.includes("it support") ||
+        j.includes("it service") ||
+        j.includes("it operations") ||
+        j.includes("systems analyst")
     ){
-
         return "technology";
-
     }
+
 
     if(
         j.includes("accountant") ||
         j.includes("auditor") ||
+        j.includes("tax") ||
         j.includes("finance") ||
         j.includes("banking") ||
         j.includes("marketing") ||
         j.includes("business") ||
         j.includes("entrepreneur") ||
-        j.includes("economic")
+        j.includes("economic") ||
+        j.includes("brand")
     ){
-
         return "business";
-
     }
+
 
     if(
         j.includes("teacher") ||
@@ -4993,33 +4576,30 @@ function detectCareerType(job){
         j.includes("instructor") ||
         j.includes("tutor")
     ){
-
         return "education";
-
     }
+
 
     if(
         j.includes("nurse") ||
         j.includes("health")
     ){
-
         return "health";
-
     }
 
+
     if(
-        j.includes("designer") ||
         j.includes("architect") ||
+        j.includes("designer") ||
         j.includes("writer") ||
         j.includes("editor") ||
         j.includes("communication") ||
         j.includes("art director") ||
         j.includes("public relations")
     ){
-
         return "creative";
-
     }
+
 
     if(
         j.includes("government") ||
@@ -5027,10 +4607,9 @@ function detectCareerType(job){
         j.includes("administrative") ||
         j.includes("public service")
     ){
-
         return "public";
-
     }
+
 
     if(
         j.includes("hotel") ||
@@ -5038,10 +4617,9 @@ function detectCareerType(job){
         j.includes("food service") ||
         j.includes("events")
     ){
-
         return "service";
-
     }
+
 
     if(
         j.includes("chemist") ||
@@ -5049,22 +4627,20 @@ function detectCareerType(job){
         j.includes("environmental") ||
         j.includes("mathematician") ||
         j.includes("statistician") ||
-        j.includes("quality control")
+        j.includes("quality")
     ){
-
         return "science";
-
     }
+
 
     if(
         j.includes("criminology") ||
         j.includes("public safety") ||
         j.includes("law enforcement")
     ){
-
         return "justice";
-
     }
+
 
     return "business";
 
@@ -5072,10 +4648,10 @@ function detectCareerType(job){
 
 
 /* =========================================================
-   CREATE CAREER PROFILE
+   CAREER PROFILE GENERATOR
 ========================================================= */
 
-function createCareerProfile(
+function getProfile(
     job,
     course
 ){
@@ -5087,80 +4663,26 @@ function createCareerProfile(
         CAREER_TYPES[type];
 
 
-    let focus =
-        "the field";
-
-    if(type === "engineering"){
-        focus =
-            "engineering, design, and technical problem-solving";
-    }
-
-    if(type === "technology"){
-        focus =
-            "technology, information systems, software, or digital services";
-    }
-
-    if(type === "business"){
-        focus =
-            "business operations, finance, marketing, management, or organizational decision-making";
-    }
-
-    if(type === "education"){
-        focus =
-            "education, learning, teaching, and learner development";
-    }
-
-    if(type === "health"){
-        focus =
-            "health care, patient support, and community health";
-    }
-
-    if(type === "creative"){
-        focus =
-            "communication, design, language, visual expression, or creative production";
-    }
-
-    if(type === "public"){
-        focus =
-            "public service, administration, community programs, and organizational support";
-    }
-
-    if(type === "service"){
-        focus =
-            "hospitality, customer service, event operations, or service management";
-    }
-
-    if(type === "science"){
-        focus =
-            "scientific research, laboratory work, environmental study, data, or quality";
-    }
-
-    if(type === "justice"){
-        focus =
-            "public safety, crime-related work, justice, or law enforcement";
-    }
-
-
     return {
 
         short:
             `${job} is a possible career direction connected to ${course}.`,
 
         about:
-            `${job} is a role connected to ${focus}. People working in this field use specialized knowledge, practical skills, communication, organization, and problem-solving to complete professional responsibilities. The role can be different from one employer to another because organizations may assign different duties, technologies, procedures, and levels of responsibility.`,
+            `${job} is a professional role connected to ${data.focus}. People working in this field use specialized knowledge, practical skills, communication, organization, and problem-solving to complete responsibilities and contribute to organizational, project, service, or community goals.`,
 
         about2:
-            `A person entering this career may begin with foundational knowledge from a related college program and then continue developing practical skills through projects, training, internships, workplace experience, and professional development. Students should look at the actual responsibilities of the position rather than relying only on the job title when deciding whether the career fits their interests.`,
+            `The actual experience can be different depending on the employer, workplace, specialization, and level of responsibility. Some professionals may perform technical work, while others may focus more on planning, analysis, communication, service, research, supervision, teaching, design, or coordination.`,
 
         duties:[
 
-            `Perform responsibilities related to ${focus}.`,
+            `Perform responsibilities related to ${data.focus}.`,
 
             "Follow workplace procedures, standards, and professional responsibilities.",
 
             "Communicate with colleagues, clients, customers, students, or other stakeholders.",
 
-            "Prepare, organize, or maintain appropriate records and work outputs.",
+            "Prepare, organize, or maintain appropriate records, reports, or work outputs.",
 
             "Identify problems and help develop practical solutions.",
 
@@ -5177,64 +4699,18 @@ function createCareerProfile(
             data.skills,
 
         environment:
-            `The work environment for a ${job} can depend on the employer, specialization, and type of organization. Some positions may be mostly office-based, while others may involve classrooms, laboratories, construction sites, technical facilities, customer-facing areas, field locations, or a combination of settings. Work schedules, teamwork requirements, physical activity, deadlines, and interaction with other people may also vary.`,
+            `A ${job} may work in different environments depending on the employer. The workplace may be an office, classroom, laboratory, construction site, technical facility, customer-service setting, field location, production environment, or a combination of settings. Work schedules and daily routines may also differ depending on the organization and position.`,
 
         preparation:
-            `Students can prepare for this career by building a strong academic foundation in ${course}, strengthening communication and problem-solving skills, completing practical projects, participating in relevant school organizations or activities, and learning about the actual workplace. When possible, students can also gain experience through internships, training, volunteering, portfolio projects, research, or other activities related to the field.`,
+            `Students can prepare for this career by developing a strong academic foundation in ${course}, improving communication and problem-solving skills, completing relevant projects, participating in school activities, gaining practical experience, and learning about actual job responsibilities. Internships, training, volunteering, research, portfolios, and workplace exposure can also help when appropriate.`,
 
         connection:
-            `The course ${course} can provide academic knowledge related to this career, but a college program is not always the only factor involved in career preparation. Depending on the profession, employers may also look at practical skills, experience, certifications, professional registration, communication ability, portfolios, or other qualifications.`,
+            `${course} can provide academic knowledge related to this career and help students develop foundational concepts and skills. However, education is only one part of career preparation. Depending on the profession, employers may also consider practical skills, experience, certifications, professional registration, portfolios, communication ability, or other qualifications.`,
 
         note:
-            `This career is presented as a possible pathway for educational exploration. Actual duties, qualifications, salary, work setting, employment opportunities, professional registration, certification, and hiring requirements can vary depending on the employer, specialization, location, and applicable rules.`
+            `This career is presented as a possible pathway for educational exploration. Actual duties, qualifications, employment opportunities, salary, work environment, professional registration, certifications, and hiring requirements may differ according to employer, specialization, location, and applicable rules.`
 
     };
-
-}
-
-
-/* =========================================================
-   CREATE SEARCH TEXT
-========================================================= */
-
-function getSearchText(trackName){
-
-    const track =
-        TRACKS[trackName];
-
-    let text = [
-
-        trackName,
-        track.full,
-        track.category,
-        track.description
-
-    ].join(" ");
-
-
-    track.groups.forEach(group => {
-
-        text +=
-            " " +
-            group.college;
-
-
-        group.courses.forEach(course => {
-
-            text +=
-                " " +
-                course.name +
-                " " +
-                course.description +
-                " " +
-                course.jobs.join(" ");
-
-        });
-
-    });
-
-
-    return text.toLowerCase();
 
 }
 
@@ -5248,7 +4724,7 @@ const trackGrid =
         "trackGrid"
     );
 
-const filtersContainer =
+const filters =
     document.getElementById(
         "filters"
     );
@@ -5268,21 +4744,6 @@ const details =
         "details"
     );
 
-const detailsName =
-    document.getElementById(
-        "detailsName"
-    );
-
-const detailsFull =
-    document.getElementById(
-        "detailsFull"
-    );
-
-const detailsDescription =
-    document.getElementById(
-        "detailsDescription"
-    );
-
 const courseGroups =
     document.getElementById(
         "courseGroups"
@@ -5296,68 +4757,26 @@ let currentSearch =
     "";
 
 
-
 /* =========================================================
-   ESCAPE HTML
+   ESCAPE
 ========================================================= */
 
-function escapeHtml(value){
+function escapeHTML(
+    value
+){
 
     return String(value)
         .replace(
             /[&<>"']/g,
-            character => {
+            character => ({
 
-                const map = {
+                "&":"&amp;",
+                "<":"&lt;",
+                ">":"&gt;",
+                '"':"&quot;",
+                "'":"&#039;"
 
-                    "&":"&amp;",
-                    "<":"&lt;",
-                    ">":"&gt;",
-                    '"':"&quot;",
-                    "'":"&#039;"
-
-                };
-
-                return map[character];
-
-            }
-        );
-
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-function showToast(message){
-
-    const toast =
-        document.getElementById(
-            "toast"
-        );
-
-    toast.textContent =
-        message;
-
-    toast.classList.add(
-        "show"
-    );
-
-    clearTimeout(
-        window.__toastTimer
-    );
-
-    window.__toastTimer =
-        setTimeout(
-            () => {
-
-                toast.classList.remove(
-                    "show"
-                );
-
-            },
-            2300
+            }[character])
         );
 
 }
@@ -5367,25 +4786,36 @@ function showToast(message){
    FILTERS
 ========================================================= */
 
+const filterNames = [
+    "All",
+    "Academic",
+    "TVL",
+    "Arts & Design",
+    "Sports"
+];
+
+
 function renderFilters(){
 
-    filtersContainer.innerHTML =
-        FILTERS
+    filters.innerHTML =
+        filterNames
             .map(
                 filter => `
 
                     <button
                         type="button"
-                        class="filter-button
+                        class="
+                            filter
                             ${
-                                filter === activeFilter
+                                activeFilter === filter
                                     ? "active"
                                     : ""
-                            }"
-                        data-filter="${escapeHtml(filter)}"
+                            }
+                        "
+                        data-filter="${escapeHTML(filter)}"
                     >
 
-                        ${escapeHtml(filter)}
+                        ${escapeHTML(filter)}
 
                     </button>
 
@@ -5394,44 +4824,99 @@ function renderFilters(){
             .join("");
 
 
-    filtersContainer
+    filters
         .querySelectorAll(
-            ".filter-button"
+            ".filter"
         )
-        .forEach(button => {
+        .forEach(
+            button => {
 
-            button.addEventListener(
-                "click",
-                () => {
+                button.addEventListener(
+                    "click",
+                    () => {
 
-                    activeFilter =
-                        button.dataset.filter;
+                        activeFilter =
+                            button.dataset.filter;
 
-                    renderFilters();
-                    renderTracks();
+                        renderFilters();
 
-                }
-            );
+                        renderTracks();
 
-        });
+                    }
+                );
+
+            }
+        );
 
 }
 
 
 /* =========================================================
-   TRACK FILTERING
+   SEARCH TEXT
+========================================================= */
+
+function getSearchText(
+    trackName
+){
+
+    const track =
+        TRACKS[trackName];
+
+
+    let text =
+        `${trackName}
+         ${track.full}
+         ${track.category}
+         ${track.description}`;
+
+
+    track.groups.forEach(
+        group => {
+
+            text +=
+                " " +
+                group.college;
+
+
+            group.courses.forEach(
+                course => {
+
+                    text +=
+                        " " +
+                        course.name +
+                        " " +
+                        course.description +
+                        " " +
+                        course.jobs.join(" ");
+
+                }
+            );
+
+        }
+    );
+
+
+    return text.toLowerCase();
+
+}
+
+
+/* =========================================================
+   RENDER TRACKS
 ========================================================= */
 
 function renderTracks(){
 
-    const search =
+    const query =
         currentSearch
             .trim()
             .toLowerCase();
 
 
     const names =
-        Object.keys(TRACKS);
+        Object.keys(
+            TRACKS
+        );
 
 
     const visible =
@@ -5449,9 +4934,11 @@ function renderTracks(){
 
 
                 const searchMatches =
-                    !search ||
+                    !query ||
                     getSearchText(name)
-                        .includes(search);
+                        .includes(
+                            query
+                        );
 
 
                 return (
@@ -5477,25 +4964,27 @@ function renderTracks(){
                         <button
                             type="button"
                             class="track-card"
-                            data-track="${escapeHtml(name)}"
+                            data-track="${escapeHTML(
+                                name
+                            )}"
                         >
 
                             <div
-                                class="track-decoration">
-                            </div>
+                                class="track-circle"
+                            ></div>
 
 
                             <div
                                 class="track-icon"
                             >
-                                ${escapeHtml(
+                                ${escapeHTML(
                                     track.icon
                                 )}
                             </div>
 
 
                             <h3>
-                                ${escapeHtml(
+                                ${escapeHTML(
                                     name
                                 )}
                             </h3>
@@ -5504,21 +4993,21 @@ function renderTracks(){
                             <div
                                 class="track-full"
                             >
-                                ${escapeHtml(
+                                ${escapeHTML(
                                     track.full
                                 )}
                             </div>
 
 
                             <p>
-                                ${escapeHtml(
+                                ${escapeHTML(
                                     track.description
                                 )}
                             </p>
 
 
                             <div
-                                class="explore-label"
+                                class="track-open"
                             >
                                 Explore pathway →
                             </div>
@@ -5533,27 +5022,29 @@ function renderTracks(){
 
 
     noResults.hidden =
-        visible.length > 0;
+        visible.length !== 0;
 
 
     trackGrid
         .querySelectorAll(
             ".track-card"
         )
-        .forEach(card => {
+        .forEach(
+            card => {
 
-            card.addEventListener(
-                "click",
-                () => {
+                card.addEventListener(
+                    "click",
+                    () => {
 
-                    openTrack(
-                        card.dataset.track
-                    );
+                        openTrack(
+                            card.dataset.track
+                        );
 
-                }
-            );
+                    }
+                );
 
-        });
+            }
+        );
 
 }
 
@@ -5562,7 +5053,9 @@ function renderTracks(){
    OPEN TRACK
 ========================================================= */
 
-function openTrack(trackName){
+function openTrack(
+    trackName
+){
 
     const track =
         TRACKS[trackName];
@@ -5577,22 +5070,28 @@ function openTrack(trackName){
         false;
 
 
-    detailsName.textContent =
+    document.getElementById(
+        "detailsName"
+    ).textContent =
         trackName;
 
 
-    detailsFull.textContent =
+    document.getElementById(
+        "detailsFull"
+    ).textContent =
         track.full;
 
 
-    detailsDescription.textContent =
+    document.getElementById(
+        "detailsDescription"
+    ).textContent =
         track.description;
 
 
     courseGroups.innerHTML =
         track.groups
             .map(
-                (group, groupIndex) => `
+                (group,groupIndex) => `
 
                     <div
                         class="college-group"
@@ -5611,8 +5110,9 @@ function openTrack(trackName){
                                 )}
                             </div>
 
+
                             <h3>
-                                ${escapeHtml(
+                                ${escapeHTML(
                                     group.college
                                 )}
                             </h3>
@@ -5628,15 +5128,12 @@ function openTrack(trackName){
                                 .map(
                                     (
                                         course,
-                                        courseIndex
-                                    ) => {
-
-                                        return createCourseCard(
+                                        index
+                                    ) =>
+                                        createCourse(
                                             course,
-                                            courseIndex + 1
-                                        );
-
-                                    }
+                                            index + 1
+                                        )
                                 )
                                 .join("")
                             }
@@ -5650,10 +5147,9 @@ function openTrack(trackName){
             .join("");
 
 
-    activateCourseButtons();
+    activateJobButtons();
 
-
-    activateCareerButtons();
+    activateLearnButtons();
 
 
     setTimeout(
@@ -5667,17 +5163,17 @@ function openTrack(trackName){
             });
 
         },
-        60
+        70
     );
 
 }
 
 
 /* =========================================================
-   CREATE COURSE CARD
+   CREATE COURSE
 ========================================================= */
 
-function createCourseCard(
+function createCourse(
     course,
     number
 ){
@@ -5688,7 +5184,7 @@ function createCourseCard(
                 job => {
 
                     const profile =
-                        createCareerProfile(
+                        getProfile(
                             job,
                             course.name
                         );
@@ -5701,14 +5197,14 @@ function createCourseCard(
                         >
 
                             <h4>
-                                ${escapeHtml(
+                                ${escapeHTML(
                                     job
                                 )}
                             </h4>
 
 
                             <p>
-                                ${escapeHtml(
+                                ${escapeHTML(
                                     profile.short
                                 )}
                             </p>
@@ -5716,15 +5212,17 @@ function createCourseCard(
 
                             <button
                                 type="button"
-                                class="learn-button"
-                                data-job="${escapeHtml(
+                                class="learn-more"
+                                data-job="${escapeHTML(
                                     job
                                 )}"
-                                data-course="${escapeHtml(
+                                data-course="${escapeHTML(
                                     course.name
                                 )}"
                             >
+
                                 Learn More
+
                             </button>
 
                         </article>
@@ -5747,7 +5245,7 @@ function createCourseCard(
             >
 
                 <div
-                    class="course-number"
+                    class="course-label"
                 >
                     Course ${number}
                 </div>
@@ -5756,7 +5254,7 @@ function createCourseCard(
                 <div
                     class="course-name"
                 >
-                    ${escapeHtml(
+                    ${escapeHTML(
                         course.name
                     )}
                 </div>
@@ -5765,7 +5263,7 @@ function createCourseCard(
                 <p
                     class="course-description"
                 >
-                    ${escapeHtml(
+                    ${escapeHTML(
                         course.description
                     )}
                 </p>
@@ -5781,7 +5279,9 @@ function createCourseCard(
                     type="button"
                     class="jobs-button"
                 >
+
                     Show Job Opportunities
+
                 </button>
 
             </div>
@@ -5800,8 +5300,8 @@ function createCourseCard(
                     </strong>
 
                     <span>
-                        Open a career to learn more
-                        about the work, skills,
+                        Explore each career to learn
+                        more about the work, skills,
                         workplace, and preparation.
                     </span>
 
@@ -5811,7 +5311,9 @@ function createCourseCard(
                 <div
                     class="job-grid"
                 >
+
                     ${jobs}
+
                 </div>
 
             </div>
@@ -5824,78 +5326,83 @@ function createCourseCard(
 
 
 /* =========================================================
-   ACTIVATE COURSE BUTTONS
+   JOB BUTTONS
 ========================================================= */
 
-function activateCourseButtons(){
+function activateJobButtons(){
 
     document
         .querySelectorAll(
             ".jobs-button"
         )
-        .forEach(button => {
+        .forEach(
+            button => {
 
-            button.addEventListener(
-                "click",
-                () => {
+                button.addEventListener(
+                    "click",
+                    () => {
 
-                    const card =
-                        button.closest(
-                            ".course-card"
-                        );
-
-                    const panel =
-                        card.querySelector(
-                            ".jobs-panel"
-                        );
+                        const card =
+                            button.closest(
+                                ".course-card"
+                            );
 
 
-                    const isOpen =
-                        panel.classList.toggle(
-                            "show"
-                        );
+                        const panel =
+                            card.querySelector(
+                                ".jobs-panel"
+                            );
 
 
-                    button.textContent =
-                        isOpen
+                        const open =
+                            panel.classList.toggle(
+                                "show"
+                            );
 
-                            ? "Hide Job Opportunities"
 
-                            : "Show Job Opportunities";
+                        button.textContent =
+                            open
 
-                }
-            );
+                                ? "Hide Job Opportunities"
 
-        });
+                                : "Show Job Opportunities";
+
+                    }
+                );
+
+            }
+        );
 
 }
 
 
 /* =========================================================
-   ACTIVATE CAREER BUTTONS
+   LEARN BUTTONS
 ========================================================= */
 
-function activateCareerButtons(){
+function activateLearnButtons(){
 
     document
         .querySelectorAll(
-            ".learn-button"
+            ".learn-more"
         )
-        .forEach(button => {
+        .forEach(
+            button => {
 
-            button.addEventListener(
-                "click",
-                () => {
+                button.addEventListener(
+                    "click",
+                    () => {
 
-                    openCareer(
-                        button.dataset.job,
-                        button.dataset.course
-                    );
+                        openCareer(
+                            button.dataset.job,
+                            button.dataset.course
+                        );
 
-                }
-            );
+                    }
+                );
 
-        });
+            }
+        );
 
 }
 
@@ -5910,7 +5417,7 @@ function openCareer(
 ){
 
     const profile =
-        createCareerProfile(
+        getProfile(
             jobName,
             courseName
         );
@@ -5932,8 +5439,6 @@ function openCareer(
         "careerBody"
     ).innerHTML = `
 
-        <!-- ABOUT -->
-
         <section
             class="career-section"
         >
@@ -5944,32 +5449,29 @@ function openCareer(
 
 
             <p>
-                ${escapeHtml(
+                ${escapeHTML(
                     profile.about
                 )}
             </p>
 
 
             <p>
-                ${escapeHtml(
+                ${escapeHTML(
                     profile.about2
                 )}
             </p>
 
 
             <p>
-                Students should also understand that
-                a job title is a general description of
-                a career direction. The daily experience
-                can change depending on the employer,
-                specialization, workplace, and level of
-                responsibility.
+                Students should look beyond the job
+                title itself and understand the actual
+                responsibilities, work setting, skills,
+                and requirements associated with the
+                profession.
             </p>
 
         </section>
 
-
-        <!-- WORK -->
 
         <section
             class="career-section"
@@ -5982,13 +5484,12 @@ function openCareer(
 
             <p>
                 The responsibilities of a
-                ${escapeHtml(jobName)}
-                can differ between organizations.
-                Some positions may focus more heavily
-                on technical work, while others can
-                involve planning, communication,
-                analysis, service, research,
-                supervision, or coordination.
+                ${escapeHTML(
+                    jobName
+                )}
+                can differ depending on the employer,
+                specialization, workplace, and level of
+                responsibility.
             </p>
 
 
@@ -5997,18 +5498,16 @@ function openCareer(
             </p>
 
 
-            <ul class="career-list">
+            <ul
+                class="career-list"
+            >
 
                 ${profile.duties
                     .map(
                         duty =>
-                            `
-                                <li>
-                                    ${escapeHtml(
-                                        duty
-                                    )}
-                                </li>
-                            `
+                            `<li>${escapeHTML(
+                                duty
+                            )}</li>`
                     )
                     .join("")
                 }
@@ -6017,8 +5516,6 @@ function openCareer(
 
         </section>
 
-
-        <!-- WORKPLACE -->
 
         <section
             class="career-section"
@@ -6030,11 +5527,11 @@ function openCareer(
 
 
             <p>
-                Career opportunities may exist in
-                different industries and organizations.
-                The workplace depends on the employer,
-                specialization, position, and type of
-                services or products involved.
+                Career opportunities may exist across
+                different organizations and industries.
+                The actual workplace depends on the
+                employer, specialization, position,
+                and type of work.
             </p>
 
 
@@ -6043,18 +5540,16 @@ function openCareer(
             </p>
 
 
-            <ul class="career-list">
+            <ul
+                class="career-list"
+            >
 
                 ${profile.workplaces
                     .map(
-                        place =>
-                            `
-                                <li>
-                                    ${escapeHtml(
-                                        place
-                                    )}
-                                </li>
-                            `
+                        workplace =>
+                            `<li>${escapeHTML(
+                                workplace
+                            )}</li>`
                     )
                     .join("")
                 }
@@ -6063,8 +5558,6 @@ function openCareer(
 
         </section>
 
-
-        <!-- SKILLS -->
 
         <section
             class="career-section"
@@ -6077,11 +5570,10 @@ function openCareer(
 
             <p>
                 Students do not need to master every
-                skill immediately. Skills are normally
-                developed gradually through education,
-                practice, projects, internships,
-                training, organizations, and workplace
-                experience.
+                skill immediately. Skills are developed
+                gradually through education, practice,
+                projects, internships, training,
+                organizations, and workplace experience.
             </p>
 
 
@@ -6090,18 +5582,16 @@ function openCareer(
             </p>
 
 
-            <ul class="career-list">
+            <ul
+                class="career-list"
+            >
 
                 ${profile.skills
                     .map(
                         skill =>
-                            `
-                                <li>
-                                    ${escapeHtml(
-                                        skill
-                                    )}
-                                </li>
-                            `
+                            `<li>${escapeHTML(
+                                skill
+                            )}</li>`
                     )
                     .join("")
                 }
@@ -6110,8 +5600,6 @@ function openCareer(
 
         </section>
 
-
-        <!-- ENVIRONMENT -->
 
         <section
             class="career-section"
@@ -6123,7 +5611,7 @@ function openCareer(
 
 
             <p>
-                ${escapeHtml(
+                ${escapeHTML(
                     profile.environment
                 )}
             </p>
@@ -6132,16 +5620,13 @@ function openCareer(
             <p>
                 Students should consider whether
                 they enjoy working with people,
-                technology, documents, equipment,
-                data, creative materials, customers,
-                students, patients, communities,
-                or physical environments.
+                computers, equipment, documents,
+                data, customers, learners, patients,
+                communities, or physical environments.
             </p>
 
         </section>
 
-
-        <!-- PREPARATION -->
 
         <section
             class="career-section"
@@ -6153,25 +5638,22 @@ function openCareer(
 
 
             <p>
-                ${escapeHtml(
+                ${escapeHTML(
                     profile.preparation
                 )}
             </p>
 
 
             <p>
-                It can also help to talk with people
-                who already work in the profession,
-                read real job descriptions, compare
-                different workplaces, and learn about
-                qualifications before making a final
-                educational plan.
+                It can also help to read real job
+                descriptions, talk with people working
+                in the field, join relevant activities,
+                and gain practical experience whenever
+                appropriate.
             </p>
 
         </section>
 
-
-        <!-- COURSE CONNECTION -->
 
         <section
             class="career-section"
@@ -6183,30 +5665,24 @@ function openCareer(
 
 
             <p>
-                ${escapeHtml(
+                ${escapeHTML(
                     profile.connection
                 )}
             </p>
 
 
             <p>
-                One course can lead to several career
-                opportunities, and one career may
-                sometimes be reached through different
-                educational pathways. Students should
-                therefore consider their interests,
-                skills, preferred work environment,
-                educational requirements, and long-term
-                goals.
+                One college course can connect to
+                different career opportunities, and one
+                career may sometimes be reached through
+                different educational pathways.
             </p>
 
         </section>
 
 
-        <!-- IMPORTANT -->
-
         <div
-            class="important-note"
+            class="note"
         >
 
             <strong>
@@ -6214,7 +5690,7 @@ function openCareer(
             </strong>
 
             <p>
-                ${escapeHtml(
+                ${escapeHTML(
                     profile.note
                 )}
             </p>
@@ -6231,14 +5707,14 @@ function openCareer(
 
 
     document.body.classList.add(
-        "modal-open"
+        "lock"
     );
 
 }
 
 
 /* =========================================================
-   CLOSE CAREER MODAL
+   CLOSE CAREER
 ========================================================= */
 
 function closeCareer(){
@@ -6248,56 +5724,63 @@ function closeCareer(){
     ).hidden =
         true;
 
+
     document.body.classList.remove(
-        "modal-open"
+        "lock"
     );
 
 }
 
 
-document
-    .getElementById(
-        "modalClose"
-    )
-    .addEventListener(
-        "click",
-        closeCareer
-    );
+document.getElementById(
+    "modalClose"
+)
+.addEventListener(
+    "click",
+    closeCareer
+);
 
 
-document
-    .getElementById(
-        "careerModal"
-    )
-    .addEventListener(
-        "click",
-        event => {
-
-            if(
-                event.target ===
-                event.currentTarget
-            ){
-
-                closeCareer();
-
-            }
-
-        }
-    );
-
-
-document.addEventListener(
-    "keydown",
+document.getElementById(
+    "careerModal"
+)
+.addEventListener(
+    "click",
     event => {
 
         if(
-            event.key ===
-            "Escape"
+            event.target ===
+            event.currentTarget
         ){
 
             closeCareer();
 
         }
+
+    }
+);
+
+
+/* =========================================================
+   CLOSE DETAILS
+========================================================= */
+
+document.getElementById(
+    "closeDetails"
+)
+.addEventListener(
+    "click",
+    () => {
+
+        details.hidden =
+            true;
+
+        document.getElementById(
+            "tracks"
+        ).scrollIntoView({
+            behavior:
+                "smooth"
+        });
 
     }
 );
@@ -6318,34 +5801,6 @@ searchInput.addEventListener(
 
     }
 );
-
-
-/* =========================================================
-   CLOSE DETAILS
-========================================================= */
-
-document
-    .getElementById(
-        "closeDetails"
-    )
-    .addEventListener(
-        "click",
-        () => {
-
-            details.hidden =
-                true;
-
-            document
-                .getElementById(
-                    "tracks"
-                )
-                .scrollIntoView({
-                    behavior:
-                        "smooth"
-                });
-
-        }
-    );
 
 
 /* =========================================================
@@ -6386,215 +5841,333 @@ menuButton.addEventListener(
 
 mobileMenu
     .querySelectorAll("a")
-    .forEach(link => {
+    .forEach(
+        link => {
 
-        link.addEventListener(
-            "click",
-            () => {
+            link.addEventListener(
+                "click",
+                () => {
 
-                mobileMenu
-                    .classList
-                    .remove(
-                        "show"
+                    mobileMenu
+                        .classList
+                        .remove(
+                            "show"
+                        );
+
+                    menuButton.setAttribute(
+                        "aria-expanded",
+                        "false"
                     );
 
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
+                }
+            );
 
-            }
-        );
-
-    });
+        }
+    );
 
 
 /* =========================================================
-   PWA INSTALLATION
+   INSTALL HELP
 ========================================================= */
 
-let deferredInstallPrompt =
-    null;
+const installHelp =
+    document.getElementById(
+        "installHelp"
+    );
+
+const installTitle =
+    document.getElementById(
+        "installTitle"
+    );
+
+const installContent =
+    document.getElementById(
+        "installContent"
+    );
 
 
-window.addEventListener(
-    "beforeinstallprompt",
-    event => {
+function detectDevice(){
 
-        event.preventDefault();
+    const ua =
+        navigator.userAgent.toLowerCase();
 
-        deferredInstallPrompt =
-            event;
-
-
-        document.getElementById(
-            "installBanner"
-        ).hidden =
-            false;
-
-
-        document.getElementById(
-            "navInstall"
-        ).style.display =
-            "inline-flex";
-
-    }
-);
-
-
-/* =========================================================
-   INSTALL BUTTON
-========================================================= */
-
-async function installPathfinder(){
 
     if(
-        !deferredInstallPrompt
+        /iphone|ipad|ipod/.test(ua)
     ){
 
-        showToast(
-            "Use your browser menu to install PATHFINDER."
-        );
+        return "ios";
+
+    }
+
+
+    if(
+        /android/.test(ua)
+    ){
+
+        return "android";
+
+    }
+
+
+    return "desktop";
+
+}
+
+
+function openInstallHelp(){
+
+    const device =
+        detectDevice();
+
+
+    installHelp.hidden =
+        false;
+
+
+    if(
+        device === "ios"
+    ){
+
+        installTitle.textContent =
+            "Install PATHFINDER on iPhone / iPad";
+
+
+        installContent.innerHTML = `
+
+            <p>
+                PATHFINDER can be added to your
+                iPhone or iPad Home Screen.
+            </p>
+
+            <p>
+                <strong>Step 1:</strong>
+                Open PATHFINDER using
+                <strong>Safari</strong>.
+            </p>
+
+            <p>
+                <strong>Step 2:</strong>
+                Tap the
+                <strong>Share</strong>
+                button.
+            </p>
+
+            <p>
+                <strong>Step 3:</strong>
+                Choose
+                <strong>Add to Home Screen</strong>.
+            </p>
+
+            <p>
+                <strong>Step 4:</strong>
+                Tap
+                <strong>Add</strong>.
+            </p>
+
+        `;
 
         return;
 
     }
 
 
-    deferredInstallPrompt.prompt();
+    if(
+        device === "android"
+    ){
+
+        installTitle.textContent =
+            "Install PATHFINDER on Android";
 
 
-    const choice =
-        await deferredInstallPrompt.userChoice;
+        installContent.innerHTML = `
+
+            <p>
+                PATHFINDER can be added to your
+                Android Home Screen.
+            </p>
+
+            <p>
+                <strong>Step 1:</strong>
+                Open PATHFINDER in
+                <strong>Chrome</strong>.
+            </p>
+
+            <p>
+                <strong>Step 2:</strong>
+                Tap the
+                <strong>⋮</strong>
+                menu.
+            </p>
+
+            <p>
+                <strong>Step 3:</strong>
+                Choose
+                <strong>Add to Home screen</strong>
+                or
+                <strong>Install app</strong>.
+            </p>
+
+        `;
+
+        return;
+
+    }
 
 
-    console.log(
-        "Installation result:",
-        choice.outcome
-    );
+    installTitle.textContent =
+        "Install PATHFINDER on Computer";
 
 
-    deferredInstallPrompt =
-        null;
+    installContent.innerHTML = `
 
+        <p>
+            Open PATHFINDER using
+            <strong>Google Chrome</strong>
+            or
+            <strong>Microsoft Edge</strong>.
+        </p>
 
-    document.getElementById(
-        "installBanner"
-    ).hidden =
-        true;
+        <p>
+            Open the browser menu and look for
+            <strong>Install PATHFINDER</strong>
+            or
+            <strong>Add to desktop</strong>.
+        </p>
 
-
-    document.getElementById(
-        "navInstall"
-    ).style.display =
-        "none";
+    `;
 
 }
 
 
-document.getElementById(
-    "installButton"
-)
-.addEventListener(
-    "click",
-    installPathfinder
-);
-
+/* =========================================================
+   INSTALL BUTTON
+========================================================= */
 
 document.getElementById(
     "navInstall"
 )
 .addEventListener(
     "click",
-    installPathfinder
+    openInstallHelp
 );
 
 
 /* =========================================================
-   DISMISS INSTALL
+   CLOSE INSTALL
 ========================================================= */
 
 document.getElementById(
-    "dismissInstall"
+    "closeInstall"
 )
 .addEventListener(
     "click",
     () => {
 
-        document.getElementById(
-            "installBanner"
-        ).hidden =
+        installHelp.hidden =
             true;
-
-        document.getElementById(
-            "navInstall"
-        ).style.display =
-            "none";
-
-        localStorage.setItem(
-            "pathfinder-install-dismissed",
-            "1"
-        );
 
     }
 );
 
 
-/* =========================================================
-   INSTALLED EVENT
-========================================================= */
-
-window.addEventListener(
-    "appinstalled",
+document.getElementById(
+    "installOkay"
+)
+.addEventListener(
+    "click",
     () => {
 
-        document.getElementById(
-            "installBanner"
-        ).hidden =
+        installHelp.hidden =
             true;
 
-        document.getElementById(
-            "navInstall"
-        ).style.display =
-            "none";
+    }
+);
 
-        deferredInstallPrompt =
-            null;
 
-        showToast(
-            "PATHFINDER was installed!"
-        );
+installHelp.addEventListener(
+    "click",
+    event => {
+
+        if(
+            event.target ===
+            installHelp
+        ){
+
+            installHelp.hidden =
+                true;
+
+        }
 
     }
 );
 
 
 /* =========================================================
-   STANDALONE DETECTION
+   TOAST
 ========================================================= */
 
-const isStandalone =
-    window.matchMedia(
-        "(display-mode: standalone)"
-    ).matches ||
-    window.navigator.standalone === true;
-
-
-if(
-    isStandalone
+function showToast(
+    message
 ){
 
-    document.getElementById(
-        "installBanner"
-    ).hidden =
-        true;
+    const toast =
+        document.getElementById(
+            "toast"
+        );
 
-    document.getElementById(
-        "navInstall"
-    ).style.display =
-        "none";
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        window.__toastTimer
+    );
+
+
+    window.__toastTimer =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2200
+        );
 
 }
+
+
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key ===
+            "Escape"
+        ){
+
+            closeCareer();
+
+            installHelp.hidden =
+                true;
+
+        }
+
+    }
+);
 
 
 /* =========================================================
@@ -6627,7 +6200,7 @@ if(
                     error => {
 
                         console.error(
-                            "Service worker error:",
+                            "PATHFINDER service worker error:",
                             error
                         );
 
@@ -6648,8 +6221,8 @@ renderFilters();
 
 renderTracks();
 
-
 </script>
+
 
 </body>
 </html>
