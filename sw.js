@@ -1,144 +1,129 @@
-const CACHE_NAME = "pathfinder-v1";
+const CACHE_NAME = "pathfinder-cache-v4";
 
-const FILES_TO_CACHE = [
+const APP_FILES = [
     "./",
     "./index.html",
     "./manifest.webmanifest",
-    "./icon.svg"
+    "./icon.svg",
+    "./sw.js"
 ];
 
 
-/* =========================================================
+/* =========================================
    INSTALL
-========================================================= */
+   ========================================= */
 
-self.addEventListener(
-    "install",
-    event => {
+self.addEventListener("install", event => {
 
-        event.waitUntil(
+    event.waitUntil(
 
-            caches
-                .open(CACHE_NAME)
-                .then(
-                    cache => {
+        caches
+            .open(CACHE_NAME)
+            .then(cache => {
+                return cache.addAll(APP_FILES);
+            })
+            .then(() => {
+                return self.skipWaiting();
+            })
 
-                        return cache.addAll(
-                            FILES_TO_CACHE
-                        );
+    );
 
-                    }
-                )
-
-        );
-
-        self.skipWaiting();
-
-    }
-);
+});
 
 
-/* =========================================================
+/* =========================================
    ACTIVATE
-========================================================= */
+   ========================================= */
 
-self.addEventListener(
-    "activate",
-    event => {
+self.addEventListener("activate", event => {
 
-        event.waitUntil(
+    event.waitUntil(
 
-            caches
-                .keys()
-                .then(
-                    cacheNames => {
+        caches
+            .keys()
+            .then(keys => {
 
-                        return Promise.all(
+                return Promise.all(
 
-                            cacheNames
-                                .filter(
-                                    name =>
-                                        name !==
-                                        CACHE_NAME
-                                )
-                                .map(
-                                    name =>
-                                        caches.delete(
-                                            name
-                                        )
-                                )
+                    keys.map(key => {
 
-                        );
+                        if (key !== CACHE_NAME) {
+                            return caches.delete(key);
+                        }
 
-                    }
-                )
+                        return null;
+                    })
 
-        );
+                );
 
-        self.clients.claim();
+            })
+            .then(() => {
+                return self.clients.claim();
+            })
 
-    }
-);
+    );
+
+});
 
 
-/* =========================================================
+/* =========================================
    FETCH
-========================================================= */
+   ========================================= */
 
 self.addEventListener(
     "fetch",
     event => {
 
-        if(
+        if (
             event.request.method !==
             "GET"
-        ){
-
+        ) {
             return;
-
         }
-
 
         event.respondWith(
 
-            caches
-                .match(
-                    event.request
-                )
-                .then(
-                    cachedResponse => {
+            caches.match(event.request)
+                .then(cachedResponse => {
 
-                        if(
-                            cachedResponse
-                        ){
-
-                            return cachedResponse;
-
-                        }
-
-
-                        return fetch(
-                            event.request
-                        )
-                        .then(
-                            networkResponse => {
-
-                                return networkResponse;
-
-                            }
-                        )
-                        .catch(
-                            () => {
-
-                                return caches.match(
-                                    "./index.html"
-                                );
-
-                            }
-                        );
-
+                    if (cachedResponse) {
+                        return cachedResponse;
                     }
-                )
+
+                    return fetch(event.request)
+                        .then(response => {
+
+                            if (
+                                !response ||
+                                response.status !== 200
+                            ) {
+                                return response;
+                            }
+
+                            const clone =
+                                response.clone();
+
+                            caches
+                                .open(CACHE_NAME)
+                                .then(cache => {
+                                    cache.put(
+                                        event.request,
+                                        clone
+                                    );
+                                });
+
+                            return response;
+
+                        })
+                        .catch(() => {
+
+                            return caches.match(
+                                "./index.html"
+                            );
+
+                        });
+
+                })
 
         );
 
