@@ -1,0 +1,3641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PATHFINDER | Find Your Path</title>
+
+    <meta
+        name="description"
+        content="PATHFINDER helps Filipino Senior High School and college students explore educational options, college programs, opportunities, and career paths."
+    >
+
+    <style>
+
+        /* =========================================================
+           PATHFINDER
+           Main Theme: Maroon + Golden Yellow
+        ========================================================= */
+
+        :root {
+            --maroon: #6e1830;
+            --dark-maroon: #4d1021;
+            --deep-maroon: #350b17;
+            --gold: #f2c14e;
+            --light-gold: #fff4cf;
+            --cream: #fffaf0;
+            --white: #ffffff;
+            --text: #272727;
+            --muted: #707070;
+            --border: #eadfc8;
+            --success: #2e7d32;
+            --shadow: 0 12px 35px rgba(78, 16, 33, 0.10);
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: var(--white);
+
+            padding: 16px 7%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            box-shadow: 0 3px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 44px;
+            height: 44px;
+
+            border-radius: 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--maroon);
+            color: var(--gold);
+
+            font-size: 20px;
+            font-weight: 900;
+
+            border: 3px solid var(--gold);
+        }
+
+        .brand-text {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--maroon);
+        }
+
+        .brand-text span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #333;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--maroon);
+        }
+
+        .nav-button {
+            background: var(--maroon);
+            color: var(--white) !important;
+
+            padding: 10px 18px;
+
+            border-radius: 8px;
+        }
+
+        .nav-button:hover {
+            background: var(--dark-maroon);
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: 700px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 90px 7%;
+
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(242, 193, 78, 0.20),
+                    transparent 25%
+                ),
+                linear-gradient(
+                    135deg,
+                    var(--deep-maroon),
+                    var(--maroon)
+                );
+
+            color: var(--white);
+
+            overflow: hidden;
+        }
+
+        .hero-container {
+            width: 100%;
+            max-width: 1250px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+
+            background: rgba(242, 193, 78, 0.16);
+            border: 1px solid rgba(242, 193, 78, 0.45);
+
+            color: var(--gold);
+
+            padding: 8px 16px;
+
+            border-radius: 50px;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 7vw, 82px);
+            line-height: 0.95;
+
+            margin-bottom: 25px;
+
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero-tagline {
+            font-size: 24px;
+            font-weight: 700;
+
+            color: var(--gold);
+
+            margin-bottom: 20px;
+        }
+
+        .hero-description {
+            max-width: 720px;
+
+            color: #f5eeee;
+
+            font-size: 18px;
+            line-height: 1.8;
+
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .primary-btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+
+            background: var(--gold);
+            color: var(--deep-maroon);
+
+            padding: 14px 24px;
+
+            border-radius: 9px;
+
+            border: none;
+
+            font-weight: 900;
+
+            transition: 0.2s;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-2px);
+            background: #ffd76d;
+        }
+
+        .secondary-btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+
+            background: transparent;
+            color: var(--white);
+
+            padding: 14px 24px;
+
+            border-radius: 9px;
+
+            border: 1px solid rgba(255,255,255,0.55);
+
+            font-weight: 900;
+
+            transition: 0.2s;
+        }
+
+        .secondary-btn:hover {
+            background: rgba(255,255,255,0.10);
+        }
+
+
+        /* HERO VISUAL */
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+        }
+
+        .pathfinder-card {
+            width: min(400px, 100%);
+
+            background: var(--white);
+
+            border-radius: 26px;
+
+            padding: 26px;
+
+            box-shadow:
+                0 30px 70px rgba(0,0,0,0.22);
+
+            color: var(--text);
+
+            transform: rotate(2deg);
+        }
+
+        .pathfinder-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 22px;
+        }
+
+        .small-brand {
+            color: var(--maroon);
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .gold-dot {
+            width: 15px;
+            height: 15px;
+
+            background: var(--gold);
+
+            border-radius: 50%;
+        }
+
+        .path-line {
+            position: relative;
+
+            padding-left: 28px;
+
+            margin: 22px 0;
+        }
+
+        .path-line::before {
+            content: "";
+
+            position: absolute;
+
+            left: 7px;
+            top: 9px;
+            bottom: -30px;
+
+            width: 3px;
+
+            background: #e7d5ae;
+        }
+
+        .path-line:last-child::before {
+            display: none;
+        }
+
+        .path-circle {
+            position: absolute;
+
+            left: 0;
+            top: 3px;
+
+            width: 17px;
+            height: 17px;
+
+            background: var(--maroon);
+
+            border: 3px solid var(--gold);
+
+            border-radius: 50%;
+        }
+
+        .path-line h4 {
+            color: var(--maroon);
+            margin-bottom: 2px;
+        }
+
+        .path-line p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+
+        /* =========================================================
+           GENERAL SECTION
+        ========================================================= */
+
+        section {
+            scroll-margin-top: 85px;
+        }
+
+        .section {
+            padding: 90px 7%;
+        }
+
+        .section-container {
+            max-width: 1250px;
+            margin: auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto 50px;
+        }
+
+        .eyebrow {
+            color: var(--maroon);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 900;
+            font-size: 13px;
+
+            margin-bottom: 8px;
+        }
+
+        .section-heading h2 {
+            font-size: 42px;
+            color: var(--dark-maroon);
+
+            margin-bottom: 14px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 17px;
+        }
+
+
+        /* =========================================================
+           CURRENT SHS NOTE
+        ========================================================= */
+
+        .current-note {
+            background: var(--light-gold);
+
+            border: 1px solid #e8c76d;
+
+            border-radius: 16px;
+
+            padding: 22px 24px;
+
+            display: flex;
+            align-items: flex-start;
+
+            gap: 15px;
+
+            margin-bottom: 40px;
+        }
+
+        .note-icon {
+            width: 38px;
+            height: 38px;
+
+            flex-shrink: 0;
+
+            border-radius: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--maroon);
+            color: var(--gold);
+
+            font-weight: 900;
+        }
+
+        .current-note strong {
+            color: var(--dark-maroon);
+        }
+
+        .current-note p {
+            color: #664c1e;
+            font-size: 14px;
+        }
+
+
+        /* =========================================================
+           SEARCH
+        ========================================================= */
+
+        .search-area {
+            display: flex;
+
+            gap: 12px;
+
+            max-width: 800px;
+
+            margin: 0 auto 28px;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+        }
+
+        .search-icon {
+            position: absolute;
+
+            left: 16px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: var(--muted);
+        }
+
+        .search-box input {
+            width: 100%;
+
+            padding: 15px 18px 15px 44px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            background: var(--white);
+
+            outline: none;
+
+            font-size: 16px;
+
+            transition: 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--maroon);
+
+            box-shadow:
+                0 0 0 3px rgba(110,24,48,0.10);
+        }
+
+
+        /* =========================================================
+           FILTER BUTTONS
+        ========================================================= */
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+
+            margin-bottom: 42px;
+        }
+
+        .filter-btn {
+            padding: 10px 16px;
+
+            border-radius: 50px;
+
+            border: 1px solid var(--border);
+
+            background: var(--white);
+
+            color: #555;
+
+            font-weight: 800;
+
+            transition: 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--maroon);
+            color: var(--maroon);
+        }
+
+        .filter-btn.active {
+            background: var(--maroon);
+            border-color: var(--maroon);
+            color: var(--gold);
+        }
+
+
+        /* =========================================================
+           TRACK GRID
+        ========================================================= */
+
+        .track-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 22px;
+        }
+
+        .track-card {
+            background: var(--white);
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            box-shadow: var(--shadow);
+
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s;
+        }
+
+        .track-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 18px 40px rgba(78, 16, 33, 0.14);
+        }
+
+        .track-top {
+            padding: 24px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--maroon),
+                    var(--dark-maroon)
+                );
+
+            color: var(--white);
+
+            position: relative;
+        }
+
+        .track-number {
+            position: absolute;
+
+            top: 20px;
+            right: 20px;
+
+            width: 34px;
+            height: 34px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(242,193,78,0.16);
+
+            border:
+                1px solid rgba(242,193,78,0.45);
+
+            color: var(--gold);
+
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        .track-icon {
+            width: 55px;
+            height: 55px;
+
+            border-radius: 14px;
+
+            background: var(--gold);
+
+            color: var(--maroon);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 23px;
+            font-weight: 900;
+
+            margin-bottom: 18px;
+        }
+
+        .track-top h3 {
+            font-size: 28px;
+
+            margin-bottom: 5px;
+        }
+
+        .track-subtitle {
+            color: #f5df99;
+
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .track-body {
+            padding: 24px;
+        }
+
+        .track-description {
+            color: #5e5e5e;
+
+            font-size: 15px;
+
+            margin-bottom: 20px;
+        }
+
+        .track-action {
+            width: 100%;
+
+            border: none;
+
+            background: var(--light-gold);
+
+            color: var(--maroon);
+
+            padding: 12px 15px;
+
+            border-radius: 9px;
+
+            font-weight: 900;
+
+            transition: 0.2s;
+        }
+
+        .track-action:hover {
+            background: var(--gold);
+        }
+
+
+        /* =========================================================
+           STRAND SECTION
+        ========================================================= */
+
+        .strand-section {
+            padding: 70px 7% 90px;
+            background: #f7efe1;
+        }
+
+        .strand-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 22px;
+        }
+
+        .strand-card {
+            background: var(--white);
+
+            border-radius: 17px;
+
+            border: 1px solid var(--border);
+
+            padding: 25px;
+
+            box-shadow: 0 6px 22px rgba(0,0,0,0.05);
+        }
+
+        .strand-header {
+            display: flex;
+            align-items: center;
+
+            gap: 14px;
+
+            margin-bottom: 18px;
+        }
+
+        .strand-label {
+            min-width: 64px;
+
+            padding: 7px 10px;
+
+            text-align: center;
+
+            background: var(--maroon);
+
+            color: var(--gold);
+
+            border-radius: 7px;
+
+            font-weight: 900;
+
+            font-size: 13px;
+        }
+
+        .strand-card h3 {
+            color: var(--dark-maroon);
+        }
+
+        .strand-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+
+        /* =========================================================
+           DETAILS SECTION
+        ========================================================= */
+
+        .details-section {
+            display: none;
+            background: var(--white);
+
+            padding: 90px 7%;
+        }
+
+        .details-section.show {
+            display: block;
+        }
+
+        .details-header {
+            max-width: 1250px;
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            gap: 30px;
+
+            margin-bottom: 45px;
+        }
+
+        .details-title h2 {
+            font-size: 48px;
+
+            color: var(--dark-maroon);
+
+            margin-bottom: 7px;
+        }
+
+        .details-title .full-name {
+            color: var(--maroon);
+
+            font-size: 18px;
+            font-weight: 900;
+
+            margin-bottom: 15px;
+        }
+
+        .details-title p {
+            color: var(--muted);
+
+            max-width: 800px;
+
+            font-size: 16px;
+        }
+
+        .close-details {
+            border: none;
+
+            background: #f7e7b5;
+
+            color: var(--maroon);
+
+            width: 44px;
+            height: 44px;
+
+            border-radius: 50%;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            flex-shrink: 0;
+        }
+
+        .details-content {
+            max-width: 1250px;
+            margin: auto;
+        }
+
+
+        /* COURSE GROUP */
+
+        .course-group {
+            margin-bottom: 40px;
+        }
+
+        .course-group-title {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            color: var(--dark-maroon);
+
+            font-size: 24px;
+
+            margin-bottom: 17px;
+        }
+
+        .course-group-title::before {
+            content: "";
+
+            width: 7px;
+            height: 30px;
+
+            background: var(--gold);
+
+            border-radius: 5px;
+        }
+
+        .course-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 14px;
+        }
+
+        .course-card {
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            padding: 16px;
+
+            background: #fffdf8;
+        }
+
+        .course-name {
+            color: var(--maroon);
+
+            font-weight: 900;
+
+            font-size: 14px;
+
+            margin-bottom: 10px;
+        }
+
+        .career-label {
+            color: #6f654f;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.8px;
+
+            margin-bottom: 7px;
+        }
+
+        .career-list {
+            list-style: none;
+        }
+
+        .career-list li {
+            position: relative;
+
+            padding-left: 16px;
+
+            color: #555;
+
+            font-size: 13px;
+
+            margin-bottom: 4px;
+        }
+
+        .career-list li::before {
+            content: "•";
+
+            position: absolute;
+
+            left: 0;
+
+            color: var(--gold);
+
+            font-weight: 900;
+        }
+
+
+        /* =========================================================
+           HOW IT WORKS
+        ========================================================= */
+
+        .how-section {
+            background: var(--deep-maroon);
+
+            color: var(--white);
+
+            padding: 90px 7%;
+        }
+
+        .how-section .section-heading h2 {
+            color: var(--white);
+        }
+
+        .how-section .section-heading p {
+            color: #e3d6d6;
+        }
+
+        .steps {
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+        .step-card {
+            background: rgba(255,255,255,0.06);
+
+            border:
+                1px solid rgba(255,255,255,0.12);
+
+            border-radius: 17px;
+
+            padding: 26px;
+        }
+
+        .step-number {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 50%;
+
+            background: var(--gold);
+
+            color: var(--maroon);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: 900;
+
+            margin-bottom: 17px;
+        }
+
+        .step-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .step-card p {
+            color: #ddcfd0;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================================
+           CTA
+        ========================================================= */
+
+        .cta-section {
+            padding: 100px 7%;
+            background: var(--cream);
+        }
+
+        .cta-box {
+            max-width: 1100px;
+
+            margin: auto;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--maroon),
+                    var(--dark-maroon)
+                );
+
+            border-radius: 24px;
+
+            padding: 55px;
+
+            color: var(--white);
+
+            text-align: center;
+
+            box-shadow: var(--shadow);
+        }
+
+        .cta-box h2 {
+            font-size: 42px;
+
+            margin-bottom: 13px;
+        }
+
+        .cta-box p {
+            max-width: 750px;
+
+            margin: 0 auto 26px;
+
+            color: #f0dddd;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            background: #250810;
+
+            color: white;
+
+            padding: 50px 7%;
+        }
+
+        .footer-grid {
+            max-width: 1250px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr 1fr;
+
+            gap: 40px;
+        }
+
+        .footer-brand {
+            font-size: 25px;
+
+            font-weight: 900;
+
+            color: var(--gold);
+
+            margin-bottom: 12px;
+        }
+
+        .footer-grid p {
+            color: #cbbfc1;
+
+            font-size: 14px;
+
+            max-width: 500px;
+        }
+
+        .footer-title {
+            color: var(--gold);
+
+            font-weight: 900;
+
+            margin-bottom: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+        }
+
+        .footer-links a {
+            color: #cbbfc1;
+
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            max-width: 1250px;
+
+            margin: 35px auto 0;
+
+            padding-top: 20px;
+
+            border-top:
+                1px solid rgba(255,255,255,0.10);
+
+            color: #9e9093;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           SEARCH EMPTY
+        ========================================================= */
+
+        .no-results {
+            display: none;
+
+            text-align: center;
+
+            background: var(--white);
+
+            border: 1px dashed var(--border);
+
+            border-radius: 14px;
+
+            padding: 35px;
+
+            color: var(--muted);
+
+            grid-column: 1 / -1;
+        }
+
+        .no-results.show {
+            display: block;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1050px) {
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                justify-content: flex-start;
+            }
+
+            .track-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .course-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .nav-button {
+                padding: 8px 12px;
+            }
+
+            .brand-text {
+                font-size: 19px;
+            }
+
+            .brand-logo {
+                width: 38px;
+                height: 38px;
+            }
+
+            .hero {
+                padding: 70px 5%;
+            }
+
+            .section,
+            .strand-section,
+            .details-section,
+            .how-section,
+            .cta-section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .section-heading h2 {
+                font-size: 34px;
+            }
+
+            .track-grid,
+            .strand-grid,
+            .steps,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .details-header {
+                flex-direction: column;
+            }
+
+            .details-title h2 {
+                font-size: 38px;
+            }
+
+            .pathfinder-card {
+                transform: none;
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            .nav-links a:not(.nav-button) {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 49px;
+            }
+
+            .hero-tagline {
+                font-size: 19px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .search-area {
+                flex-direction: column;
+            }
+
+            .cta-box {
+                padding: 35px 22px;
+            }
+
+            .cta-box h2 {
+                font-size: 32px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav>
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            PF
+        </div>
+
+        <div class="brand-text">
+            PATH<span>FINDER</span>
+        </div>
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#tracks">
+            SHS Tracks
+        </a>
+
+        <a href="#how">
+            How It Works
+        </a>
+
+        <a
+            href="#tracks"
+            class="nav-button"
+        >
+            Explore
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section
+    class="hero"
+    id="home"
+>
+
+    <div class="hero-container">
+
+
+        <div>
+
+            <div class="hero-badge">
+                EDUCATIONAL GUIDE FOR FILIPINO STUDENTS
+            </div>
+
+
+            <h1>
+                Find Your
+                <span>Path.</span>
+            </h1>
+
+
+            <div class="hero-tagline">
+                Understand your choices. Build your future.
+            </div>
+
+
+            <p class="hero-description">
+
+                <strong>PATHFINDER</strong> helps incoming
+                Senior High School and college students
+                explore their educational options.
+
+                Discover SHS tracks, strands, college
+                programs, possible opportunities, and
+                career paths in one simple place.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#tracks"
+                    class="primary-btn"
+                >
+                    Explore SHS Paths
+                </a>
+
+
+                <a
+                    href="#how"
+                    class="secondary-btn"
+                >
+                    How PATHFINDER Works
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="hero-visual">
+
+            <div class="pathfinder-card">
+
+                <div class="pathfinder-card-header">
+
+                    <div class="small-brand">
+                        PATHFINDER
+                    </div>
+
+                    <div class="gold-dot"></div>
+
+                </div>
+
+
+                <div class="path-line">
+
+                    <div class="path-circle"></div>
+
+                    <h4>
+                        Explore
+                    </h4>
+
+                    <p>
+                        Learn about different SHS paths.
+                    </p>
+
+                </div>
+
+
+                <div class="path-line">
+
+                    <div class="path-circle"></div>
+
+                    <h4>
+                        Understand
+                    </h4>
+
+                    <p>
+                        See possible college programs.
+                    </p>
+
+                </div>
+
+
+                <div class="path-line">
+
+                    <div class="path-circle"></div>
+
+                    <h4>
+                        Discover
+                    </h4>
+
+                    <p>
+                        Explore possible career opportunities.
+                    </p>
+
+                </div>
+
+
+                <div class="path-line">
+
+                    <div class="path-circle"></div>
+
+                    <h4>
+                        Plan
+                    </h4>
+
+                    <p>
+                        Build a path that fits your goals.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SHS TRACKS
+========================================================= -->
+
+<section
+    class="section"
+    id="tracks"
+>
+
+    <div class="section-container">
+
+
+        <div class="section-heading">
+
+            <div class="eyebrow">
+                Explore Your Options
+            </div>
+
+            <h2>
+                Traditional SHS Tracks & Strands
+            </h2>
+
+            <p>
+                Explore what each path focuses on, what
+                students may study in college, and possible
+                career opportunities.
+            </p>
+
+        </div>
+
+
+
+        <!-- CURRENT DEPED NOTE -->
+
+        <div class="current-note">
+
+            <div class="note-icon">
+                i
+            </div>
+
+            <div>
+
+                <strong>
+                    Important Philippines SHS update:
+                </strong>
+
+                <p>
+
+                    DepEd's Strengthened Senior High School
+                    Curriculum for SY 2026–2027 uses two tracks:
+                    Academic and Technical Professional (TechPro).
+                    Arts & Design and Sports offerings are
+                    categorized under the Academic track.
+                    PATHFINDER also presents the familiar
+                    traditional SHS structure below because
+                    many students, schools, and references still
+                    use these strand names when discussing SHS
+                    options.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SEARCH -->
+
+        <div class="search-area">
+
+            <div class="search-box">
+
+                <span class="search-icon">
+                    🔎
+                </span>
+
+                <input
+                    type="text"
+                    id="trackSearch"
+                    placeholder="Search STEM, HUMSS, ABM, TVL, nursing, education..."
+                    oninput="searchTracks()"
+                >
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FILTERS -->
+
+        <div class="filters">
+
+            <button
+                class="filter-btn active"
+                onclick="filterTracks('All', this)"
+            >
+                All
+            </button>
+
+            <button
+                class="filter-btn"
+                onclick="filterTracks('Academic', this)"
+            >
+                Academic
+            </button>
+
+            <button
+                class="filter-btn"
+                onclick="filterTracks('TVL', this)"
+            >
+                TVL
+            </button>
+
+            <button
+                class="filter-btn"
+                onclick="filterTracks('Arts', this)"
+            >
+                Arts & Design
+            </button>
+
+            <button
+                class="filter-btn"
+                onclick="filterTracks('Sports', this)"
+            >
+                Sports
+            </button>
+
+        </div>
+
+
+
+        <!-- TRACK CARDS -->
+
+        <div
+            class="track-grid"
+            id="trackGrid"
+        >
+
+        </div>
+
+
+        <div
+            class="no-results"
+            id="noResults"
+        >
+
+            <h3>
+                No matching path found.
+            </h3>
+
+            <p>
+                Try searching for another track, strand,
+                course, or career.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     TRADITIONAL STRAND GROUPS
+========================================================= -->
+
+<section class="strand-section">
+
+    <div class="section-container">
+
+
+        <div class="section-heading">
+
+            <div class="eyebrow">
+                Traditional Strand Overview
+            </div>
+
+            <h2>
+                What Each Strand Focuses On
+            </h2>
+
+            <p>
+                A simple overview to help students understand
+                the general direction of each traditional strand.
+            </p>
+
+        </div>
+
+
+
+        <div class="strand-grid">
+
+
+            <div class="strand-card">
+
+                <div class="strand-header">
+
+                    <div class="strand-label">
+                        STEM
+                    </div>
+
+                    <h3>
+                        Science, Technology, Engineering, and Mathematics
+                    </h3>
+
+                </div>
+
+                <p>
+                    For students interested in science,
+                    mathematics, technology, engineering,
+                    health, architecture, and related fields.
+                </p>
+
+            </div>
+
+
+
+            <div class="strand-card">
+
+                <div class="strand-header">
+
+                    <div class="strand-label">
+                        HUMSS
+                    </div>
+
+                    <h3>
+                        Humanities and Social Sciences
+                    </h3>
+
+                </div>
+
+                <p>
+                    For students interested in people,
+                    society, communication, language, culture,
+                    politics, public service, and education.
+                </p>
+
+            </div>
+
+
+
+            <div class="strand-card">
+
+                <div class="strand-header">
+
+                    <div class="strand-label">
+                        ABM
+                    </div>
+
+                    <h3>
+                        Accountancy, Business, and Management
+                    </h3>
+
+                </div>
+
+                <p>
+                    For students interested in business,
+                    accounting, finance, entrepreneurship,
+                    marketing, economics, and management.
+                </p>
+
+            </div>
+
+
+
+            <div class="strand-card">
+
+                <div class="strand-header">
+
+                    <div class="strand-label">
+                        GAS
+                    </div>
+
+                    <h3>
+                        General Academic Strand
+                    </h3>
+
+                </div>
+
+                <p>
+                    A broad strand for students who are still
+                    exploring different college directions and
+                    want flexibility in choosing future programs.
+                </p>
+
+            </div>
+
+
+
+            <div class="strand-card">
+
+                <div class="strand-header">
+
+                    <div class="strand-label">
+                        TVL
+                    </div>
+
+                    <h3>
+                        Technical-Vocational-Livelihood
+                    </h3>
+
+                </div>
+
+                <p>
+                    Focuses on practical, technical,
+                    vocational, and livelihood-related skills.
+                    It includes areas such as ICT, Home Economics,
+                    Industrial Arts, and Agri-Fishery Arts.
+                </p>
+
+            </div>
+
+
+
+            <div class="strand-card">
+
+                <div class="strand-header">
+
+                    <div class="strand-label">
+                        ARTS
+                    </div>
+
+                    <h3>
+                        Arts and Design
+                    </h3>
+
+                </div>
+
+                <p>
+                    Covers creative fields such as theater,
+                    music, dance, creative writing, visual arts,
+                    media arts, communication, and design.
+                </p>
+
+            </div>
+
+
+
+            <div class="strand-card">
+
+                <div class="strand-header">
+
+                    <div class="strand-label">
+                        SPORTS
+                    </div>
+
+                    <h3>
+                        Sports Track
+                    </h3>
+
+                </div>
+
+                <p>
+                    Focuses on physical education, sports,
+                    fitness, wellness, sports science, coaching,
+                    and related areas.
+                </p>
+
+            </div>
+
+
+
+            <div class="strand-card">
+
+                <div class="strand-header">
+
+                    <div class="strand-label">
+                        TECHPRO
+                    </div>
+
+                    <h3>
+                        Technical Professional
+                    </h3>
+
+                </div>
+
+                <p>
+                    A current strengthened-SHS pathway emphasizing
+                    practical, technical, and career-oriented
+                    learning, including skills, certifications,
+                    employment, and entrepreneurship pathways.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     TRACK DETAILS
+========================================================= -->
+
+<section
+    class="details-section"
+    id="details"
+>
+
+    <div class="details-header">
+
+        <div class="details-title">
+
+            <h2 id="detailsTrackName">
+                STEM
+            </h2>
+
+            <div
+                class="full-name"
+                id="detailsFullName"
+            >
+                Science, Technology, Engineering, and Mathematics
+            </div>
+
+            <p id="detailsDescription">
+            </p>
+
+        </div>
+
+
+        <button
+            class="close-details"
+            onclick="closeDetails()"
+            title="Close"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+
+    <div
+        class="details-content"
+        id="detailsContent"
+    >
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     HOW IT WORKS
+========================================================= -->
+
+<section
+    class="how-section"
+    id="how"
+>
+
+    <div class="section-heading">
+
+        <div
+            class="eyebrow"
+            style="color:#f2c14e;"
+        >
+            Your Journey
+        </div>
+
+        <h2>
+            How PATHFINDER Works
+        </h2>
+
+        <p>
+            Make educational exploration easier by moving
+            through your choices step by step.
+        </p>
+
+    </div>
+
+
+    <div class="steps">
+
+
+        <div class="step-card">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <h3>
+                Explore
+            </h3>
+
+            <p>
+                Browse SHS tracks and strands to understand
+                what each path generally focuses on.
+            </p>
+
+        </div>
+
+
+
+        <div class="step-card">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <h3>
+                Compare
+            </h3>
+
+            <p>
+                Look at possible college programs related to
+                your interests and the path you are considering.
+            </p>
+
+        </div>
+
+
+
+        <div class="step-card">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h3>
+                Plan
+            </h3>
+
+            <p>
+                Use the information as a starting point for
+                conversations with parents, teachers, counselors,
+                and schools.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="cta-section">
+
+    <div class="cta-box">
+
+        <h2>
+            Your Future Starts With a Choice.
+        </h2>
+
+        <p>
+
+            You do not need to know everything right away.
+            Start by understanding your options, discovering
+            what interests you, and learning where each path
+            can lead.
+
+        </p>
+
+        <a
+            href="#tracks"
+            class="primary-btn"
+        >
+            Find Your Path
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="footer-grid">
+
+
+        <div>
+
+            <div class="footer-brand">
+                PATHFINDER
+            </div>
+
+            <p>
+
+                Find your path. Understand your choices.
+                Build your future.
+
+                A student-focused educational exploration
+                platform for the Philippines.
+
+            </p>
+
+        </div>
+
+
+
+        <div>
+
+            <div class="footer-title">
+                Explore
+            </div>
+
+            <div class="footer-links">
+
+                <a href="#home">
+                    Home
+                </a>
+
+                <a href="#tracks">
+                    SHS Tracks
+                </a>
+
+                <a href="#how">
+                    How It Works
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div>
+
+            <div class="footer-title">
+                Reminder
+            </div>
+
+            <p>
+
+                Course and career information is for
+                educational exploration. Specific admission
+                requirements, licensure rules, and program
+                offerings can vary by institution and profession.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 PATHFINDER. Educational exploration website.
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================================================
+   PATH DATA
+========================================================= */
+
+const tracks = [
+
+    {
+        id: "stem",
+        category: "Academic",
+        shortName: "STEM",
+        fullName:
+            "Science, Technology, Engineering, and Mathematics",
+
+        icon: "∑",
+
+        description:
+            "For students interested in science, mathematics, technology, engineering, health, architecture, and other related fields.",
+
+        courses: [
+
+            {
+                group: "College of Engineering",
+
+                items: [
+
+                    {
+                        name: "BS Civil Engineering",
+                        careers: [
+                            "Civil Engineer",
+                            "Structural Engineer",
+                            "Project Engineer"
+                        ]
+                    },
+
+                    {
+                        name: "BS Electrical Engineering",
+                        careers: [
+                            "Electrical Engineer",
+                            "Power Systems Engineer",
+                            "Electrical Design Engineer"
+                        ]
+                    },
+
+                    {
+                        name: "BS Electronics Engineering",
+                        careers: [
+                            "Electronics Engineer",
+                            "Telecommunications Engineer",
+                            "Systems Engineer"
+                        ]
+                    },
+
+                    {
+                        name: "BS Industrial Engineering",
+                        careers: [
+                            "Industrial Engineer",
+                            "Process Improvement Specialist",
+                            "Operations Analyst"
+                        ]
+                    },
+
+                    {
+                        name: "BS Mechanical Engineering",
+                        careers: [
+                            "Mechanical Engineer",
+                            "Manufacturing Engineer",
+                            "Maintenance Engineer"
+                        ]
+                    }
+
+                ]
+
+            },
+
+            {
+                group: "College of Computer Studies",
+
+                items: [
+
+                    {
+                        name:
+                            "BS Information Technology – Network Administration",
+                        careers: [
+                            "Network Administrator",
+                            "IT Support Specialist",
+                            "Network Technician"
+                        ]
+                    },
+
+                    {
+                        name:
+                            "BS Information Technology – Web and Mobile Application",
+                        careers: [
+                            "Web Developer",
+                            "Mobile App Developer",
+                            "Software Developer"
+                        ]
+                    },
+
+                    {
+                        name:
+                            "BS Information Technology – Technical Service Management",
+                        careers: [
+                            "IT Service Specialist",
+                            "Technical Support Specialist",
+                            "IT Operations Assistant"
+                        ]
+                    },
+
+                    {
+                        name:
+                            "BS Information Systems – Business Analytics",
+                        careers: [
+                            "Business Analyst",
+                            "Data Analyst",
+                            "Systems Analyst"
+                        ]
+                    },
+
+                    {
+                        name:
+                            "BS Computer Science",
+                        careers: [
+                            "Software Developer",
+                            "Programmer",
+                            "Systems Developer"
+                        ]
+                    }
+
+                ]
+
+            },
+
+            {
+                group: "College of Science",
+
+                items: [
+
+                    {
+                        name: "BS Chemistry",
+                        careers: [
+                            "Chemist",
+                            "Laboratory Analyst",
+                            "Quality Control Analyst"
+                        ]
+                    },
+
+                    {
+                        name: "BS Nursing",
+                        careers: [
+                            "Registered Nurse",
+                            "Clinical Nurse",
+                            "Community Health Nurse"
+                        ]
+                    },
+
+                    {
+                        name: "BS Environmental Science",
+                        careers: [
+                            "Environmental Specialist",
+                            "Environmental Scientist",
+                            "Environmental Consultant"
+                        ]
+                    },
+
+                    {
+                        name: "BS Mathematics",
+                        careers: [
+                            "Mathematician",
+                            "Statistician",
+                            "Data Analyst"
+                        ]
+                    },
+
+                    {
+                        name: "BS Food Technology",
+                        careers: [
+                            "Food Technologist",
+                            "Quality Assurance Specialist",
+                            "Food Product Developer"
+                        ]
+                    }
+
+                ]
+
+            },
+
+            {
+                group: "College of Architecture and Fine Arts",
+
+                items: [
+
+                    {
+                        name: "BS Architecture",
+                        careers: [
+                            "Architect",
+                            "Architectural Designer",
+                            "Design Coordinator"
+                        ]
+                    },
+
+                    {
+                        name: "BFA – Visual Communication",
+                        careers: [
+                            "Graphic Designer",
+                            "Visual Communication Designer",
+                            "Art Director"
+                        ]
+                    }
+
+                ]
+
+            },
+
+            {
+                group: "College of Industrial Technology",
+
+                items: [
+
+                    {
+                        name: "BIT – Automotive Technology",
+                        careers: [
+                            "Automotive Technician",
+                            "Service Technician",
+                            "Automotive Service Adviser"
+                        ]
+                    },
+
+                    {
+                        name: "BIT – Electrical Technology",
+                        careers: [
+                            "Electrical Technician",
+                            "Electrical Maintenance Technician",
+                            "Technical Assistant"
+                        ]
+                    },
+
+                    {
+                        name: "BIT – Mechatronics Technology",
+                        careers: [
+                            "Mechatronics Technician",
+                            "Automation Technician",
+                            "Industrial Maintenance Technician"
+                        ]
+                    }
+
+                ]
+
+            }
+
+        ]
+
+    },
+
+
+    {
+        id: "abm",
+        category: "Academic",
+        shortName: "ABM",
+        fullName:
+            "Accountancy, Business, and Management",
+
+        icon: "₱",
+
+        description:
+            "For students interested in business, accounting, finance, entrepreneurship, marketing, economics, management, and hospitality.",
+
+        courses: [
+
+            {
+                group: "College of Business and Accountancy",
+
+                items: [
+
+                    {
+                        name: "BS Accountancy",
+                        careers: [
+                            "Accountant",
+                            "Auditor",
+                            "Tax Associate"
+                        ]
+                    },
+
+                    {
+                        name: "BS Accounting Information System",
+                        careers: [
+                            "Accounting Systems Specialist",
+                            "Accounting Analyst",
+                            "IT Audit Associate"
+                        ]
+                    },
+
+                    {
+                        name: "BS Entrepreneurship",
+                        careers: [
+                            "Entrepreneur",
+                            "Business Owner",
+                            "Business Development Associate"
+                        ]
+                    },
+
+                    {
+                        name: "BS Hospitality Management",
+                        careers: [
+                            "Hotel Staff",
+                            "Hospitality Supervisor",
+                            "Events Coordinator"
+                        ]
+                    },
+
+                    {
+                        name: "BSBA – Business Economics",
+                        careers: [
+                            "Business Analyst",
+                            "Economic Research Assistant",
+                            "Market Analyst"
+                        ]
+                    },
+
+                    {
+                        name: "BSBA – Financial Management",
+                        careers: [
+                            "Financial Analyst",
+                            "Banking Associate",
+                            "Finance Officer"
+                        ]
+                    },
+
+                    {
+                        name: "BSBA – Marketing Management",
+                        careers: [
+                            "Marketing Assistant",
+                            "Brand Coordinator",
+                            "Digital Marketing Specialist"
+                        ]
+                    }
+
+                ]
+
+            },
+
+            {
+                group: "College of Public Administration and Governance",
+
+                items: [
+
+                    {
+                        name:
+                            "Bachelor of Public Administration",
+                        careers: [
+                            "Public Administration Staff",
+                            "Government Program Assistant",
+                            "Administrative Officer"
+                        ]
+                    }
+
+                ]
+
+            }
+
+        ]
+
+    },
+
+
+    {
+        id: "humss",
+        category: "Academic",
+        shortName: "HUMSS",
+        fullName:
+            "Humanities and Social Sciences",
+
+        icon: "H",
+
+        description:
+            "For students interested in people, society, communication, language, culture, politics, public service, education, and social sciences.",
+
+        courses: [
+
+            {
+                group: "College of Arts and Social Sciences",
+
+                items: [
+
+                    {
+                        name: "BA Communication",
+                        careers: [
+                            "Communication Specialist",
+                            "Content Writer",
+                            "Public Relations Assistant"
+                        ]
+                    },
+
+                    {
+                        name: "BA English Language Studies",
+                        careers: [
+                            "Writer",
+                            "Editor",
+                            "Language Instructor"
+                        ]
+                    },
+
+                    {
+                        name: "BA Psychology",
+                        careers: [
+                            "HR Assistant",
+                            "Psychology Associate",
+                            "Behavioral Research Assistant"
+                        ]
+                    },
+
+                    {
+                        name: "Bachelor in Human Services",
+                        careers: [
+                            "Community Support Worker",
+                            "Human Services Staff",
+                            "Social Services Assistant"
+                        ]
+                    }
+
+                ]
+
+            },
+
+            {
+                group: "College of Education",
+
+                items: [
+
+                    {
+                        name: "BSEd – English",
+                        careers: [
+                            "English Teacher",
+                            "Tutor",
+                            "Education Staff"
+                        ]
+                    },
+
+                    {
+                        name: "BSEd – Filipino",
+                        careers: [
+                            "Filipino Teacher",
+                            "Language Tutor",
+                            "Education Staff"
+                        ]
+                    },
+
+                    {
+                        name: "BSEd – Social Studies",
+                        careers: [
+                            "Social Studies Teacher",
+                            "Education Staff",
+                            "Community Educator"
+                        ]
+                    },
+
+                    {
+                        name: "BSEd – Mathematics",
+                        careers: [
+                            "Mathematics Teacher",
+                            "Tutor",
+                            "Education Staff"
+                        ]
+                    },
+
+                    {
+                        name: "BSEd – Sciences",
+                        careers: [
+                            "Science Teacher",
+                            "Laboratory Teacher",
+                            "Education Staff"
+                        ]
+                    },
+
+                    {
+                        name: "BECEd – Early Childhood Education",
+                        careers: [
+                            "Early Childhood Teacher",
+                            "Preschool Educator",
+                            "Child Development Assistant"
+                        ]
+                    },
+
+                    {
+                        name: "BEEd – General Education",
+                        careers: [
+                            "Elementary Teacher",
+                            "Tutor",
+                            "Education Staff"
+                        ]
+                    },
+
+                    {
+                        name: "Bachelor of Physical Education",
+                        careers: [
+                            "Physical Education Teacher",
+                            "Fitness Instructor",
+                            "Sports Program Assistant"
+                        ]
+                    }
+
+                ]
+
+            },
+
+            {
+                group: "College of Criminal Justice Education",
+
+                items: [
+
+                    {
+                        name: "BS Criminology",
+                        careers: [
+                            "Criminology Professional",
+                            "Public Safety Staff",
+                            "Law Enforcement Career Path"
+                        ]
+                    }
+
+                ]
+
+            },
+
+            {
+                group: "College of Public Administration and Governance",
+
+                items: [
+
+                    {
+                        name:
+                            "Bachelor of Public Administration",
+                        careers: [
+                            "Government Administrative Staff",
+                            "Program Assistant",
+                            "Public Service Staff"
+                        ]
+                    }
+
+                ]
+
+            }
+
+        ]
+
+    },
+
+
+    {
+        id: "gas",
+        category: "Academic",
+        shortName: "GAS",
+        fullName:
+            "General Academic Strand",
+
+        icon: "G",
+
+        description:
+            "A broad option for students who are still exploring college choices and want exposure to different academic areas.",
+
+        courses: [
+
+            {
+                group: "Arts and Social Sciences",
+
+                items: [
+
+                    {
+                        name: "BA Communication",
+                        careers: [
+                            "Communication Specialist",
+                            "Content Writer",
+                            "Public Relations Assistant"
+                        ]
+                    },
+
+                    {
+                        name: "BA English Language Studies",
+                        careers: [
+                            "Writer",
+                            "Editor",
+                            "Language Instructor"
+                        ]
+                    },
+
+                    {
+                        name: "BA Psychology",
+                        careers: [
+                            "HR Assistant",
+                            "Research Assistant",
+                            "Psychology Associate"
+                        ]
+                    },
+
+                    {
+                        name: "Bachelor in Human Services",
+                        careers: [
+                            "Human Services Staff",
+                            "Community Support Worker",
+                            "Social Services Assistant"
+                        ]
+                    }
+
+                ]
+
+            },
+
+            {
+                group: "Business and Accountancy",
+
+                items: [
+
+                    {
+                        name: "BS Entrepreneurship",
+                        careers: [
+                            "Entrepreneur",
+                            "Business Development Assistant",
+                            "Business Owner"
+                        ]
+                    },
+
+                    {
+                        name: "BS Hospitality Management",
+                        careers: [
+                            "Hotel Staff",
+                            "Hospitality Supervisor",
+                            "Events Coordinator"
+                        ]
+                    },
+
+                    {
+                        name: "BSBA Programs",
+                        careers: [
+                            "Business Analyst",
+                            "Marketing Assistant",
+                            "Finance Assistant"
+                        ]
+                    }
+
+                ]
+
+            },
+
+            {
+                group: "Education",
+
+                items: [
+
+                    {
+                        name: "BEEd",
+                        careers: [
+                            "Elementary Teacher",
+                            "Tutor",
+                            "Education Staff"
+                        ]
+                    },
+
+                    {
+                        name: "BSEd Programs",
+                        careers: [
+                            "Secondary Teacher",
+                            "Tutor",
+                            "Education Staff"
+                        ]
+                    },
+
+                    {
+                        name: "BECEd",
+                        careers: [
+                            "Early Childhood Teacher",
+                            "Preschool Educator",
+                            "Child Development Assistant"
+                        ]
+                    },
+
+                    {
+                        name: "BPEd",
+                        careers: [
+                            "Physical Education Teacher",
+                            "Fitness Instructor",
+                            "Sports Program Assistant"
+                        ]
+                    }
+
+                ]
+
+            },
+
+            {
+                group: "Public Administration",
+
+                items: [
+
+                    {
+                        name:
+                            "Bachelor of Public Administration",
+                        careers: [
+                            "Administrative Officer",
+                            "Government Program Staff",
+                            "Public Service Staff"
+                        ]
+                    }
+
+                ]
+
+            },
+
+            {
+                group: "Criminal Justice",
+
+                items: [
+
+                    {
+                        name: "BS Criminology",
+                        careers: [
+                            "Criminology Professional",
+                            "Public Safety Career Path",
+                            "Law Enforcement Career Path"
+                        ]
+                    }
+
+                ]
+
+            }
+
+        ]
+
+    },
+
+
+    {
+        id: "tvl",
+        category: "TVL",
+        shortName: "TVL",
+        fullName:
+            "Technical-Vocational-Livelihood",
+
+        icon: "⚙",
+
+        description:
+            "For students interested in hands-on, technical, vocational, practical, livelihood, and career-oriented skills.",
+
+        courses: [
+
+            {
+                group: "College of Industrial Technology",
+
+                items: [
+
+                    {
+                        name: "BIT – Automotive Technology",
+                        careers: [
+                            "Automotive Technician",
+                            "Service Technician",
+                            "Automotive Service Adviser"
+                        ]
+                    },
+
+                    {
+                        name: "BIT – Electrical Technology",
+                        careers: [
+                            "Electrical Technician",
+                            "Maintenance Technician",
+                            "Electrical Assistant"
+                        ]
+                    },
+
+                    {
+                        name: "BIT – Mechatronics Technology",
+                        careers: [
+                            "Mechatronics Technician",
+                            "Automation Technician",
+                            "Maintenance Technician"
+                        ]
+                    }
+
+                ]
+
+            },
+
+            {
+                group: "College of Education",
+
+                items: [
+
+                    {
+                        name: "BTLEd – Industrial Arts",
+                        careers: [
+                            "Technology Teacher",
+                            "Industrial Arts Instructor",
+                            "Technical Trainer"
+                        ]
+                    },
+
+                    {
+                        name: "BTVTEd – Food Service Management",
+                        careers: [
+                            "Food Service Supervisor",
+                            "Hospitality Trainer",
+                            "Food Service Staff"
+                        ]
+                    }
+
+                ]
+
+            },
+
+            {
+                group: "College of Computer Studies",
+
+                items: [
+
+                    {
+                        name: "BS Information Technology",
+                        careers: [
+                            "IT Support Specialist",
+                            "Web Developer",
+                            "Systems Support Staff"
+                        ]
+                    },
+
+                    {
+                        name: "BS Information Systems",
+                        careers: [
+                            "Systems Analyst",
+                            "Business Systems Specialist",
+                            "IT Business Support Staff"
+                        ]
+                    },
+
+                    {
+                        name: "BS Computer Science",
+                        careers: [
+                            "Software Developer",
+                            "Programmer",
+                            "Systems Developer"
+                        ]
+                    }
+
+                ]
+
+            },
+
+            {
+
+                group:
+                    "College of Business and Accountancy",
+
+                items: [
+
+                    {
+                        name: "BS Hospitality Management",
+                        careers: [
+                            "Hotel Staff",
+                            "Hospitality Supervisor",
+                            "Events Coordinator"
+                        ]
+                    },
+
+                    {
+                        name: "BS Entrepreneurship",
+                        careers: [
+                            "Entrepreneur",
+                            "Business Owner",
+                            "Business Development Assistant"
+                        ]
+                    }
+
+                ]
+
+            }
+
+        ]
+
+    },
+
+
+    {
+        id: "arts",
+        category: "Arts",
+        shortName: "Arts & Design",
+        fullName:
+            "Arts and Design Track",
+
+        icon: "✦",
+
+        description:
+            "For students interested in creative expression, visual arts, media, communication, writing, performance, and design.",
+
+        courses: [
+
+            {
+                group: "College of Architecture and Fine Arts",
+
+                items: [
+
+                    {
+                        name: "BS Architecture",
+                        careers: [
+                            "Architect",
+                            "Architectural Designer",
+                            "Design Coordinator"
+                        ]
+                    },
+
+                    {
+                        name: "BFA – Visual Communication",
+                        careers: [
+                            "Graphic Designer",
+                            "Visual Communication Designer",
+                            "Art Director"
+                        ]
+                    }
+
+                ]
+
+            },
+
+            {
+
+                group:
+                    "College of Arts and Social Sciences",
+
+                items: [
+
+                    {
+                        name: "BA Communication",
+                        careers: [
+                            "Communication Specialist",
+                            "Content Creator",
+                            "Public Relations Assistant"
+                        ]
+                    },
+
+                    {
+                        name: "BA English Language Studies",
+                        careers: [
+                            "Writer",
+                            "Editor",
+                            "Language Instructor"
+                        ]
+                    }
+
+                ]
+
+            }
+
+        ]
+
+    },
+
+
+    {
+        id: "sports",
+        category: "Sports",
+        shortName: "Sports",
+        fullName:
+            "Sports Track",
+
+        icon: "◆",
+
+        description:
+            "For students interested in physical activity, sports, fitness, wellness, coaching, teaching, and health-related fields.",
+
+        courses: [
+
+            {
+                group: "College of Education",
+
+                items: [
+
+                    {
+                        name: "Bachelor of Physical Education",
+                        careers: [
+                            "Physical Education Teacher",
+                            "Fitness Instructor",
+                            "Sports Program Assistant"
+                        ]
+                    },
+
+                    {
+                        name: "Bachelor of Elementary Education",
+                        careers: [
+                            "Elementary Teacher",
+                            "Tutor",
+                            "Education Staff"
+                        ]
+                    },
+
+                    {
+                        name: "Bachelor of Secondary Education",
+                        careers: [
+                            "Secondary Teacher",
+                            "Tutor",
+                            "Education Staff"
+                        ]
+                    }
+
+                ]
+
+            },
+
+            {
+                group: "College of Science",
+
+                items: [
+
+                    {
+                        name: "BS Nursing",
+                        careers: [
+                            "Registered Nurse",
+                            "Clinical Nurse",
+                            "Community Health Nurse"
+                        ]
+                    },
+
+                    {
+
+                        name:
+                            "BS Environmental Science",
+
+                        careers: [
+                            "Environmental Specialist",
+                            "Environmental Scientist",
+                            "Environmental Consultant"
+                        ]
+
+                    }
+
+                ]
+
+            }
+
+        ]
+
+    }
+
+];
+
+
+
+/* =========================================================
+   RENDER TRACK CARDS
+========================================================= */
+
+function renderTracks(list = tracks) {
+
+    const grid =
+        document.getElementById("trackGrid");
+
+    grid.innerHTML = "";
+
+
+    list.forEach(
+        (track, index) => {
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "track-card";
+
+
+            card.dataset.category =
+                track.category;
+
+
+            card.innerHTML = `
+
+                <div class="track-top">
+
+                    <div class="track-number">
+                        ${String(index + 1).padStart(2, "0")}
+                    </div>
+
+                    <div class="track-icon">
+                        ${track.icon}
+                    </div>
+
+                    <h3>
+                        ${track.shortName}
+                    </h3>
+
+                    <div class="track-subtitle">
+                        ${track.fullName}
+                    </div>
+
+                </div>
+
+
+                <div class="track-body">
+
+                    <p class="track-description">
+                        ${track.description}
+                    </p>
+
+                    <button
+                        class="track-action"
+                        onclick="showDetails('${track.id}')"
+                    >
+                        View Courses & Careers →
+                    </button>
+
+                </div>
+
+            `;
+
+
+            grid.appendChild(card);
+
+        }
+    );
+
+
+    updateNoResults();
+
+}
+
+
+
+/* =========================================================
+   FILTER TRACKS
+========================================================= */
+
+let activeFilter = "All";
+
+
+function filterTracks(
+    category,
+    button
+) {
+
+    activeFilter =
+        category;
+
+
+    document
+        .querySelectorAll(".filter-btn")
+        .forEach(
+            btn =>
+                btn.classList.remove("active")
+        );
+
+
+    button.classList.add("active");
+
+
+    searchTracks();
+
+}
+
+
+
+/* =========================================================
+   SEARCH TRACKS
+========================================================= */
+
+function searchTracks() {
+
+    const search =
+        document
+            .getElementById("trackSearch")
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    const filtered =
+        tracks.filter(
+            track => {
+
+                const
+                    searchable =
+                        [
+                            track.shortName,
+                            track.fullName,
+                            track.description,
+                            track.category,
+
+                            ...track.courses.flatMap(
+                                group => [
+                                    group.group,
+
+                                    ...group.items.flatMap(
+                                        item => [
+                                            item.name,
+                                            ...item.careers
+                                        ]
+                                    )
+                                ]
+                            )
+
+                        ]
+                        .join(" ")
+                        .toLowerCase();
+
+
+                const matchesSearch =
+                    searchable.includes(
+                        search
+                    );
+
+
+                const matchesFilter =
+                    activeFilter === "All" ||
+                    track.category === activeFilter;
+
+
+                return (
+                    matchesSearch &&
+                    matchesFilter
+                );
+
+            }
+        );
+
+
+    renderTracks(filtered);
+
+}
+
+
+
+/* =========================================================
+   NO RESULTS
+========================================================= */
+
+function updateNoResults() {
+
+    const grid =
+        document.getElementById(
+            "trackGrid"
+        );
+
+    const noResults =
+        document.getElementById(
+            "noResults"
+        );
+
+
+    const cards =
+        grid.querySelectorAll(
+            ".track-card"
+        );
+
+
+    noResults.classList.toggle(
+        "show",
+        cards.length === 0
+    );
+
+}
+
+
+
+/* =========================================================
+   SHOW DETAILS
+========================================================= */
+
+function showDetails(id) {
+
+    const track =
+        tracks.find(
+            item =>
+                item.id === id
+        );
+
+
+    if (!track) return;
+
+
+    document.getElementById(
+        "detailsTrackName"
+    ).textContent =
+        track.shortName;
+
+
+    document.getElementById(
+        "detailsFullName"
+    ).textContent =
+        track.fullName;
+
+
+    document.getElementById(
+        "detailsDescription"
+    ).textContent =
+        track.description;
+
+
+    const content =
+        document.getElementById(
+            "detailsContent"
+        );
+
+
+    content.innerHTML = "";
+
+
+    track.courses.forEach(
+        group => {
+
+            const groupElement =
+                document.createElement("div");
+
+
+            groupElement.className =
+                "course-group";
+
+
+            groupElement.innerHTML = `
+
+                <h3 class="course-group-title">
+                    ${group.group}
+                </h3>
+
+                <div class="course-grid">
+
+                    ${group.items.map(
+                        course => `
+
+                            <div class="course-card">
+
+                                <div class="course-name">
+                                    ${course.name}
+                                </div>
+
+                                <div class="career-label">
+                                    Possible Job Opportunities
+                                </div>
+
+                                <ul class="career-list">
+
+                                    ${course.careers.map(
+                                        career => `
+                                            <li>
+                                                ${career}
+                                            </li>
+                                        `
+                                    ).join("")}
+
+                                </ul>
+
+                            </div>
+
+                        `
+                    ).join("")}
+
+                </div>
+
+            `;
+
+
+            content.appendChild(
+                groupElement
+            );
+
+        }
+    );
+
+
+    const details =
+        document.getElementById(
+            "details"
+        );
+
+
+    details.classList.add("show");
+
+
+    details.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+
+/* =========================================================
+   CLOSE DETAILS
+========================================================= */
+
+function closeDetails() {
+
+    const details =
+        document.getElementById(
+            "details"
+        );
+
+
+    details.classList.remove(
+        "show"
+    );
+
+
+    document.getElementById(
+        "tracks"
+    ).scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+
+/* =========================================================
+   START WEBSITE
+========================================================= */
+
+renderTracks();
+
+</script>
+
+
+</body>
+
+</html>
