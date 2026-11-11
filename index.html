@@ -5,494 +5,95 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#641c2b">
-<title>PATHFINDER | Find Your Future</title>
+<title>PATHFINDER | Find Your Path</title>
 
 <style>
 :root {
-  --maroon: #641c2b;
-  --dark: #42121d;
-  --gold: #e5b94e;
-  --cream: #fffaf0;
-  --light: #f7f3ed;
-  --text: #29232a;
-  --muted: #756b70;
-  --white: #fff;
-  --border: #e8dfe0;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background: var(--light);
-  color: var(--text);
-  line-height: 1.6;
-}
-
-button, input, select {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-header {
-  background: var(--maroon);
-  color: white;
-  padding: 16px 7%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.logo {
-  font-size: 25px;
-  font-weight: 900;
-  letter-spacing: 1px;
-}
-
-.logo span {
-  color: var(--gold);
-}
-
-nav {
-  display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-nav a:hover {
-  color: var(--gold);
-}
-
-.hero {
-  background: linear-gradient(130deg, #42121d, #7c2a3b);
-  color: white;
-  padding: 85px 8%;
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: clamp(34px, 6vw, 58px);
-  margin-bottom: 15px;
-}
-
-.hero h1 span {
-  color: var(--gold);
-}
-
-.hero p {
-  max-width: 700px;
-  margin: 0 auto 25px;
-  color: #f5e9e9;
-}
-
-.primary-btn, .secondary-btn {
-  border: none;
-  padding: 12px 23px;
-  border-radius: 7px;
-  font-weight: bold;
-  transition: .2s;
-}
-
-.primary-btn {
-  background: var(--gold);
-  color: var(--dark);
-}
-
-.primary-btn:hover {
-  background: #f3ce70;
-  transform: translateY(-2px);
-}
-
-.secondary-btn {
-  background: var(--maroon);
-  color: white;
-}
-
-.secondary-btn:hover {
-  background: var(--dark);
-}
-
-.container {
-  width: min(1100px, 90%);
-  margin: auto;
-}
-
-section {
-  padding: 65px 0;
-}
-
-.section-heading {
-  text-align: center;
-  margin-bottom: 35px;
-}
-
-.section-heading h2 {
-  color: var(--maroon);
-  font-size: 30px;
-  margin-bottom: 8px;
-}
-
-.section-heading p {
-  color: var(--muted);
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 20px;
-}
-
-.card {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 15px #00000008;
-}
-
-.card h3 {
-  color: var(--maroon);
-  margin-bottom: 10px;
-}
-
-.card p {
-  color: var(--muted);
-  font-size: 14px;
-  margin-bottom: 18px;
-}
-
-.card .primary-btn, .card .secondary-btn {
-  width: 100%;
-}
-
-.assessment-section {
-  background: var(--cream);
-}
-
-.assessment-note {
-  background: #fff3d3;
-  border-left: 4px solid var(--gold);
-  padding: 15px;
-  border-radius: 6px;
-  margin-bottom: 25px;
-  font-size: 14px;
-}
-
-#assessmentArea {
-  max-width: 850px;
-  margin: auto;
-}
-
-.assessment-box {
-  background: white;
-  padding: 28px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-}
-
-.assessment-box h3 {
-  color: var(--maroon);
-  margin-bottom: 5px;
-}
-
-.progress {
-  background: #eee5e5;
-  height: 9px;
-  border-radius: 20px;
-  margin: 18px 0 25px;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  width: 0;
-  background: var(--gold);
-  transition: width .2s;
-}
-
-.question {
-  border-bottom: 1px solid var(--border);
-  padding: 19px 0;
-}
-
-.question p {
-  font-weight: bold;
-  margin-bottom: 12px;
-}
-
-.rating-options {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.rating-options label {
-  flex: 1;
-  min-width: 80px;
-  cursor: pointer;
-  text-align: center;
-  border: 1px solid var(--border);
-  padding: 9px 5px;
-  border-radius: 7px;
-  font-size: 12px;
-  color: var(--muted);
-}
-
-.rating-options input {
-  display: block;
-  margin: 0 auto 5px;
-  accent-color: var(--maroon);
-}
-
-.rating-options label:has(input:checked) {
-  background: #f9e9eb;
-  border-color: var(--maroon);
-  color: var(--maroon);
-  font-weight: bold;
-}
-
-.assessment-actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 25px;
-}
-
-.assessment-actions button {
-  flex: 1;
-  min-width: 140px;
-}
-
-.reflection {
-  margin-top: 25px;
-  padding: 20px;
-  background: var(--cream);
-  border-radius: 9px;
-}
-
-.reflection label {
-  display: block;
-  margin: 10px 0;
-  font-size: 14px;
-}
-
-.reflection input {
-  accent-color: var(--maroon);
-  margin-right: 8px;
-}
-
-.result-box {
-  background: white;
-  border: 1px solid var(--border);
-  padding: 28px;
-  border-radius: 12px;
-  margin-top: 20px;
-}
-
-.result-box h3 {
-  color: var(--maroon);
-  margin-bottom: 12px;
-}
-
-.score-row {
-  margin: 17px 0;
-}
-
-.score-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  margin-bottom: 5px;
-}
-
-.score-track {
-  height: 11px;
-  background: #eee7e7;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.score-fill {
-  height: 100%;
-  background: var(--maroon);
-  border-radius: 20px;
-}
-
-.recommendation {
-  background: var(--cream);
-  border-radius: 8px;
-  padding: 15px;
-  margin-top: 12px;
-}
-
-.recommendation h4 {
-  color: var(--maroon);
-}
-
-.explorer {
-  background: white;
-}
-
-.track-card {
-  border-top: 5px solid var(--gold);
-}
-
-.track-card h3 {
-  font-size: 21px;
-}
-
-.track-card ul {
-  padding-left: 20px;
-  margin: 12px 0;
-  font-size: 14px;
-}
-
-.track-card li {
-  margin-bottom: 5px;
-}
-
-.course-area {
-  margin-top: 30px;
-}
-
-.course-group {
-  background: white;
-  padding: 20px;
-  border: 1px solid var(--border);
-  border-radius: 9px;
-  margin: 15px 0;
-}
-
-.course-group h3 {
-  color: var(--maroon);
-  margin-bottom: 10px;
-}
-
-.course-item {
-  border-top: 1px solid var(--border);
-  padding: 12px 0;
-}
-
-.course-item strong {
-  display: block;
-}
-
-.course-item p {
-  color: var(--muted);
-  font-size: 13px;
-  margin: 5px 0;
-}
-
-.course-item button {
-  background: none;
-  border: none;
-  color: var(--maroon);
-  text-decoration: underline;
-  font-weight: bold;
-  font-size: 13px;
-}
-
-.job-list {
-  margin: 10px 0 0 20px;
-  font-size: 14px;
-}
-
-.compare-box {
-  background: white;
-  padding: 25px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  margin-top: 25px;
-}
-
-.compare-box input {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  border: 1px solid var(--border);
-  border-radius: 7px;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: #0009;
-  z-index: 30;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.modal-content {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  width: min(600px, 100%);
-  max-height: 85vh;
-  overflow-y: auto;
-}
-
-.modal-content h2 {
-  color: var(--maroon);
-  margin-bottom: 12px;
-}
-
-.modal-content button {
-  margin-top: 20px;
-}
-
-footer {
-  background: var(--dark);
-  color: white;
-  text-align: center;
-  padding: 28px;
-  font-size: 13px;
-}
-
-.hidden {
-  display: none !important;
-}
-
-@media(max-width: 600px) {
-  header {
-    justify-content: center;
-  }
-
-  nav {
-    justify-content: center;
-  }
-
-  .hero {
-    padding: 60px 6%;
-  }
-
-  .assessment-box {
-    padding: 18px;
-  }
-
-  .rating-options label {
-    min-width: 65px;
-  }
+  --maroon:#641c2b;
+  --dark:#42121d;
+  --gold:#e5b94e;
+  --cream:#fffaf0;
+  --light:#f7f3ed;
+  --text:#29232a;
+  --muted:#756b70;
+  --white:#fff;
+  --border:#e8dfe0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:var(--light);color:var(--text);line-height:1.6}
+button,input,select{font:inherit}
+button{cursor:pointer}
+header{background:var(--maroon);color:white;padding:15px 7%;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;position:sticky;top:0;z-index:10}
+.logo{font-size:27px;font-weight:900;letter-spacing:2px}
+.logo span{color:var(--gold)}
+nav{display:flex;gap:20px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-size:14px;font-weight:bold}
+nav a:hover{color:var(--gold)}
+.hero{background:linear-gradient(130deg,#42121d,#7c2a3b);color:white;text-align:center;padding:85px 8%}
+.hero h1{font-size:clamp(35px,6vw,58px);margin-bottom:12px}
+.hero h1 span{color:var(--gold)}
+.hero p{max-width:700px;margin:0 auto 25px;color:#f5e9e9}
+.container{width:min(1100px,90%);margin:auto}
+section{padding:65px 0}
+.heading{text-align:center;margin-bottom:32px}
+.heading h2{color:var(--maroon);font-size:30px;margin-bottom:8px}
+.heading p{color:var(--muted)}
+.primary,.secondary{border:0;padding:12px 22px;border-radius:7px;font-weight:bold}
+.primary{background:var(--gold);color:var(--dark)}
+.primary:hover{background:#f3ce70}
+.secondary{background:var(--maroon);color:white}
+.secondary:hover{background:var(--dark)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.card{background:white;padding:25px;border:1px solid var(--border);border-radius:12px;box-shadow:0 4px 15px #00000008}
+.card h3{color:var(--maroon);margin-bottom:10px}
+.card p{font-size:14px;color:var(--muted);margin-bottom:18px}
+.card button{width:100%}
+.assessment-section{background:var(--cream)}
+.notice{background:#fff3d3;border-left:4px solid var(--gold);padding:15px;border-radius:6px;margin-bottom:25px;font-size:14px}
+#assessmentArea{max-width:900px;margin:30px auto 0}
+.assessment-box,.result-box,.compare-box{background:white;border:1px solid var(--border);border-radius:12px;padding:28px;margin-top:20px}
+.assessment-box h3,.result-box h3,.compare-box h3{color:var(--maroon);margin-bottom:8px}
+.progress{height:9px;background:#eee5e5;border-radius:20px;overflow:hidden;margin:20px 0 8px}
+.progress-bar{height:100%;width:0;background:var(--gold);transition:width .2s}
+.question{padding:20px 0;border-bottom:1px solid var(--border)}
+.question p{font-weight:bold;margin-bottom:12px}
+.answer-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:9px}
+.answer-options label{border:1px solid var(--border);border-radius:8px;padding:11px;cursor:pointer;font-size:13px;display:flex;gap:8px;align-items:flex-start}
+.answer-options label:has(input:checked){border-color:var(--maroon);background:#f9e9eb;color:var(--maroon);font-weight:bold}
+.answer-options input{accent-color:var(--maroon);margin-top:4px}
+.question small{display:block;color:var(--muted);margin-top:5px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+.actions button{flex:1;min-width:130px}
+.score-row{margin:17px 0}
+.score-label{display:flex;justify-content:space-between;gap:10px;font-size:14px;margin-bottom:5px}
+.score-track{height:11px;background:#eee7e7;border-radius:20px;overflow:hidden}
+.score-fill{height:100%;background:var(--maroon);border-radius:20px}
+.recommendation{background:var(--cream);border-radius:8px;padding:15px;margin-top:12px}
+.recommendation h4{color:var(--maroon);margin-bottom:5px}
+.recommendation p{font-size:14px;margin-top:5px}
+.compare-box{margin-top:35px}
+.compare-box input{width:100%;padding:12px;border:1px solid var(--border);border-radius:7px;margin:8px 0 14px}
+.explorer{background:white}
+.track-card{border-top:5px solid var(--gold)}
+.track-card h3{font-size:21px}
+.course-area{margin-top:35px}
+.course-group{background:white;border:1px solid var(--border);padding:20px;border-radius:9px;margin:15px 0}
+.course-group h3{color:var(--maroon);margin-bottom:10px}
+.course-item{border-top:1px solid var(--border);padding:12px 0}
+.course-item strong{display:block}
+.course-item p{font-size:13px;color:var(--muted);margin:5px 0}
+.course-item button{border:0;background:none;color:var(--maroon);text-decoration:underline;font-weight:bold;font-size:13px}
+.modal{display:none;position:fixed;inset:0;background:#0009;z-index:30;justify-content:center;align-items:center;padding:20px}
+.modal-content{background:white;padding:30px;border-radius:12px;width:min(600px,100%);max-height:85vh;overflow-y:auto}
+.modal-content h2{color:var(--maroon);margin-bottom:12px}
+.modal-content button{margin-top:20px}
+footer{background:var(--dark);color:white;text-align:center;padding:28px;font-size:13px}
+.muted{color:var(--muted);font-size:13px}
+@media(max-width:600px){
+ header{justify-content:center}
+ nav{justify-content:center}
+ .hero{padding:60px 6%}
+ .assessment-box,.result-box,.compare-box{padding:18px}
 }
 </style>
 </head>
@@ -505,86 +106,67 @@ footer {
     <a href="#home">Home</a>
     <a href="#assessments">Assessments</a>
     <a href="#explorer">Explore Courses</a>
-    <a href="#compare">Compare</a>
+    <a href="#compare">Compare Results</a>
   </nav>
 </header>
 
 <div class="hero" id="home">
   <h1>Find Your <span>Path.</span></h1>
-  <p>
-    Understand your interests, explore educational opportunities,
-    and discover possible careers with PATHFINDER.
-  </p>
-  <button class="primary-btn" onclick="document.getElementById('assessments').scrollIntoView({behavior:'smooth'})">
-    Start Exploring
-  </button>
+  <p>Understand your interests, explore educational opportunities, and discover possible careers with PATHFINDER.</p>
+  <button class="primary" onclick="goTo('assessments')">Start Exploring</button>
 </div>
 
-<section id="assessments" class="assessment-section">
-  <div class="container">
-    <div class="section-heading">
-      <h2>Discover Your Interests</h2>
-      <p>Two perspectives. One goal: helping students make informed decisions.</p>
+<section class="assessment-section" id="assessments">
+<div class="container">
+  <div class="heading">
+    <h2>Discover Your Path</h2>
+    <p>Understand the student's interests through two different perspectives.</p>
+  </div>
+
+  <div class="notice">
+    <strong>How PATHFINDER works:</strong> Parents answer based on what they have observed about their child. Students answer based on their own preferences and career interests. The results can be compared to encourage a meaningful discussion.
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Parent Assessment</h3>
+      <p><strong>How Well Do You Know Your Child?</strong><br><br>
+      Answer questions about your child's actual habits, activities, school experiences, behavior, and abilities. Choose "Haven't observed" when you do not have enough information.</p>
+      <button class="primary" onclick="startAssessment('parent')">Start Parent Assessment</button>
     </div>
 
-    <div class="assessment-note">
-      <strong>Important:</strong> The parent assessment measures observed behavior,
-      while the student assessment measures personal interests and preferences.
-      These assessments provide guidance, not a professional psychological diagnosis
-      or a guaranteed course match.
-    </div>
-
-    <div class="cards">
-      <div class="card">
-        <h3>Parent Assessment</h3>
-        <p>
-          How well do you know your child? Answer based on what you have
-          personally observed about your child's behavior, activities,
-          abilities, and interests.
-        </p>
-        <button class="primary-btn" onclick="startAssessment('parent')">
-          Start Parent Assessment
-        </button>
-      </div>
-
-      <div class="card">
-        <h3>Student Self-Assessment</h3>
-        <p>
-          Discover what you enjoy, what motivates you, what you prefer,
-          and which career fields may match your interests.
-        </p>
-        <button class="secondary-btn" onclick="startAssessment('student')">
-          Start Student Assessment
-        </button>
-      </div>
-    </div>
-
-    <div id="assessmentArea"></div>
-
-    <div id="compare" class="compare-box">
-      <h3>Compare Parent and Student Results</h3>
-      <p>
-        Enter the parent's and student's result codes to compare their
-        perspectives on the student's interests.
-      </p>
-      <input id="parentCode" placeholder="Enter parent result code">
-      <input id="studentCode" placeholder="Enter student result code">
-      <button class="primary-btn" onclick="compareResults()">Compare Results</button>
-      <div id="comparisonResult"></div>
+    <div class="card">
+      <h3>Student Assessment</h3>
+      <p><strong>Discover Your Interests and Career Preferences</strong><br><br>
+      Choose the subjects, activities, work environments, and career priorities that appeal to you. There are no right or wrong answers.</p>
+      <button class="secondary" onclick="startAssessment('student')">Start Student Assessment</button>
     </div>
   </div>
+
+  <div id="assessmentArea"></div>
+
+  <div class="compare-box" id="compare">
+    <h3>Compare Parent and Student Results</h3>
+    <p class="muted">Paste the result codes generated after completing each assessment.</p>
+    <label for="parentCode">Parent result code</label>
+    <input id="parentCode" placeholder="Paste parent result code">
+    <label for="studentCode">Student result code</label>
+    <input id="studentCode" placeholder="Paste student result code">
+    <button class="primary" onclick="compareResults()">Compare Results</button>
+    <div id="comparisonResult"></div>
+  </div>
+</div>
 </section>
 
-<section id="explorer" class="explorer">
-  <div class="container">
-    <div class="section-heading">
-      <h2>Explore SHS Pathways</h2>
-      <p>Choose your Senior High School strand to explore related college programs and possible careers.</p>
-    </div>
-
-    <div class="cards" id="trackCards"></div>
-    <div id="courseResults" class="course-area"></div>
+<section class="explorer" id="explorer">
+<div class="container">
+  <div class="heading">
+    <h2>Explore SHS Pathways</h2>
+    <p>Select your Senior High School strand to explore related college programs and possible careers.</p>
   </div>
+  <div class="cards" id="trackCards"></div>
+  <div id="courseResults" class="course-area"></div>
+</div>
 </section>
 
 <div class="modal" id="careerModal">
@@ -592,8 +174,8 @@ footer {
     <h2 id="modalTitle"></h2>
     <p id="modalDescription"></p>
     <h3>Possible Career Opportunities</h3>
-    <ul class="job-list" id="modalJobs"></ul>
-    <button class="secondary-btn" onclick="closeModal()">Close</button>
+    <ul id="modalJobs" style="margin:10px 0 0 20px"></ul>
+    <button class="secondary" onclick="closeModal()">Close</button>
   </div>
 </div>
 
@@ -604,9 +186,9 @@ footer {
 </footer>
 
 <script>
-/* =====================================
-   ASSESSMENT QUESTIONS
-===================================== */
+/* =========================================
+   SHARED INTEREST CATEGORIES
+========================================= */
 
 const categories = [
   "Helping & Teaching",
@@ -619,809 +201,939 @@ const categories = [
   "Health & Service"
 ];
 
-/* STUDENT QUESTIONS:
-   These ask about the student's own interests,
-   preferences, and personal goals.
-*/
-
-const studentQuestions = [
-  { category: "Helping & Teaching", question: "I enjoy explaining lessons or ideas to other people." },
-  { category: "Helping & Teaching", question: "I feel fulfilled when I can help someone solve a personal problem." },
-  { category: "Helping & Teaching", question: "I would like a career where I can guide, teach, or support others." },
-
-  { category: "Science & Investigation", question: "I am interested in discovering how things work." },
-  { category: "Science & Investigation", question: "I enjoy studying scientific topics and understanding how the world works." },
-  { category: "Science & Investigation", question: "I would enjoy conducting experiments or investigating unanswered questions." },
-
-  { category: "Technology & Computing", question: "I enjoy using computers and learning about new technologies." },
-  { category: "Technology & Computing", question: "I am interested in creating websites, applications, or digital projects." },
-  { category: "Technology & Computing", question: "I would like a career that involves programming, computers, or technology." },
-
-  { category: "Business & Leadership", question: "I am interested in starting or managing my own business." },
-  { category: "Business & Leadership", question: "I enjoy planning projects and organizing people or activities." },
-  { category: "Business & Leadership", question: "I am comfortable making decisions and taking responsibility." },
-
-  { category: "Creative & Design", question: "I enjoy expressing my ideas through art, design, or other creative activities." },
-  { category: "Creative & Design", question: "I like creating original things instead of always following existing designs." },
-  { category: "Creative & Design", question: "I would like a career where I can use my imagination and creativity." },
-
-  { category: "Communication & Society", question: "I enjoy writing, speaking, or sharing my opinions with others." },
-  { category: "Communication & Society", question: "I am interested in understanding people's behavior and different cultures." },
-  { category: "Communication & Society", question: "I would enjoy working in fields involving media, communication, or public service." },
-
-  { category: "Practical & Technical Work", question: "I prefer learning through hands-on activities rather than only reading or listening." },
-  { category: "Practical & Technical Work", question: "I enjoy assembling, repairing, or building things." },
-  { category: "Practical & Technical Work", question: "I would like a career where I can work with tools, machines, or equipment." },
-
-  { category: "Health & Service", question: "I am interested in learning how to care for people's health and well-being." },
-  { category: "Health & Service", question: "I can see myself working in a hospital, clinic, or healthcare facility." },
-  { category: "Health & Service", question: "I would be willing to take responsibility for helping people who need care." }
-];
-
-/* PARENT QUESTIONS:
-   These ask parents about observable actions,
-   habits, activities, and behavior.
-*/
+/* =========================================
+   PARENT ASSESSMENT
+   16 OBSERVATION QUESTIONS
+   Parents rate what they have actually seen.
+========================================= */
 
 const parentQuestions = [
-  { category: "Helping & Teaching", question: "My child voluntarily helps siblings, classmates, or other people understand difficult tasks." },
-  { category: "Helping & Teaching", question: "My child is often approached by others when they need advice or assistance." },
-  { category: "Helping & Teaching", question: "My child has shown patience when guiding or teaching someone." },
-
-  { category: "Science & Investigation", question: "My child often asks questions about how things work and why things happen." },
-  { category: "Science & Investigation", question: "My child shows curiosity when learning about scientific discoveries or natural events." },
-  { category: "Science & Investigation", question: "My child spends time finding answers to questions or investigating unfamiliar topics." },
-
-  { category: "Technology & Computing", question: "My child independently explores computer programs, applications, or digital tools." },
-  { category: "Technology & Computing", question: "My child has attempted to create or modify digital projects, such as presentations, websites, or applications." },
-  { category: "Technology & Computing", question: "My child shows interest in understanding how gadgets, computers, or digital systems operate." },
-
-  { category: "Business & Leadership", question: "My child has taken the initiative to organize school, family, or group activities." },
-  { category: "Business & Leadership", question: "My child has demonstrated responsibility when handling money, tasks, or group responsibilities." },
-  { category: "Business & Leadership", question: "My child has suggested ideas for small businesses, projects, or ways to earn money." },
-
-  { category: "Creative & Design", question: "My child regularly spends time drawing, designing, crafting, or making creative outputs." },
-  { category: "Creative & Design", question: "My child pays attention to the appearance, arrangement, or presentation of things they create." },
-  { category: "Creative & Design", question: "My child has participated in activities involving art, music, photography, or other creative work." },
-
-  { category: "Communication & Society", question: "My child actively participates in discussions, presentations, debates, or public speaking activities." },
-  { category: "Communication & Society", question: "My child shows interest in current events, community issues, or social concerns." },
-  { category: "Communication & Society", question: "My child communicates ideas through writing, storytelling, speaking, or similar activities." },
-
-  { category: "Practical & Technical Work", question: "My child willingly participates in repairing, assembling, or building things at home or school." },
-  { category: "Practical & Technical Work", question: "My child learns new practical tasks by trying them out rather than relying only on instructions." },
-  { category: "Practical & Technical Work", question: "My child shows patience when working with tools, materials, machines, or equipment." },
-
-  { category: "Health & Service", question: "My child has shown attentiveness when someone is sick, injured, or in need of assistance." },
-  { category: "Health & Service", question: "My child takes an interest in topics involving health, nutrition, safety, or the human body." },
-  { category: "Health & Service", question: "My child has demonstrated care and responsibility when looking after younger children or other family members." }
+  {
+    category:"Helping & Teaching",
+    question:"When someone in the family or community needs help, what does your child usually do?",
+    options:[
+      "Often offers help without being asked",
+      "Helps when someone asks",
+      "Rarely gets involved",
+      "I haven't observed this"
+    ]
+  },
+  {
+    category:"Helping & Teaching",
+    question:"How does your child usually behave when helping a younger sibling or another person learn something?",
+    options:[
+      "Patiently explains and guides them",
+      "Helps occasionally",
+      "Usually avoids teaching or guiding",
+      "I haven't observed this"
+    ]
+  },
+  {
+    category:"Science & Investigation",
+    question:"What have you noticed about your child's curiosity toward science and how things work?",
+    options:[
+      "Frequently asks questions and looks for explanations",
+      "Shows interest when the topic is introduced",
+      "Rarely shows interest",
+      "I haven't observed this"
+    ]
+  },
+  {
+    category:"Science & Investigation",
+    question:"When faced with an unfamiliar problem, what does your child usually do?",
+    options:[
+      "Investigates and tries to find out why it happened",
+      "Looks for an explanation when guided",
+      "Usually moves on without investigating",
+      "I haven't observed this"
+    ]
+  },
+  {
+    category:"Technology & Computing",
+    question:"What kind of activities does your child usually do when using a computer or digital device?",
+    options:[
+      "Explores software, digital tools, or creates digital projects",
+      "Mostly uses familiar applications",
+      "Uses devices mainly for basic entertainment",
+      "I haven't observed this"
+    ]
+  },
+  {
+    category:"Technology & Computing",
+    question:"Has your child shown interest in learning how gadgets, applications, or computer systems work?",
+    options:[
+      "Yes, independently explores how they work",
+      "Sometimes asks questions about them",
+      "Has shown little interest",
+      "I haven't observed this"
+    ]
+  },
+  {
+    category:"Business & Leadership",
+    question:"What role does your child usually take during family, school, or group activities?",
+    options:[
+      "Often organizes people and takes initiative",
+      "Participates when assigned a role",
+      "Usually prefers to follow others",
+      "I haven't observed this"
+    ]
+  },
+  {
+    category:"Business & Leadership",
+    question:"How does your child handle responsibilities such as managing money, planning, or completing assigned tasks?",
+    options:[
+      "Usually handles responsibilities independently",
+      "Can do so with reminders or guidance",
+      "Often needs assistance",
+      "I haven't observed this"
+    ]
+  },
+  {
+    category:"Creative & Design",
+    question:"What creative activities have you noticed your child doing voluntarily?",
+    options:[
+      "Frequently draws, designs, crafts, performs, or creates",
+      "Joins creative activities occasionally",
+      "Rarely participates in creative activities",
+      "I haven't observed this"
+    ]
+  },
+  {
+    category:"Creative & Design",
+    question:"When making school projects or personal outputs, what does your child usually focus on?",
+    options:[
+      "Adds original ideas and pays attention to design",
+      "Follows instructions and adds some personal touches",
+      "Mainly completes the required task",
+      "I haven't observed this"
+    ]
+  },
+  {
+    category:"Communication & Society",
+    question:"How does your child usually participate in conversations, presentations, or group discussions?",
+    options:[
+      "Confidently shares ideas and communicates with others",
+      "Participates when encouraged",
+      "Usually avoids speaking or sharing ideas",
+      "I haven't observed this"
+    ]
+  },
+  {
+    category:"Communication & Society",
+    question:"What topics does your child voluntarily discuss or follow?",
+    options:[
+      "Social issues, current events, culture, or community concerns",
+      "A few topics when they become relevant",
+      "Rarely discusses these topics",
+      "I haven't observed this"
+    ]
+  },
+  {
+    category:"Practical & Technical Work",
+    question:"How does your child respond to practical tasks such as assembling, repairing, or building something?",
+    options:[
+      "Willingly tries to complete the task",
+      "Participates when guided",
+      "Usually avoids these tasks",
+      "I haven't observed this"
+    ]
+  },
+  {
+    category:"Practical & Technical Work",
+    question:"When learning a hands-on skill, what approach does your child usually take?",
+    options:[
+      "Learns by experimenting and practicing",
+      "Prefers step-by-step instructions",
+      "Usually loses interest in the activity",
+      "I haven't observed this"
+    ]
+  },
+  {
+    category:"Health & Service",
+    question:"How does your child respond when someone is sick, injured, or needs care?",
+    options:[
+      "Shows concern and willingly offers assistance",
+      "Shows concern but waits for guidance",
+      "Usually does not get involved",
+      "I haven't observed this"
+    ]
+  },
+  {
+    category:"Health & Service",
+    question:"What have you noticed about your child's interest in health, wellness, or caring for others?",
+    options:[
+      "Voluntarily learns or participates in related activities",
+      "Shows some interest when discussed",
+      "Rarely shows interest",
+      "I haven't observed this"
+    ]
+  }
 ];
 
-const ratingLabels = [
-  { value: 1, label: "Strongly Disagree" },
-  { value: 2, label: "Disagree" },
-  { value: 3, label: "Neutral" },
-  { value: 4, label: "Agree" },
-  { value: 5, label: "Strongly Agree" }
+/* =========================================
+   STUDENT ASSESSMENT
+   12 CAREER-DISCOVERY QUESTIONS
+   Students choose their own preferences.
+   This is NOT the parent's observation survey.
+========================================= */
+
+const studentQuestions = [
+  {
+    question:"Which school subject would you most enjoy studying?",
+    options:[
+      {text:"Education, literature, or social studies",category:"Helping & Teaching"},
+      {text:"Biology, chemistry, or mathematics",category:"Science & Investigation"},
+      {text:"Computer studies or programming",category:"Technology & Computing"},
+      {text:"Business, accounting, or economics",category:"Business & Leadership"}
+    ]
+  },
+  {
+    question:"Which activity would you choose during your free time?",
+    options:[
+      {text:"Drawing, designing, editing, or creating artwork",category:"Creative & Design"},
+      {text:"Writing, reading, debating, or discussing issues",category:"Communication & Society"},
+      {text:"Building, repairing, or assembling something",category:"Practical & Technical Work"},
+      {text:"Learning about health or helping someone",category:"Health & Service"}
+    ]
+  },
+  {
+    question:"Imagine you are working on a school project. Which role would you prefer?",
+    options:[
+      {text:"Explaining the topic and helping classmates understand",category:"Helping & Teaching"},
+      {text:"Researching facts and finding accurate information",category:"Science & Investigation"},
+      {text:"Creating the digital presentation or technical output",category:"Technology & Computing"},
+      {text:"Leading the group and organizing the work",category:"Business & Leadership"}
+    ]
+  },
+  {
+    question:"Which type of challenge would you enjoy solving?",
+    options:[
+      {text:"Finding a creative way to communicate an idea",category:"Creative & Design"},
+      {text:"Understanding people's opinions and social problems",category:"Communication & Society"},
+      {text:"Figuring out how to repair or improve a machine",category:"Practical & Technical Work"},
+      {text:"Finding ways to improve someone's health or well-being",category:"Health & Service"}
+    ]
+  },
+  {
+    question:"Which workplace sounds most appealing to you?",
+    options:[
+      {text:"A school, learning center, or training institution",category:"Helping & Teaching"},
+      {text:"A laboratory or research facility",category:"Science & Investigation"},
+      {text:"An office focused on computers and technology",category:"Technology & Computing"},
+      {text:"A company, business office, or entrepreneurial workplace",category:"Business & Leadership"}
+    ]
+  },
+  {
+    question:"Which kind of output would make you feel most accomplished?",
+    options:[
+      {text:"An original artwork, design, or creative project",category:"Creative & Design"},
+      {text:"An article, speech, documentary, or communication project",category:"Communication & Society"},
+      {text:"A completed product, machine, or practical project",category:"Practical & Technical Work"},
+      {text:"A project that improves people's health or quality of life",category:"Health & Service"}
+    ]
+  },
+  {
+    question:"What would motivate you most in your future career?",
+    options:[
+      {text:"Helping people learn and develop their abilities",category:"Helping & Teaching"},
+      {text:"Discovering new information and solving questions",category:"Science & Investigation"},
+      {text:"Creating or improving technology",category:"Technology & Computing"},
+      {text:"Managing projects or building a successful business",category:"Business & Leadership"}
+    ]
+  },
+  {
+    question:"Which task would you be most willing to practice for hours?",
+    options:[
+      {text:"Designing, drawing, or editing creative materials",category:"Creative & Design"},
+      {text:"Writing, speaking, or presenting ideas",category:"Communication & Society"},
+      {text:"Operating tools and learning technical skills",category:"Practical & Technical Work"},
+      {text:"Learning first aid, health practices, or caregiving skills",category:"Health & Service"}
+    ]
+  },
+  {
+    question:"Which professional responsibility would you prefer?",
+    options:[
+      {text:"Guiding students or training other people",category:"Helping & Teaching"},
+      {text:"Conducting tests, experiments, or research",category:"Science & Investigation"},
+      {text:"Developing software or managing computer systems",category:"Technology & Computing"},
+      {text:"Planning business operations and making decisions",category:"Business & Leadership"}
+    ]
+  },
+  {
+    question:"Which kind of work environment would fit your personality?",
+    options:[
+      {text:"A creative studio or design environment",category:"Creative & Design"},
+      {text:"A media office or environment with frequent communication",category:"Communication & Society"},
+      {text:"A workshop, construction site, or technical facility",category:"Practical & Technical Work"},
+      {text:"A hospital, clinic, or health center",category:"Health & Service"}
+    ]
+  },
+  {
+    question:"If you could choose a community project, what would you work on?",
+    options:[
+      {text:"A learning program for children or students",category:"Helping & Teaching"},
+      {text:"A project studying environmental or scientific problems",category:"Science & Investigation"},
+      {text:"A digital tool or application that helps the community",category:"Technology & Computing"},
+      {text:"A small business or livelihood project",category:"Business & Leadership"}
+    ]
+  },
+  {
+    question:"What would you most like people to recognize you for in your future career?",
+    options:[
+      {text:"My creativity and ability to produce original work",category:"Creative & Design"},
+      {text:"My ability to communicate and understand society",category:"Communication & Society"},
+      {text:"My technical skills and ability to build or fix things",category:"Practical & Technical Work"},
+      {text:"My ability to care for and support others",category:"Health & Service"}
+    ]
+  }
 ];
+
+/* =========================================
+   ASSESSMENT FUNCTIONS
+========================================= */
 
 let currentType = "";
-let currentQuestions = [];
 let currentAnswers = {};
 
-/* =====================================
-   START AND DISPLAY ASSESSMENT
-===================================== */
+function goTo(id){
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
 
-function startAssessment(type) {
+function startAssessment(type){
   currentType = type;
-  currentQuestions = type === "parent" ? parentQuestions : studentQuestions;
   currentAnswers = {};
 
   const area = document.getElementById("assessmentArea");
-  area.innerHTML = "";
+  let html = "";
 
-  const title = type === "parent"
-    ? "How Well Do You Know Your Child?"
-    : "Student Self-Assessment";
-
-  const intro = type === "parent"
-    ? "Answer based on your actual observations of your child's behavior and activities. If you have not observed something, select Haven't Observed."
-    : "Answer honestly based on your own interests, preferences, and goals. There are no right or wrong answers.";
-
-  let html = `
-    <div class="assessment-box">
-      <h3>${title}</h3>
-      <p>${intro}</p>
-      <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
-      <p id="progressText">0 of ${currentQuestions.length} answered</p>
-  `;
-
-  currentQuestions.forEach((item, index) => {
+  if(type === "parent"){
     html += `
-      <div class="question">
-        <p>${index + 1}. ${item.question}</p>
-        <div class="rating-options">
+      <div class="assessment-box">
+        <h3>Parent Assessment: How Well Do You Know Your Child?</h3>
+        <p class="muted">Answer based on your actual observations. Select the option that best describes what you have noticed.</p>
+        <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+        <p id="progressText" class="muted">0 of ${parentQuestions.length} answered</p>
     `;
 
-    ratingLabels.forEach(option => {
+    parentQuestions.forEach((q,i)=>{
       html += `
-        <label>
-          <input type="radio" name="q${index}" value="${option.value}"
-            onchange="recordAnswer(${index}, ${option.value})">
-          ${option.value}<br>${option.label}
-        </label>
+        <div class="question">
+          <p>${i+1}. ${q.question}</p>
+          <div class="answer-options">
       `;
+
+      q.options.forEach((option,j)=>{
+        html += `
+          <label>
+            <input type="radio" name="q${i}" value="${j}" onchange="recordAnswer(${i},${j})">
+            <span>${option}</span>
+          </label>
+        `;
+      });
+
+      html += `</div></div>`;
     });
 
-    if (type === "parent") {
-      html += `
-        <label>
-          <input type="radio" name="q${index}" value="0"
-            onchange="recordAnswer(${index}, 0)">
-          0<br>Haven't Observed
-        </label>
-      `;
-    }
-
-    html += `</div></div>`;
-  });
-
-  if (type === "student") {
+  } else {
     html += `
-      <div class="reflection">
-        <h3>Understanding Your Course Decision</h3>
-        <p>What factors may influence your choice of college course? Select all that apply.</p>
+      <div class="assessment-box">
+        <h3>Student Self-Assessment: Discover Your Career Preferences</h3>
+        <p class="muted">Choose the option that appeals to you the most. Think about what you genuinely enjoy, not what other people expect you to choose.</p>
+        <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+        <p id="progressText" class="muted">0 of ${studentQuestions.length} answered</p>
+    `;
 
-        <label><input type="checkbox" class="influence" value="My parents or family have expectations about my course."> My parents or family have expectations about my course.</label>
-        <label><input type="checkbox" class="influence" value="My friends or classmates influence my decision."> My friends or classmates influence my decision.</label>
-        <label><input type="checkbox" class="influence" value="I do not have enough information about available courses and careers."> I do not have enough information about available courses and careers.</label>
-        <label><input type="checkbox" class="influence" value="I am still uncertain about what I want to pursue."> I am still uncertain about what I want to pursue.</label>
-        <label><input type="checkbox" class="influence" value="I am choosing based on my own interests and goals."> I am choosing based on my own interests and goals.</label>
+    studentQuestions.forEach((q,i)=>{
+      html += `
+        <div class="question">
+          <p>${i+1}. ${q.question}</p>
+          <div class="answer-options">
+      `;
+
+      q.options.forEach((option,j)=>{
+        html += `
+          <label>
+            <input type="radio" name="q${i}" value="${j}" onchange="recordAnswer(${i},${j})">
+            <span>${option.text}</span>
+          </label>
+        `;
+      });
+
+      html += `</div></div>`;
+    });
+
+    html += `
+      <div class="recommendation">
+        <h4>Additional Reflection: What Influences Your Course Decision?</h4>
+        <p>Select all the factors that influence your decision. These answers are for reflection and do not affect your interest scores.</p>
+        <div style="margin-top:10px">
+          <label class="reflection-option"><input type="checkbox" class="influence" value="My parents or family have expectations about my course."> My parents or family have expectations about my course.</label><br>
+          <label class="reflection-option"><input type="checkbox" class="influence" value="My friends or classmates influence my decision."> My friends or classmates influence my decision.</label><br>
+          <label class="reflection-option"><input type="checkbox" class="influence" value="I do not have enough information about available courses and careers."> I do not have enough information about available courses and careers.</label><br>
+          <label class="reflection-option"><input type="checkbox" class="influence" value="I am still uncertain about what I want to pursue."> I am still uncertain about what I want to pursue.</label><br>
+          <label class="reflection-option"><input type="checkbox" class="influence" value="I am choosing based on my own interests and goals."> I am choosing based on my own interests and goals.</label>
+        </div>
       </div>
     `;
   }
 
   html += `
-      <div class="assessment-actions">
-        <button class="secondary-btn" onclick="cancelAssessment()">Cancel</button>
-        <button class="primary-btn" onclick="submitAssessment()">Submit Assessment</button>
+      <div class="actions">
+        <button class="secondary" onclick="cancelAssessment()">Cancel</button>
+        <button class="primary" onclick="submitAssessment()">Submit Assessment</button>
       </div>
     </div>
   `;
 
   area.innerHTML = html;
-  area.scrollIntoView({ behavior: "smooth", block: "start" });
+  goTo("assessmentArea");
 }
 
-function recordAnswer(index, value) {
+function recordAnswer(index,value){
   currentAnswers[index] = value;
 
+  const total = currentType === "parent" ? parentQuestions.length : studentQuestions.length;
   const answered = Object.keys(currentAnswers).length;
-  const percentage = answered / currentQuestions.length * 100;
 
-  document.getElementById("progressBar").style.width = percentage + "%";
-  document.getElementById("progressText").textContent =
-    `${answered} of ${currentQuestions.length} answered`;
+  document.getElementById("progressBar").style.width = (answered/total*100)+"%";
+  document.getElementById("progressText").textContent = `${answered} of ${total} answered`;
 }
 
-function cancelAssessment() {
+function cancelAssessment(){
   document.getElementById("assessmentArea").innerHTML = "";
 }
 
-function submitAssessment() {
-  if (Object.keys(currentAnswers).length !== currentQuestions.length) {
-    alert("Please answer all assessment questions before submitting.");
+function submitAssessment(){
+  const questions = currentType === "parent" ? parentQuestions : studentQuestions;
+
+  if(Object.keys(currentAnswers).length !== questions.length){
+    alert("Please answer all questions before submitting.");
     return;
   }
 
-  const scores = {};
+  let scores = {};
 
-  categories.forEach(category => {
-    const values = currentQuestions
-      .map((question, index) => ({
-        category: question.category,
-        value: currentAnswers[index]
-      }))
-      .filter(item => item.category === category && item.value !== 0)
-      .map(item => item.value);
+  categories.forEach(category=>{
+    if(currentType === "parent"){
+      const values = parentQuestions
+        .map((q,i)=>({category:q.category,answer:currentAnswers[i]}))
+        .filter(item=>item.category===category && item.answer!==3)
+        .map(item=>item.answer);
 
-    if (values.length > 0) {
-      const average = values.reduce((sum, value) => sum + value, 0) / values.length;
-      scores[category] = Math.round(((average - 1) / 4) * 100);
+      if(values.length===0){
+        scores[category]=null;
+      } else {
+        // Parent answers: 0=lowest observed, 1=middle, 2=highest observed.
+        const average = values.reduce((a,b)=>a+b,0)/values.length;
+        scores[category] = Math.round((average/2)*100);
+      }
+
     } else {
-      scores[category] = null;
+      const selected = studentQuestions
+        .map((q,i)=>q.options[currentAnswers[i]])
+        .filter(option=>option.category===category).length;
+
+      // Student scores show how often a category was selected.
+      scores[category] = Math.round((selected/studentQuestions.length)*100);
     }
   });
 
-  const influences = currentType === "student"
-    ? Array.from(document.querySelectorAll(".influence:checked")).map(item => item.value)
+  const influences = currentType==="student"
+    ? Array.from(document.querySelectorAll(".influence:checked")).map(x=>x.value)
     : [];
 
   const result = {
-    type: currentType,
-    scores,
-    influences,
-    date: new Date().toLocaleDateString()
+    type:currentType,
+    scores:scores,
+    influences:influences,
+    date:new Date().toLocaleDateString()
   };
 
-  localStorage.setItem("pathfinder_" + currentType, JSON.stringify(result));
-
+  localStorage.setItem("pathfinder_"+currentType,JSON.stringify(result));
   showResults(result);
 }
 
-/* =====================================
+/* =========================================
    COURSE AND CAREER RECOMMENDATIONS
-===================================== */
+========================================= */
 
 const recommendations = {
-  "Helping & Teaching": {
-    courses: [
-      "Bachelor of Secondary Education",
-      "Bachelor of Elementary Education",
-      "BECEd - Early Childhood Education",
-      "Bachelor in Human Services",
-      "BA Psychology"
-    ],
-    careers: ["Teacher", "Guidance Counselor", "Child Development Worker", "Human Services Worker"]
+  "Helping & Teaching":{
+    courses:["BSEd programs","BEEd - General Education","BECEd - Early Childhood Education","BA Psychology","Bachelor in Human Services"],
+    careers:["Teacher","Guidance Counselor","Child Development Worker","Human Services Worker"]
   },
-
-  "Science & Investigation": {
-    courses: [
-      "BS Chemistry",
-      "BS Environmental Science",
-      "BS Mathematics",
-      "BS Food Technology",
-      "BS Nursing"
-    ],
-    careers: ["Research Assistant", "Environmental Scientist", "Chemist", "Laboratory Analyst"]
+  "Science & Investigation":{
+    courses:["BS Chemistry","BS Environmental Science","BS Mathematics","BS Food Technology","BS Nursing"],
+    careers:["Research Assistant","Environmental Scientist","Chemist","Laboratory Analyst"]
   },
-
-  "Technology & Computing": {
-    courses: [
-      "BS Information Technology",
-      "BS Computer Science",
-      "BS Information Systems",
-      "BS Information Technology - Web and Mobile Application",
-      "BS Information Technology - Network Administration"
-    ],
-    careers: ["Software Developer", "Web Developer", "IT Specialist", "Systems Analyst"]
+  "Technology & Computing":{
+    courses:["BS Information Technology","BS Computer Science","BS Information Systems"],
+    careers:["Software Developer","Web Developer","IT Specialist","Systems Analyst"]
   },
-
-  "Business & Leadership": {
-    courses: [
-      "BS Accountancy",
-      "BS Entrepreneurship",
-      "BSBA - Marketing Management",
-      "BSBA - Financial Management",
-      "Bachelor of Public Administration"
-    ],
-    careers: ["Entrepreneur", "Accountant", "Marketing Officer", "Business Manager"]
+  "Business & Leadership":{
+    courses:["BS Accountancy","BS Entrepreneurship","BSBA - Marketing Management","BSBA - Financial Management","Bachelor of Public Administration"],
+    careers:["Entrepreneur","Accountant","Marketing Officer","Business Manager"]
   },
-
-  "Creative & Design": {
-    courses: [
-      "BFA - Visual Communication",
-      "BS Architecture",
-      "BA Communication",
-      "BA English Language Studies"
-    ],
-    careers: ["Graphic Designer", "Architect", "Multimedia Artist", "Creative Director"]
+  "Creative & Design":{
+    courses:["BFA - Visual Communication","BS Architecture","BA Communication"],
+    careers:["Graphic Designer","Architect","Multimedia Artist","Creative Director"]
   },
-
-  "Communication & Society": {
-    courses: [
-      "BA Communication",
-      "BA English Language Studies",
-      "BSEd - Social Studies",
-      "BA Psychology",
-      "Bachelor of Public Administration",
-      "BS Criminology"
-    ],
-    careers: ["Journalist", "Public Relations Officer", "Researcher", "Community Development Worker"]
+  "Communication & Society":{
+    courses:["BA Communication","BA English Language Studies","BSEd - Social Studies","BA Psychology","BS Criminology"],
+    careers:["Journalist","Public Relations Officer","Researcher","Community Development Worker"]
   },
-
-  "Practical & Technical Work": {
-    courses: [
-      "BIT - Automotive Technology",
-      "BIT - Electrical Technology",
-      "BIT - Mechatronics Technology",
-      "BTLEd - Industrial Arts",
-      "BS Mechanical Engineering"
-    ],
-    careers: ["Automotive Technician", "Electrical Technician", "Mechatronics Technician", "Mechanical Engineer"]
+  "Practical & Technical Work":{
+    courses:["BIT - Automotive Technology","BIT - Electrical Technology","BIT - Mechatronics Technology","BTLEd - Industrial Arts","BS Mechanical Engineering"],
+    careers:["Automotive Technician","Electrical Technician","Mechatronics Technician","Mechanical Engineer"]
   },
-
-  "Health & Service": {
-    courses: [
-      "BS Nursing",
-      "BS Environmental Science",
-      "Bachelor in Human Services",
-      "BA Psychology"
-    ],
-    careers: ["Nurse", "Healthcare Worker", "Community Health Worker", "Environmental Health Officer"]
+  "Health & Service":{
+    courses:["BS Nursing","BS Environmental Science","Bachelor in Human Services","BA Psychology"],
+    careers:["Nurse","Healthcare Worker","Community Health Worker","Environmental Health Officer"]
   }
 };
 
-function showResults(result) {
+/* =========================================
+   RESULTS DISPLAY
+========================================= */
+
+function encodeResult(result){
+  return btoa(unescape(encodeURIComponent(JSON.stringify(result))));
+}
+
+function decodeResult(code){
+  try{
+    return JSON.parse(decodeURIComponent(escape(atob(code.trim()))));
+  }catch(e){
+    return null;
+  }
+}
+
+function showResults(result){
   const area = document.getElementById("assessmentArea");
 
   const ranked = Object.entries(result.scores)
-    .filter(([category, score]) => score !== null)
-    .sort((a, b) => b[1] - a[1]);
+    .filter(([category,score])=>score!==null)
+    .sort((a,b)=>b[1]-a[1]);
 
   let html = `
     <div class="result-box">
-      <h3>${result.type === "parent" ? "Parent Assessment Results" : "Student Assessment Results"}</h3>
-      <p>Assessment date: ${result.date}</p>
-      <p>These results show the interest areas indicated by the answers.</p>
+      <h3>${result.type==="parent"?"Parent Assessment Results":"Student Self-Assessment Results"}</h3>
+      <p class="muted">Completed: ${result.date}</p>
       <br>
-      <h3>Interest Scores</h3>
+      <p>${result.type==="parent"
+        ?"These results summarize the interests suggested by the parent's observations."
+        :"These results summarize the student's selected interests and career preferences."}</p>
+      <br>
+      <h3>Interest Areas</h3>
   `;
 
-  categories.forEach(category => {
-    const score = result.scores[category];
+  categories.forEach(category=>{
+    const score=result.scores[category];
 
     html += `
       <div class="score-row">
         <div class="score-label">
           <strong>${category}</strong>
-          <span>${score === null ? "Not enough observations" : score + "%"}</span>
+          <span>${score===null?"Not enough observations":score+"%"}</span>
         </div>
         <div class="score-track">
-          <div class="score-fill" style="width:${score === null ? 0 : score}%"></div>
+          <div class="score-fill" style="width:${score===null?0:score}%"></div>
         </div>
       </div>
     `;
   });
 
-  html += `<br><h3>Top Interest Areas</h3>`;
+  html += `<br><h3>Suggested Areas to Explore</h3>`;
 
-  if (ranked.length === 0) {
-    html += `<p>There is not enough information to calculate interest scores.</p>`;
+  if(ranked.length===0){
+    html += `<p>There is not enough information to calculate results.</p>`;
   }
 
-  ranked.slice(0, 3).forEach(([category, score], index) => {
-    const recommendation = recommendations[category];
+  ranked.slice(0,3).forEach(([category,score],i)=>{
+    const data=recommendations[category];
 
     html += `
       <div class="recommendation">
-        <h4>${index + 1}. ${category} (${score}%)</h4>
-        <p><strong>Suggested Courses:</strong> ${recommendation.courses.join(", ")}</p>
-        <p><strong>Possible Careers:</strong> ${recommendation.careers.join(", ")}</p>
+        <h4>${i+1}. ${category} (${score}%)</h4>
+        <p><strong>Suggested courses:</strong> ${data.courses.join(", ")}</p>
+        <p><strong>Possible careers:</strong> ${data.careers.join(", ")}</p>
       </div>
     `;
   });
 
-  if (result.type === "student") {
-    html += `
-      <br>
-      <h3>Factors Influencing Your Course Decision</h3>
-    `;
+  if(result.type==="student"){
+    html += `<br><h3>Factors Influencing Your Course Decision</h3>`;
 
-    if (result.influences.length) {
-      html += "<ul>";
-      result.influences.forEach(item => {
-        html += `<li>${item}</li>`;
-      });
+    if(result.influences.length){
+      html += "<ul style='margin-left:20px'>";
+      result.influences.forEach(x=>html+=`<li>${x}</li>`);
       html += "</ul>";
-    } else {
-      html += "<p>No decision influences were selected.</p>";
+    }else{
+      html += "<p>No factors were selected.</p>";
     }
   }
 
-  const code = encodeResult(result);
+  const code=encodeResult(result);
 
   html += `
       <div class="recommendation">
-        <h4>Your Assessment Result Code</h4>
-        <p>Save this code so it can be used to compare results with the other assessment.</p>
-        <input id="resultCode" value="${code}" readonly style="width:100%;padding:10px;margin:10px 0;">
-        <button class="secondary-btn" onclick="copyResultCode()">Copy Result Code</button>
+        <h4>Your Result Code</h4>
+        <p>Copy and share this code to compare your results with the other assessment.</p>
+        <input id="resultCode" value="${code}" readonly style="width:100%;padding:10px;margin:10px 0">
+        <button class="secondary" onclick="copyResultCode()">Copy Result Code</button>
       </div>
 
-      <p style="font-size:12px;color:#756b70;margin-top:15px;">
-        Note: These recommendations are starting points for exploration.
-        They do not determine which course a student must take.
-        Actual admission requirements and program availability may vary.
+      <p class="muted" style="margin-top:15px">
+        These results are for educational exploration only. They are not a validated psychological test and do not determine which course a student must take. Admission requirements and program availability may vary.
       </p>
 
-      <div class="assessment-actions">
-        <button class="primary-btn" onclick="startAssessment('${result.type}')">Retake Assessment</button>
-        <button class="secondary-btn" onclick="document.getElementById('explorer').scrollIntoView({behavior:'smooth'})">Explore Courses</button>
+      <div class="actions">
+        <button class="primary" onclick="startAssessment('${result.type}')">Retake Assessment</button>
+        <button class="secondary" onclick="goTo('explorer')">Explore College Courses</button>
       </div>
     </div>
   `;
 
-  area.innerHTML = html;
-  area.scrollIntoView({ behavior: "smooth", block: "start" });
+  area.innerHTML=html;
+  goTo("assessmentArea");
 }
 
-function encodeResult(result) {
-  return btoa(unescape(encodeURIComponent(JSON.stringify(result))));
-}
+function copyResultCode(){
+  const input=document.getElementById("resultCode");
+  input.select();
+  input.setSelectionRange(0,999999);
 
-function decodeResult(code) {
-  try {
-    return JSON.parse(decodeURIComponent(escape(atob(code.trim()))));
-  } catch (error) {
-    return null;
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(input.value)
+      .then(()=>alert("Result code copied!"))
+      .catch(()=>fallbackCopy(input));
+  }else{
+    fallbackCopy(input);
   }
 }
 
-function copyResultCode() {
-  const input = document.getElementById("resultCode");
-  input.select();
+function fallbackCopy(input){
   document.execCommand("copy");
   alert("Result code copied!");
 }
 
-/* =====================================
-   COMPARE RESULTS
-===================================== */
+/* =========================================
+   PARENT AND STUDENT COMPARISON
+========================================= */
 
-function compareResults() {
-  const parent = decodeResult(document.getElementById("parentCode").value);
-  const student = decodeResult(document.getElementById("studentCode").value);
+function compareResults(){
+  const parent=decodeResult(document.getElementById("parentCode").value);
+  const student=decodeResult(document.getElementById("studentCode").value);
+  const output=document.getElementById("comparisonResult");
 
-  const output = document.getElementById("comparisonResult");
-
-  if (!parent || !student || parent.type !== "parent" || student.type !== "student") {
-    output.innerHTML = `<p style="color:#a11;margin-top:15px;">Invalid codes. Please check that you entered the correct parent and student result codes.</p>`;
+  if(!parent || !student || parent.type!=="parent" || student.type!=="student"){
+    output.innerHTML="<p style='color:#a11;margin-top:15px'>Invalid result codes. Please enter a valid parent code and student code.</p>";
     return;
   }
 
-  let html = `
+  let html=`
     <div class="result-box">
       <h3>Parent and Student Comparison</h3>
-      <p>The parent results reflect observed behavior. The student results reflect personal interests and preferences.</p>
+      <p class="muted">Parent scores represent observed behavior. Student scores represent selected personal preferences. Their scores are different kinds of indicators, so differences should be discussed rather than treated as proof of disagreement.</p>
   `;
 
-  categories.forEach(category => {
-    const parentScore = parent.scores[category];
-    const studentScore = student.scores[category];
+  categories.forEach(category=>{
+    const p=parent.scores[category];
+    const s=student.scores[category];
 
-    if (parentScore === null || studentScore === null) {
-      html += `
+    if(p===null){
+      html+=`
         <div class="recommendation">
           <h4>${category}</h4>
-          <p>Comparison unavailable because one assessment has insufficient information.</p>
+          <p>The parent did not have enough observations to calculate this category.</p>
+          <p>Student preference score: ${s}%</p>
         </div>
       `;
       return;
     }
 
-    const difference = Math.abs(parentScore - studentScore);
+    const difference=Math.abs(p-s);
+    let message;
 
-    let interpretation = "";
-
-    if (difference <= 10) {
-      interpretation = "The two results are closely aligned.";
-    } else if (studentScore > parentScore) {
-      interpretation = "The student's personal interest is higher than what the parent has observed.";
-    } else {
-      interpretation = "The parent has observed more activity in this area than the student's self-reported interest indicates.";
+    if(difference<=10){
+      message="The scores are close. This may be a useful starting point for a conversation.";
+    }else if(s>p){
+      message="The student's selected interest is higher than the parent's observed score. The student may have interests that are not yet visible at home or school.";
+    }else{
+      message="The parent's observed score is higher than the student's selected preference score. The child may show this ability without wanting to pursue it as a career.";
     }
 
-    html += `
+    html+=`
       <div class="recommendation">
         <h4>${category}</h4>
-        <p>Parent observation: <strong>${parentScore}%</strong></p>
-        <p>Student self-assessment: <strong>${studentScore}%</strong></p>
-        <p>Difference: <strong>${difference} points</strong></p>
-        <p>${interpretation}</p>
+        <p>Parent observation indicator: <strong>${p}%</strong></p>
+        <p>Student preference indicator: <strong>${s}%</strong></p>
+        <p>${message}</p>
       </div>
     `;
   });
 
-  html += `
-      <p style="font-size:12px;color:#756b70;margin-top:15px;">
-        A difference does not mean either person is wrong. It can be an opportunity
-        for parents and students to discuss interests, experiences, and future goals.
-      </p>
+  html+=`
+      <div class="recommendation">
+        <h4>Suggested Next Step</h4>
+        <p>Discuss the results together. Ask the student which interests they genuinely want to explore, and allow the parent to share observations without deciding the student's course for them.</p>
+      </div>
     </div>
   `;
 
-  output.innerHTML = html;
-  output.scrollIntoView({ behavior: "smooth", block: "start" });
+  output.innerHTML=html;
+  output.scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-/* =====================================
-   SHS STRAND AND COURSE EXPLORER
-===================================== */
+/* =========================================
+   SHS PATHWAY EXPLORER
+========================================= */
 
 const pathways = {
-  "STEM": {
-    description: "Science, Technology, Engineering, and Mathematics. This strand is for students interested in scientific, mathematical, and technical fields.",
-    groups: {
-      "College of Engineering": [
-        "BS Civil Engineering",
-        "BS Electrical Engineering",
-        "BS Electronics Engineering",
-        "BS Industrial Engineering",
-        "BS Mechanical Engineering"
+  "STEM":{
+    description:"Science, Technology, Engineering, and Mathematics. For students interested in scientific, mathematical, and technical fields.",
+    groups:{
+      "College of Engineering":[
+        "BS Civil Engineering","BS Electrical Engineering","BS Electronics Engineering","BS Industrial Engineering","BS Mechanical Engineering"
       ],
-      "College of Computer Studies": [
-        "BS Information Technology - Network Administration",
-        "BS Information Technology - Web and Mobile Application",
-        "BS Information Technology - Technical Service Management",
-        "BS Information Systems - Business Analytics",
-        "BS Computer Science"
+      "College of Computer Studies":[
+        "BS Information Technology - Network Administration","BS Information Technology - Web and Mobile Application","BS Information Technology - Technical Service Management","BS Information Systems - Business Analytics","BS Computer Science"
       ],
-      "College of Science": [
-        "BS Chemistry",
-        "BS Nursing",
-        "BS Environmental Science",
-        "BS Mathematics",
-        "BS Food Technology"
+      "College of Science":[
+        "BS Chemistry","BS Nursing","BS Environmental Science","BS Mathematics","BS Food Technology"
       ],
-      "College of Architecture and Fine Arts": [
-        "BS Architecture",
-        "BFA - Visual Communication"
+      "College of Architecture and Fine Arts":[
+        "BS Architecture","BFA - Visual Communication"
       ],
-      "College of Industrial Technology": [
-        "BIT - Automotive Technology",
-        "BIT - Electrical Technology",
-        "BIT - Mechatronics Technology"
+      "College of Industrial Technology":[
+        "BIT - Automotive Technology","BIT - Electrical Technology","BIT - Mechatronics Technology"
       ]
     }
   },
 
-  "ABM": {
-    description: "Accountancy, Business, and Management. This strand focuses on business operations, finance, entrepreneurship, and management.",
-    groups: {
-      "College of Business and Accountancy": [
-        "BS Accountancy",
-        "BS Accounting Information System",
-        "BS Entrepreneurship",
-        "BS Hospitality Management",
-        "BSBA - Business Economics",
-        "BSBA - Financial Management",
-        "BSBA - Marketing Management"
+  "ABM":{
+    description:"Accountancy, Business, and Management. For students interested in business operations, finance, entrepreneurship, and management.",
+    groups:{
+      "College of Business and Accountancy":[
+        "BS Accountancy","BS Accounting Information System","BS Entrepreneurship","BS Hospitality Management","BSBA - Business Economics","BSBA - Financial Management","BSBA - Marketing Management"
       ],
-      "College of Public Administration and Governance": [
+      "College of Public Administration and Governance":[
         "Bachelor of Public Administration"
       ]
     }
   },
 
-  "HUMSS": {
-    description: "Humanities and Social Sciences. This strand is for students interested in people, society, communication, education, and public service.",
-    groups: {
-      "College of Arts and Social Sciences": [
-        "BA Communication",
-        "BA English Language Studies",
-        "BA Psychology",
-        "Bachelor in Human Services"
+  "HUMSS":{
+    description:"Humanities and Social Sciences. For students interested in people, society, communication, education, and public service.",
+    groups:{
+      "College of Arts and Social Sciences":[
+        "BA Communication","BA English Language Studies","BA Psychology","Bachelor in Human Services"
       ],
-      "College of Education": [
-        "BSEd - English",
-        "BSEd - Filipino",
-        "BSEd - Social Studies",
-        "BSEd - Mathematics",
-        "BSEd - Sciences",
-        "BECEd - Early Childhood Education",
-        "BEEd - General Education",
-        "Bachelor of Physical Education"
+      "College of Education":[
+        "BSEd - English","BSEd - Filipino","BSEd - Social Studies","BSEd - Mathematics","BSEd - Sciences","BECEd - Early Childhood Education","BEEd - General Education","Bachelor of Physical Education"
       ],
-      "College of Criminal Justice Education": [
-        "BS Criminology"
+      "College of Criminal Justice Education":["BS Criminology"],
+      "College of Public Administration and Governance":["Bachelor of Public Administration"]
+    }
+  },
+
+  "GAS":{
+    description:"General Academic Strand. Offers a broad academic foundation for students who are still exploring different fields.",
+    groups:{
+      "College of Arts and Social Sciences":[
+        "BA Communication","BA English Language Studies","BA Psychology","Bachelor in Human Services"
       ],
-      "College of Public Administration and Governance": [
-        "Bachelor of Public Administration"
+      "College of Business and Accountancy":[
+        "BS Entrepreneurship","BS Hospitality Management","BSBA - Business Economics","BSBA - Financial Management","BSBA - Marketing Management"
+      ],
+      "College of Education":[
+        "BEEd - General Education","BSEd - English","BSEd - Filipino","BSEd - Social Studies","BSEd - Mathematics","BSEd - Sciences","BECEd - Early Childhood Education","Bachelor of Physical Education"
+      ],
+      "College of Public Administration and Governance":["Bachelor of Public Administration"],
+      "College of Criminal Justice Education":["BS Criminology"]
+    }
+  },
+
+  "TVL":{
+    description:"Technical-Vocational-Livelihood. Develops practical, technical, and work-related skills.",
+    groups:{
+      "College of Industrial Technology":[
+        "BIT - Automotive Technology","BIT - Electrical Technology","BIT - Mechatronics Technology"
+      ],
+      "College of Education":[
+        "BTLEd - Industrial Arts","BTVTEd - Food Service Management"
+      ],
+      "College of Computer Studies":[
+        "BS Information Technology","BS Information Systems","BS Computer Science"
+      ],
+      "College of Business and Accountancy":[
+        "BS Hospitality Management","BS Entrepreneurship"
       ]
     }
   },
 
-  "GAS": {
-    description: "General Academic Strand. This strand offers a broad academic foundation for students who are still exploring different fields.",
-    groups: {
-      "College of Arts and Social Sciences": [
-        "BA Communication",
-        "BA English Language Studies",
-        "BA Psychology",
-        "Bachelor in Human Services"
+  "Arts & Design":{
+    description:"For students interested in artistic expression, visual communication, design, and creative work.",
+    groups:{
+      "College of Architecture and Fine Arts":[
+        "BS Architecture","BFA - Visual Communication"
       ],
-      "College of Business and Accountancy": [
-        "BS Entrepreneurship",
-        "BS Hospitality Management",
-        "BSBA - Business Economics",
-        "BSBA - Financial Management",
-        "BSBA - Marketing Management"
-      ],
-      "College of Education": [
-        "BEEd - General Education",
-        "BSEd - English",
-        "BSEd - Filipino",
-        "BSEd - Social Studies",
-        "BSEd - Mathematics",
-        "BSEd - Sciences",
-        "BECEd - Early Childhood Education",
-        "Bachelor of Physical Education"
-      ],
-      "College of Public Administration and Governance": [
-        "Bachelor of Public Administration"
-      ],
-      "College of Criminal Justice Education": [
-        "BS Criminology"
+      "College of Arts and Social Sciences":[
+        "BA Communication","BA English Language Studies"
       ]
     }
   },
 
-  "TVL": {
-    description: "Technical-Vocational-Livelihood. This strand develops practical, technical, and work-related skills.",
-    groups: {
-      "College of Industrial Technology": [
-        "BIT - Automotive Technology",
-        "BIT - Electrical Technology",
-        "BIT - Mechatronics Technology"
+  "Sports":{
+    description:"For students interested in physical education, sports development, coaching, and health-related fields.",
+    groups:{
+      "College of Education":[
+        "Bachelor of Physical Education","Bachelor of Elementary Education","Bachelor of Secondary Education"
       ],
-      "College of Education": [
-        "BTLEd - Industrial Arts",
-        "BTVTEd - Food Service Management"
-      ],
-      "College of Computer Studies": [
-        "BS Information Technology",
-        "BS Information Systems",
-        "BS Computer Science"
-      ],
-      "College of Business and Accountancy": [
-        "BS Hospitality Management",
-        "BS Entrepreneurship"
-      ]
-    }
-  },
-
-  "Arts & Design": {
-    description: "Arts and Design. This strand is for students who want to develop artistic, visual, creative, and communication skills.",
-    groups: {
-      "College of Architecture and Fine Arts": [
-        "BS Architecture",
-        "BFA - Visual Communication"
-      ],
-      "College of Arts and Social Sciences": [
-        "BA Communication",
-        "BA English Language Studies"
-      ]
-    }
-  },
-
-  "Sports": {
-    description: "Sports Track. This strand focuses on physical education, sports development, coaching, and health-related fields.",
-    groups: {
-      "College of Education": [
-        "Bachelor of Physical Education",
-        "Bachelor of Elementary Education",
-        "Bachelor of Secondary Education"
-      ],
-      "College of Science": [
-        "BS Nursing",
-        "BS Environmental Science"
+      "College of Science":[
+        "BS Nursing","BS Environmental Science"
       ]
     }
   }
 };
 
 const courseJobs = {
-  "BS Civil Engineering": ["Civil Engineer", "Construction Project Engineer", "Structural Engineer"],
-  "BS Electrical Engineering": ["Electrical Engineer", "Power Systems Engineer", "Electrical Design Engineer"],
-  "BS Electronics Engineering": ["Electronics Engineer", "Telecommunications Engineer", "Electronics Technician"],
-  "BS Industrial Engineering": ["Industrial Engineer", "Quality Assurance Engineer", "Operations Analyst"],
-  "BS Mechanical Engineering": ["Mechanical Engineer", "Design Engineer", "Maintenance Engineer"],
-  "BS Information Technology - Network Administration": ["Network Administrator", "Network Engineer", "IT Support Specialist"],
-  "BS Information Technology - Web and Mobile Application": ["Web Developer", "Mobile App Developer", "Software Developer"],
-  "BS Information Technology - Technical Service Management": ["IT Support Specialist", "Technical Support Specialist", "Systems Administrator"],
-  "BS Information Systems - Business Analytics": ["Business Analyst", "Data Analyst", "Systems Analyst"],
-  "BS Information Technology": ["IT Specialist", "Web Developer", "Network Administrator"],
-  "BS Information Systems": ["Systems Analyst", "Business Analyst", "IT Consultant"],
-  "BS Computer Science": ["Software Developer", "Programmer", "Computer Systems Analyst"],
-  "BS Chemistry": ["Chemist", "Laboratory Analyst", "Research Assistant"],
-  "BS Nursing": ["Registered Nurse", "Community Health Nurse", "Clinical Nurse"],
-  "BS Environmental Science": ["Environmental Scientist", "Environmental Consultant", "Research Assistant"],
-  "BS Mathematics": ["Mathematician", "Data Analyst", "Statistician"],
-  "BS Food Technology": ["Food Technologist", "Quality Assurance Analyst", "Food Safety Specialist"],
-  "BS Architecture": ["Architect", "Architectural Designer", "Building Planner"],
-  "BFA - Visual Communication": ["Graphic Designer", "Illustrator", "Multimedia Artist"],
-  "BIT - Automotive Technology": ["Automotive Technician", "Automotive Service Advisor", "Vehicle Maintenance Specialist"],
-  "BIT - Electrical Technology": ["Electrical Technician", "Electrical Maintenance Technician", "Electrical Installer"],
-  "BIT - Mechatronics Technology": ["Mechatronics Technician", "Automation Technician", "Industrial Maintenance Technician"],
-  "BS Accountancy": ["Accountant", "Auditor", "Tax Associate"],
-  "BS Accounting Information System": ["Accounting Systems Analyst", "Accounting Associate", "Internal Auditor"],
-  "BS Entrepreneurship": ["Entrepreneur", "Business Owner", "Business Development Officer"],
-  "BS Hospitality Management": ["Hotel Manager", "Restaurant Manager", "Events Coordinator"],
-  "BSBA - Business Economics": ["Economic Researcher", "Business Analyst", "Market Analyst"],
-  "BSBA - Financial Management": ["Financial Analyst", "Bank Officer", "Financial Planner"],
-  "BSBA - Marketing Management": ["Marketing Officer", "Brand Manager", "Sales Manager"],
-  "Bachelor of Public Administration": ["Public Administrator", "Government Officer", "Program Coordinator"],
-  "BA Communication": ["Journalist", "Public Relations Officer", "Media Producer"],
-  "BA English Language Studies": ["Writer", "Editor", "Language Specialist"],
-  "BA Psychology": ["Human Resources Assistant", "Research Assistant", "Guidance Associate"],
-  "Bachelor in Human Services": ["Community Development Worker", "Social Services Assistant", "Case Management Assistant"],
-  "BSEd - English": ["English Teacher", "Language Instructor", "Curriculum Developer"],
-  "BSEd - Filipino": ["Filipino Teacher", "Language Instructor", "Educational Content Writer"],
-  "BSEd - Social Studies": ["Social Studies Teacher", "History Researcher", "Community Educator"],
-  "BSEd - Mathematics": ["Mathematics Teacher", "Math Tutor", "Educational Research Assistant"],
-  "BSEd - Sciences": ["Science Teacher", "Laboratory Educator", "Science Research Assistant"],
-  "BECEd - Early Childhood Education": ["Preschool Teacher", "Early Childhood Educator", "Child Development Worker"],
-  "BEEd - General Education": ["Elementary School Teacher", "Learning Support Teacher", "Educational Assistant"],
-  "Bachelor of Physical Education": ["PE Teacher", "Sports Coach", "Fitness Instructor"],
-  "BS Criminology": ["Police Officer", "Crime Analyst", "Correctional Officer"],
-  "BTLEd - Industrial Arts": ["Technology and Livelihood Education Teacher", "Industrial Arts Instructor", "Technical Trainer"],
-  "BTVTEd - Food Service Management": ["Food Service Manager", "Culinary Instructor", "Restaurant Supervisor"]
+  "BS Civil Engineering":["Civil Engineer","Construction Project Engineer","Structural Engineer"],
+  "BS Electrical Engineering":["Electrical Engineer","Power Systems Engineer","Electrical Design Engineer"],
+  "BS Electronics Engineering":["Electronics Engineer","Telecommunications Engineer","Electronics Technician"],
+  "BS Industrial Engineering":["Industrial Engineer","Quality Assurance Engineer","Operations Analyst"],
+  "BS Mechanical Engineering":["Mechanical Engineer","Design Engineer","Maintenance Engineer"],
+  "BS Information Technology - Network Administration":["Network Administrator","Network Engineer","IT Support Specialist"],
+  "BS Information Technology - Web and Mobile Application":["Web Developer","Mobile App Developer","Software Developer"],
+  "BS Information Technology - Technical Service Management":["IT Support Specialist","Technical Support Specialist","Systems Administrator"],
+  "BS Information Systems - Business Analytics":["Business Analyst","Data Analyst","Systems Analyst"],
+  "BS Information Technology":["IT Specialist","Web Developer","Network Administrator"],
+  "BS Information Systems":["Systems Analyst","Business Analyst","IT Consultant"],
+  "BS Computer Science":["Software Developer","Programmer","Computer Systems Analyst"],
+  "BS Chemistry":["Chemist","Laboratory Analyst","Research Assistant"],
+  "BS Nursing":["Registered Nurse","Community Health Nurse","Clinical Nurse"],
+  "BS Environmental Science":["Environmental Scientist","Environmental Consultant","Research Assistant"],
+  "BS Mathematics":["Mathematician","Data Analyst","Statistician"],
+  "BS Food Technology":["Food Technologist","Quality Assurance Analyst","Food Safety Specialist"],
+  "BS Architecture":["Architect","Architectural Designer","Building Planner"],
+  "BFA - Visual Communication":["Graphic Designer","Illustrator","Multimedia Artist"],
+  "BIT - Automotive Technology":["Automotive Technician","Automotive Service Advisor","Vehicle Maintenance Specialist"],
+  "BIT - Electrical Technology":["Electrical Technician","Electrical Maintenance Technician","Electrical Installer"],
+  "BIT - Mechatronics Technology":["Mechatronics Technician","Automation Technician","Industrial Maintenance Technician"],
+  "BS Accountancy":["Accountant","Auditor","Tax Associate"],
+  "BS Accounting Information System":["Accounting Systems Analyst","Accounting Associate","Internal Auditor"],
+  "BS Entrepreneurship":["Entrepreneur","Business Owner","Business Development Officer"],
+  "BS Hospitality Management":["Hotel Manager","Restaurant Manager","Events Coordinator"],
+  "BSBA - Business Economics":["Economic Researcher","Business Analyst","Market Analyst"],
+  "BSBA - Financial Management":["Financial Analyst","Bank Officer","Financial Planner"],
+  "BSBA - Marketing Management":["Marketing Officer","Brand Manager","Sales Manager"],
+  "Bachelor of Public Administration":["Public Administrator","Government Officer","Program Coordinator"],
+  "BA Communication":["Journalist","Public Relations Officer","Media Producer"],
+  "BA English Language Studies":["Writer","Editor","Language Specialist"],
+  "BA Psychology":["Human Resources Assistant","Research Assistant","Guidance Associate"],
+  "Bachelor in Human Services":["Community Development Worker","Social Services Assistant","Case Management Assistant"],
+  "BSEd - English":["English Teacher","Language Instructor","Curriculum Developer"],
+  "BSEd - Filipino":["Filipino Teacher","Language Instructor","Educational Content Writer"],
+  "BSEd - Social Studies":["Social Studies Teacher","History Researcher","Community Educator"],
+  "BSEd - Mathematics":["Mathematics Teacher","Math Tutor","Educational Research Assistant"],
+  "BSEd - Sciences":["Science Teacher","Laboratory Educator","Science Research Assistant"],
+  "BECEd - Early Childhood Education":["Preschool Teacher","Early Childhood Educator","Child Development Worker"],
+  "BEEd - General Education":["Elementary School Teacher","Learning Support Teacher","Educational Assistant"],
+  "Bachelor of Physical Education":["PE Teacher","Sports Coach","Fitness Instructor"],
+  "BS Criminology":["Police Officer","Crime Analyst","Correctional Officer"],
+  "BTLEd - Industrial Arts":["Technology and Livelihood Education Teacher","Industrial Arts Instructor","Technical Trainer"],
+  "BTVTEd - Food Service Management":["Food Service Manager","Culinary Instructor","Restaurant Supervisor"],
+  "Bachelor of Elementary Education":["Elementary School Teacher","Learning Support Teacher","Educational Assistant"],
+  "Bachelor of Secondary Education":["Secondary School Teacher","Subject Coordinator","Educational Content Developer"]
 };
 
-function displayTracks() {
-  const container = document.getElementById("trackCards");
-  container.innerHTML = "";
+function displayTracks(){
+  const container=document.getElementById("trackCards");
+  container.innerHTML="";
 
-  Object.entries(pathways).forEach(([name, data]) => {
-    container.innerHTML += `
-      <div class="card track-card">
-        <h3>${name}</h3>
-        <p>${data.description}</p>
-        <button class="primary-btn" onclick="showCourses('${name}')">Explore ${name}</button>
-      </div>
-    `;
+  Object.entries(pathways).forEach(([name,data])=>{
+    const card=document.createElement("div");
+    card.className="card track-card";
+
+    const title=document.createElement("h3");
+    title.textContent=name;
+
+    const description=document.createElement("p");
+    description.textContent=data.description;
+
+    const button=document.createElement("button");
+    button.className="primary";
+    button.textContent="Explore "+name;
+    button.addEventListener("click",()=>showCourses(name));
+
+    card.append(title,description,button);
+    container.appendChild(card);
   });
 }
 
-function showCourses(track) {
-  const data = pathways[track];
-  const output = document.getElementById("courseResults");
+function showCourses(track){
+  const data=pathways[track];
+  const output=document.getElementById("courseResults");
 
-  let html = `
-    <div class="section-heading">
+  let html=`
+    <div class="heading">
       <h2>${track} Pathway</h2>
       <p>${data.description}</p>
     </div>
   `;
 
-  Object.entries(data.groups).forEach(([college, courses]) => {
-    html += `
-      <div class="course-group">
-        <h3>${college}</h3>
-    `;
+  Object.entries(data.groups).forEach(([college,courses])=>{
+    html+=`<div class="course-group"><h3>${college}</h3>`;
 
-    courses.forEach(course => {
-      html += `
+    courses.forEach(course=>{
+      html+=`
         <div class="course-item">
           <strong>${course}</strong>
           <p>Explore this program and its possible career opportunities.</p>
-          <button onclick="showCareer('${course.replace(/'/g, "\\'")}')">View Career Opportunities</button>
+          <button onclick="showCareer('${course.replace(/'/g,"\\'")}')">View Career Opportunities</button>
         </div>
       `;
     });
 
-    html += `</div>`;
+    html+="</div>";
   });
 
-  output.innerHTML = html;
-  output.scrollIntoView({ behavior: "smooth", block: "start" });
+  output.innerHTML=html;
+  output.scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-function showCareer(course) {
-  const jobs = courseJobs[course] || ["Related professional opportunities", "Industry specialist", "Research or support professional"];
+function showCareer(course){
+  const jobs=courseJobs[course]||[
+    "Related professional opportunities",
+    "Industry specialist",
+    "Research or support professional"
+  ];
 
-  document.getElementById("modalTitle").textContent = course;
-  document.getElementById("modalDescription").textContent =
+  document.getElementById("modalTitle").textContent=course;
+  document.getElementById("modalDescription").textContent=
     "This college program can provide knowledge and skills for different professional opportunities. Career paths depend on qualifications, experience, and applicable professional requirements.";
 
-  document.getElementById("modalJobs").innerHTML =
-    jobs.map(job => `<li>${job}</li>`).join("");
+  const list=document.getElementById("modalJobs");
+  list.innerHTML="";
 
-  document.getElementById("careerModal").style.display = "flex";
+  jobs.forEach(job=>{
+    const li=document.createElement("li");
+    li.textContent=job;
+    list.appendChild(li);
+  });
+
+  document.getElementById("careerModal").style.display="flex";
 }
 
-function closeModal() {
-  document.getElementById("careerModal").style.display = "none";
+function closeModal(){
+  document.getElementById("careerModal").style.display="none";
 }
 
-document.getElementById("careerModal").addEventListener("click", function(event) {
-  if (event.target === this) closeModal();
+document.getElementById("careerModal").addEventListener("click",function(e){
+  if(e.target===this)closeModal();
 });
 
 displayTracks();
 </script>
-
 </body>
 </html>
