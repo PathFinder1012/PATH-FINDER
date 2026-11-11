@@ -1,131 +1,44 @@
-const CACHE_NAME = "pathfinder-cache-v4";
-
+const CACHE_NAME = "pathfinder-assessments-v1";
 const APP_FILES = [
-    "./",
-    "./index.html",
-    "./manifest.webmanifest",
-    "./icon.svg",
-    "./sw.js"
+  "./",
+  "./index.html",
+  "./style.css",
+  "./app.js",
+  "./manifest.webmanifest",
+  "./icon.svg"
 ];
 
-
-/* =========================================
-   INSTALL
-   ========================================= */
-
 self.addEventListener("install", event => {
-
-    event.waitUntil(
-
-        caches
-            .open(CACHE_NAME)
-            .then(cache => {
-                return cache.addAll(APP_FILES);
-            })
-            .then(() => {
-                return self.skipWaiting();
-            })
-
-    );
-
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(APP_FILES))
+      .then(() => self.skipWaiting())
+  );
 });
-
-
-/* =========================================
-   ACTIVATE
-   ========================================= */
 
 self.addEventListener("activate", event => {
-
-    event.waitUntil(
-
-        caches
-            .keys()
-            .then(keys => {
-
-                return Promise.all(
-
-                    keys.map(key => {
-
-                        if (key !== CACHE_NAME) {
-                            return caches.delete(key);
-                        }
-
-                        return null;
-                    })
-
-                );
-
-            })
-            .then(() => {
-                return self.clients.claim();
-            })
-
-    );
-
+  event.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))))
+      .then(() => self.clients.claim())
+  );
 });
 
+self.addEventListener("fetch", event => {
+  if (event.request.method !== "GET") return;
+  const requestURL = new URL(event.request.url);
+  if (requestURL.origin !== self.location.origin) return;
 
-/* =========================================
-   FETCH
-   ========================================= */
-
-self.addEventListener(
-    "fetch",
-    event => {
-
-        if (
-            event.request.method !==
-            "GET"
-        ) {
-            return;
+  event.respondWith(
+    caches.match(event.request).then(cached => {
+      if (cached) return cached;
+      return fetch(event.request).then(response => {
+        if (response && response.status === 200 && response.type === "basic") {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
         }
-
-        event.respondWith(
-
-            caches.match(event.request)
-                .then(cachedResponse => {
-
-                    if (cachedResponse) {
-                        return cachedResponse;
-                    }
-
-                    return fetch(event.request)
-                        .then(response => {
-
-                            if (
-                                !response ||
-                                response.status !== 200
-                            ) {
-                                return response;
-                            }
-
-                            const clone =
-                                response.clone();
-
-                            caches
-                                .open(CACHE_NAME)
-                                .then(cache => {
-                                    cache.put(
-                                        event.request,
-                                        clone
-                                    );
-                                });
-
-                            return response;
-
-                        })
-                        .catch(() => {
-
-                            return caches.match(
-                                "./index.html"
-                            );
-
-                        });
-
-                })
-
-        );
-
-    }
-);
+        return response;
+      }).catch(() => caches.match("./index.html"));
+    })
+  );
+});
