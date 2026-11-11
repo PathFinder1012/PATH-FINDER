@@ -1,45 +1,30 @@
 {
-    "id": "./",
-    "name": "PATHFINDER",
-    "short_name": "PATHFINDER",
-    "description": "Find your path. Understand your choices. Build your future.",
-
-    "start_url": "./",
-    "scope": "./",
-
-    "display": "standalone",
-    "display_override": [
-        "window-controls-overlay",
-        "standalone"
-    ],
-
-    "orientation": "portrait",
-
-    "background_color": "#6F1025",
-    "theme_color": "#6F1025",
-
-    "lang": "en",
-    "dir": "ltr",
-
-    "prefer_related_applications": false,
-
-    "categories": [
-        "education",
-        "productivity"
-    ],
-
-    "icons": [
-        {
-            "src": "./icon.svg",
-            "sizes": "192x192",
-            "type": "image/svg+xml",
-            "purpose": "any"
-        },
-        {
-            "src": "./icon.svg",
-            "sizes": "512x512",
-            "type": "image/svg+xml",
-            "purpose": "any maskable"
-        }
-    ]
+  "id": "./",
+  "name": "PATHFINDER",
+  "short_name": "PATHFINDER",
+  "description": "Discover your interests, explore college programs, and understand career paths.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#6F1025",
+  "theme_color": "#6F1025",
+  "lang": "en",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "categories": ["education", "lifestyle"],
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
 }
