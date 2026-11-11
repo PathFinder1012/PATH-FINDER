@@ -4,96 +4,355 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#641c2b">
+<meta name="theme-color" content="#641426">
 <title>PATHFINDER | Find Your Path</title>
 
 <style>
-:root {
-  --maroon:#641c2b;
-  --dark:#42121d;
-  --gold:#e5b94e;
+:root{
+  --maroon:#641426;
+  --dark:#3e0d1a;
+  --gold:#edbd42;
   --cream:#fffaf0;
-  --light:#f7f3ed;
-  --text:#29232a;
-  --muted:#756b70;
+  --bg:#f8f5f2;
+  --text:#30252a;
+  --muted:#766b70;
+  --border:#eadcdd;
   --white:#fff;
-  --border:#e8dfe0;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:var(--light);color:var(--text);line-height:1.6}
-button,input,select{font:inherit}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+button,input{font:inherit}
 button{cursor:pointer}
-header{background:var(--maroon);color:white;padding:15px 7%;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;position:sticky;top:0;z-index:10}
-.logo{font-size:27px;font-weight:900;letter-spacing:2px}
+header{
+  background:var(--maroon);
+  color:white;
+  padding:14px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.logo{
+  font-size:25px;
+  font-weight:900;
+  letter-spacing:2px;
+}
 .logo span{color:var(--gold)}
 nav{display:flex;gap:20px;flex-wrap:wrap}
-nav a{color:white;text-decoration:none;font-size:14px;font-weight:bold}
+nav a{
+  color:white;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:bold;
+}
 nav a:hover{color:var(--gold)}
-.hero{background:linear-gradient(130deg,#42121d,#7c2a3b);color:white;text-align:center;padding:85px 8%}
-.hero h1{font-size:clamp(35px,6vw,58px);margin-bottom:12px}
+.hero{
+  background:linear-gradient(130deg,var(--dark),#81243b);
+  color:white;
+  text-align:center;
+  padding:85px 8%;
+}
+.hero h1{
+  font-size:clamp(36px,6vw,58px);
+  margin-bottom:12px;
+}
 .hero h1 span{color:var(--gold)}
-.hero p{max-width:700px;margin:0 auto 25px;color:#f5e9e9}
+.hero p{
+  max-width:700px;
+  margin:0 auto 25px;
+  color:#f3e5e8;
+}
 .container{width:min(1100px,90%);margin:auto}
 section{padding:65px 0}
 .heading{text-align:center;margin-bottom:32px}
-.heading h2{color:var(--maroon);font-size:30px;margin-bottom:8px}
+.heading h2{
+  color:var(--maroon);
+  font-size:30px;
+  margin-bottom:8px;
+}
 .heading p{color:var(--muted)}
-.primary,.secondary{border:0;padding:12px 22px;border-radius:7px;font-weight:bold}
+.primary,.secondary{
+  border:0;
+  padding:12px 21px;
+  border-radius:7px;
+  font-weight:bold;
+  transition:.2s;
+}
 .primary{background:var(--gold);color:var(--dark)}
-.primary:hover{background:#f3ce70}
+.primary:hover{background:#f5d477}
 .secondary{background:var(--maroon);color:white}
 .secondary:hover{background:var(--dark)}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
-.card{background:white;padding:25px;border:1px solid var(--border);border-radius:12px;box-shadow:0 4px 15px #00000008}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;
+}
+.card{
+  background:white;
+  padding:25px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  box-shadow:0 4px 15px #00000008;
+}
 .card h3{color:var(--maroon);margin-bottom:10px}
 .card p{font-size:14px;color:var(--muted);margin-bottom:18px}
 .card button{width:100%}
 .assessment-section{background:var(--cream)}
-.notice{background:#fff3d3;border-left:4px solid var(--gold);padding:15px;border-radius:6px;margin-bottom:25px;font-size:14px}
-#assessmentArea{max-width:900px;margin:30px auto 0}
-.assessment-box,.result-box,.compare-box{background:white;border:1px solid var(--border);border-radius:12px;padding:28px;margin-top:20px}
-.assessment-box h3,.result-box h3,.compare-box h3{color:var(--maroon);margin-bottom:8px}
-.progress{height:9px;background:#eee5e5;border-radius:20px;overflow:hidden;margin:20px 0 8px}
-.progress-bar{height:100%;width:0;background:var(--gold);transition:width .2s}
-.question{padding:20px 0;border-bottom:1px solid var(--border)}
+.notice{
+  background:#fff2d2;
+  border-left:4px solid var(--gold);
+  padding:15px;
+  border-radius:6px;
+  margin-bottom:25px;
+  font-size:14px;
+}
+#assessmentArea{max-width:950px;margin:30px auto 0}
+.assessment-box,.result-box,.compare-box{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+  margin-top:20px;
+}
+.assessment-header{
+  background:var(--maroon);
+  color:white;
+  padding:25px 28px;
+}
+.assessment-header .eyebrow{
+  color:var(--gold);
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+.assessment-header h2{font-size:25px;margin:5px 0}
+.assessment-header p{font-size:14px;color:#f6e9ec}
+.assessment-body{padding:25px 28px}
+.progress{
+  height:8px;
+  background:#eee6e6;
+  border-radius:20px;
+  overflow:hidden;
+  margin:15px 0 8px;
+}
+.progress-bar{
+  height:100%;
+  width:0;
+  background:var(--gold);
+  transition:width .2s;
+}
+.progress-info{
+  display:flex;
+  justify-content:space-between;
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:20px;
+}
+.selection-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+.selection-card{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:14px;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  cursor:pointer;
+  min-height:88px;
+  transition:.15s;
+}
+.selection-card:hover{border-color:var(--maroon)}
+.selection-card.selected{
+  background:#fff3f3;
+  border:1.5px solid var(--maroon);
+}
+.selection-card input{
+  margin-top:4px;
+  accent-color:var(--maroon);
+  width:16px;
+  height:16px;
+  flex-shrink:0;
+}
+.selection-card strong{
+  display:block;
+  font-size:13px;
+  line-height:1.5;
+}
+.selection-card small{
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  margin-top:4px;
+}
+.limit-message{
+  background:#fff5dc;
+  border-radius:7px;
+  padding:10px 12px;
+  margin:15px 0;
+  font-size:13px;
+}
+.question{
+  padding:20px 0;
+  border-bottom:1px solid var(--border);
+}
 .question p{font-weight:bold;margin-bottom:12px}
-.answer-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:9px}
-.answer-options label{border:1px solid var(--border);border-radius:8px;padding:11px;cursor:pointer;font-size:13px;display:flex;gap:8px;align-items:flex-start}
-.answer-options label:has(input:checked){border-color:var(--maroon);background:#f9e9eb;color:var(--maroon);font-weight:bold}
-.answer-options input{accent-color:var(--maroon);margin-top:4px}
-.question small{display:block;color:var(--muted);margin-top:5px}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+.answer-options{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+}
+.answer-option{
+  border:1px solid var(--border);
+  padding:12px;
+  border-radius:8px;
+  display:flex;
+  gap:9px;
+  align-items:flex-start;
+  cursor:pointer;
+  font-size:13px;
+}
+.answer-option:has(input:checked){
+  border-color:var(--maroon);
+  background:#fff1f3;
+  color:var(--maroon);
+  font-weight:bold;
+}
+.answer-option input{
+  margin-top:4px;
+  accent-color:var(--maroon);
+}
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
 .actions button{flex:1;min-width:130px}
+.reflection{
+  background:#fff9ed;
+  padding:18px;
+  border-radius:9px;
+  margin-top:25px;
+}
+.reflection h3{color:var(--maroon);font-size:17px}
+.reflection p{font-size:13px;color:var(--muted);margin:5px 0 12px}
+.reflection label{
+  display:block;
+  font-size:13px;
+  padding:5px 0;
+}
+.reflection input{accent-color:var(--maroon);margin-right:8px}
+.result-box{padding:25px}
+.result-box h3,.compare-box h3{color:var(--maroon);margin-bottom:8px}
 .score-row{margin:17px 0}
-.score-label{display:flex;justify-content:space-between;gap:10px;font-size:14px;margin-bottom:5px}
-.score-track{height:11px;background:#eee7e7;border-radius:20px;overflow:hidden}
-.score-fill{height:100%;background:var(--maroon);border-radius:20px}
-.recommendation{background:var(--cream);border-radius:8px;padding:15px;margin-top:12px}
+.score-label{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-size:13px;
+  margin-bottom:5px;
+}
+.score-track{
+  height:10px;
+  background:#eee7e7;
+  border-radius:20px;
+  overflow:hidden;
+}
+.score-fill{
+  height:100%;
+  background:var(--maroon);
+  border-radius:20px;
+}
+.recommendation{
+  background:var(--cream);
+  border-radius:8px;
+  padding:15px;
+  margin:12px 0;
+}
 .recommendation h4{color:var(--maroon);margin-bottom:5px}
-.recommendation p{font-size:14px;margin-top:5px}
-.compare-box{margin-top:35px}
-.compare-box input{width:100%;padding:12px;border:1px solid var(--border);border-radius:7px;margin:8px 0 14px}
+.recommendation p{font-size:13px;margin-top:5px}
+.compare-box{padding:25px}
+.compare-box input{
+  width:100%;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:7px;
+  margin:8px 0 14px;
+}
+.muted{color:var(--muted);font-size:13px}
 .explorer{background:white}
 .track-card{border-top:5px solid var(--gold)}
 .track-card h3{font-size:21px}
 .course-area{margin-top:35px}
-.course-group{background:white;border:1px solid var(--border);padding:20px;border-radius:9px;margin:15px 0}
+.course-group{
+  background:white;
+  border:1px solid var(--border);
+  padding:20px;
+  border-radius:9px;
+  margin:15px 0;
+}
 .course-group h3{color:var(--maroon);margin-bottom:10px}
-.course-item{border-top:1px solid var(--border);padding:12px 0}
+.course-item{
+  border-top:1px solid var(--border);
+  padding:12px 0;
+}
 .course-item strong{display:block}
 .course-item p{font-size:13px;color:var(--muted);margin:5px 0}
-.course-item button{border:0;background:none;color:var(--maroon);text-decoration:underline;font-weight:bold;font-size:13px}
-.modal{display:none;position:fixed;inset:0;background:#0009;z-index:30;justify-content:center;align-items:center;padding:20px}
-.modal-content{background:white;padding:30px;border-radius:12px;width:min(600px,100%);max-height:85vh;overflow-y:auto}
+.course-item button{
+  border:0;
+  background:none;
+  color:var(--maroon);
+  text-decoration:underline;
+  font-weight:bold;
+  font-size:13px;
+}
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0009;
+  z-index:30;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+.modal-content{
+  background:white;
+  padding:30px;
+  border-radius:12px;
+  width:min(600px,100%);
+  max-height:85vh;
+  overflow-y:auto;
+}
 .modal-content h2{color:var(--maroon);margin-bottom:12px}
 .modal-content button{margin-top:20px}
-footer{background:var(--dark);color:white;text-align:center;padding:28px;font-size:13px}
-.muted{color:var(--muted);font-size:13px}
-@media(max-width:600px){
- header{justify-content:center}
- nav{justify-content:center}
- .hero{padding:60px 6%}
- .assessment-box,.result-box,.compare-box{padding:18px}
+footer{
+  background:var(--dark);
+  color:white;
+  text-align:center;
+  padding:28px;
+  font-size:13px;
+}
+@media(max-width:650px){
+  header{justify-content:center}
+  nav{justify-content:center;gap:12px}
+  .hero{padding:60px 6%}
+  .selection-grid,.answer-options{grid-template-columns:1fr}
+  .assessment-body{padding:18px}
+  .assessment-header{padding:20px}
 }
 </style>
 </head>
@@ -118,28 +377,30 @@ footer{background:var(--dark);color:white;text-align:center;padding:28px;font-si
 
 <section class="assessment-section" id="assessments">
 <div class="container">
+
   <div class="heading">
     <h2>Discover Your Path</h2>
-    <p>Understand the student's interests through two different perspectives.</p>
+    <p>Two different assessments. Two different perspectives. One meaningful conversation about the future.</p>
   </div>
 
   <div class="notice">
-    <strong>How PATHFINDER works:</strong> Parents answer based on what they have observed about their child. Students answer based on their own preferences and career interests. The results can be compared to encourage a meaningful discussion.
+    <strong>How PATHFINDER works:</strong>
+    Parents identify activities and behaviors they have observed in their child. Students answer questions about their own interests, preferences, and future goals. The results can be compared to help identify similarities and differences.
   </div>
 
   <div class="cards">
     <div class="card">
       <h3>Parent Assessment</h3>
       <p><strong>How Well Do You Know Your Child?</strong><br><br>
-      Answer questions about your child's actual habits, activities, school experiences, behavior, and abilities. Choose "Haven't observed" when you do not have enough information.</p>
-      <button class="primary" onclick="startAssessment('parent')">Start Parent Assessment</button>
+      Identify the activities, abilities, and behaviors you have personally observed in your child. Select up to 8 activities. It is okay not to know every answer.</p>
+      <button class="primary" onclick="startParentAssessment()">Start Parent Assessment</button>
     </div>
 
     <div class="card">
       <h3>Student Assessment</h3>
       <p><strong>Discover Your Interests and Career Preferences</strong><br><br>
-      Choose the subjects, activities, work environments, and career priorities that appeal to you. There are no right or wrong answers.</p>
-      <button class="secondary" onclick="startAssessment('student')">Start Student Assessment</button>
+      Answer questions about your preferred subjects, activities, work environments, and future career goals.</p>
+      <button class="secondary" onclick="startStudentAssessment()">Start Student Assessment</button>
     </div>
   </div>
 
@@ -147,14 +408,18 @@ footer{background:var(--dark);color:white;text-align:center;padding:28px;font-si
 
   <div class="compare-box" id="compare">
     <h3>Compare Parent and Student Results</h3>
-    <p class="muted">Paste the result codes generated after completing each assessment.</p>
+    <p class="muted">Enter the result codes generated after completing both assessments.</p>
+
     <label for="parentCode">Parent result code</label>
     <input id="parentCode" placeholder="Paste parent result code">
+
     <label for="studentCode">Student result code</label>
     <input id="studentCode" placeholder="Paste student result code">
+
     <button class="primary" onclick="compareResults()">Compare Results</button>
     <div id="comparisonResult"></div>
   </div>
+
 </div>
 </section>
 
@@ -173,7 +438,7 @@ footer{background:var(--dark);color:white;text-align:center;padding:28px;font-si
   <div class="modal-content">
     <h2 id="modalTitle"></h2>
     <p id="modalDescription"></p>
-    <h3>Possible Career Opportunities</h3>
+    <h3 style="margin-top:20px">Possible Career Opportunities</h3>
     <ul id="modalJobs" style="margin:10px 0 0 20px"></ul>
     <button class="secondary" onclick="closeModal()">Close</button>
   </div>
@@ -186,9 +451,10 @@ footer{background:var(--dark);color:white;text-align:center;padding:28px;font-si
 </footer>
 
 <script>
-/* =========================================
-   SHARED INTEREST CATEGORIES
-========================================= */
+
+/* ==========================================
+   INTEREST CATEGORIES
+========================================== */
 
 const categories = [
   "Helping & Teaching",
@@ -201,181 +467,143 @@ const categories = [
   "Health & Service"
 ];
 
-/* =========================================
-   PARENT ASSESSMENT
-   16 OBSERVATION QUESTIONS
-   Parents rate what they have actually seen.
-========================================= */
 
-const parentQuestions = [
+/* ==========================================
+   PARENT ASSESSMENT
+   CHECKBOX FORMAT
+   THIRD-PERSON OBSERVATIONS
+   SELECT UP TO 8 ACTIVITIES
+========================================== */
+
+const parentActivities = [
   {
     category:"Helping & Teaching",
-    question:"When someone in the family or community needs help, what does your child usually do?",
-    options:[
-      "Often offers help without being asked",
-      "Helps when someone asks",
-      "Rarely gets involved",
-      "I haven't observed this"
-    ]
+    activity:"My child often helps classmates, siblings, or other people understand difficult lessons.",
+    description:"Teaching, tutoring, and guiding others"
   },
   {
     category:"Helping & Teaching",
-    question:"How does your child usually behave when helping a younger sibling or another person learn something?",
-    options:[
-      "Patiently explains and guides them",
-      "Helps occasionally",
-      "Usually avoids teaching or guiding",
-      "I haven't observed this"
-    ]
+    activity:"I have noticed my child taking the lead when explaining steps or demonstrating how to do something.",
+    description:"Presenting and facilitating"
   },
   {
-    category:"Science & Investigation",
-    question:"What have you noticed about your child's curiosity toward science and how things work?",
-    options:[
-      "Frequently asks questions and looks for explanations",
-      "Shows interest when the topic is introduced",
-      "Rarely shows interest",
-      "I haven't observed this"
-    ]
-  },
-  {
-    category:"Science & Investigation",
-    question:"When faced with an unfamiliar problem, what does your child usually do?",
-    options:[
-      "Investigates and tries to find out why it happened",
-      "Looks for an explanation when guided",
-      "Usually moves on without investigating",
-      "I haven't observed this"
-    ]
+    category:"Helping & Teaching",
+    activity:"My child voluntarily makes notes, reviewers, or learning materials that others can use.",
+    description:"Creating learning resources"
   },
   {
     category:"Technology & Computing",
-    question:"What kind of activities does your child usually do when using a computer or digital device?",
-    options:[
-      "Explores software, digital tools, or creates digital projects",
-      "Mostly uses familiar applications",
-      "Uses devices mainly for basic entertainment",
-      "I haven't observed this"
-    ]
+    activity:"My child independently explores computers, applications, or other digital tools.",
+    description:"Working with technology"
   },
   {
     category:"Technology & Computing",
-    question:"Has your child shown interest in learning how gadgets, applications, or computer systems work?",
-    options:[
-      "Yes, independently explores how they work",
-      "Sometimes asks questions about them",
-      "Has shown little interest",
-      "I haven't observed this"
-    ]
+    activity:"My child shows interest in solving computer problems or figuring out why a device is not working.",
+    description:"Troubleshooting and logical thinking"
   },
   {
-    category:"Business & Leadership",
-    question:"What role does your child usually take during family, school, or group activities?",
-    options:[
-      "Often organizes people and takes initiative",
-      "Participates when assigned a role",
-      "Usually prefers to follow others",
-      "I haven't observed this"
-    ]
+    category:"Technology & Computing",
+    activity:"My child has shown curiosity about coding, websites, mobile applications, or computer networks.",
+    description:"Understanding digital systems"
   },
   {
-    category:"Business & Leadership",
-    question:"How does your child handle responsibilities such as managing money, planning, or completing assigned tasks?",
-    options:[
-      "Usually handles responsibilities independently",
-      "Can do so with reminders or guidance",
-      "Often needs assistance",
-      "I haven't observed this"
-    ]
-  },
-  {
-    category:"Creative & Design",
-    question:"What creative activities have you noticed your child doing voluntarily?",
-    options:[
-      "Frequently draws, designs, crafts, performs, or creates",
-      "Joins creative activities occasionally",
-      "Rarely participates in creative activities",
-      "I haven't observed this"
-    ]
-  },
-  {
-    category:"Creative & Design",
-    question:"When making school projects or personal outputs, what does your child usually focus on?",
-    options:[
-      "Adds original ideas and pays attention to design",
-      "Follows instructions and adds some personal touches",
-      "Mainly completes the required task",
-      "I haven't observed this"
-    ]
-  },
-  {
-    category:"Communication & Society",
-    question:"How does your child usually participate in conversations, presentations, or group discussions?",
-    options:[
-      "Confidently shares ideas and communicates with others",
-      "Participates when encouraged",
-      "Usually avoids speaking or sharing ideas",
-      "I haven't observed this"
-    ]
-  },
-  {
-    category:"Communication & Society",
-    question:"What topics does your child voluntarily discuss or follow?",
-    options:[
-      "Social issues, current events, culture, or community concerns",
-      "A few topics when they become relevant",
-      "Rarely discusses these topics",
-      "I haven't observed this"
-    ]
-  },
-  {
-    category:"Practical & Technical Work",
-    question:"How does your child respond to practical tasks such as assembling, repairing, or building something?",
-    options:[
-      "Willingly tries to complete the task",
-      "Participates when guided",
-      "Usually avoids these tasks",
-      "I haven't observed this"
-    ]
-  },
-  {
-    category:"Practical & Technical Work",
-    question:"When learning a hands-on skill, what approach does your child usually take?",
-    options:[
-      "Learns by experimenting and practicing",
-      "Prefers step-by-step instructions",
-      "Usually loses interest in the activity",
-      "I haven't observed this"
-    ]
+    category:"Science & Investigation",
+    activity:"My child often asks questions, performs safe experiments, or investigates how things work.",
+    description:"Research and investigation"
   },
   {
     category:"Health & Service",
-    question:"How does your child respond when someone is sick, injured, or needs care?",
-    options:[
-      "Shows concern and willingly offers assistance",
-      "Shows concern but waits for guidance",
-      "Usually does not get involved",
-      "I haven't observed this"
-    ]
+    activity:"My child shows interest in health, the human body, caregiving, or helping people stay well.",
+    description:"Health and care"
+  },
+  {
+    category:"Science & Investigation",
+    activity:"My child enjoys learning about nature, the environment, numbers, or scientific information.",
+    description:"Science and evidence"
+  },
+  {
+    category:"Business & Leadership",
+    activity:"My child has shown interest in organizing projects, making plans, or coordinating a group.",
+    description:"Planning and organization"
+  },
+  {
+    category:"Business & Leadership",
+    activity:"My child has shown interest in selling products, budgeting, managing money, or starting a small business.",
+    description:"Business and finance"
+  },
+  {
+    category:"Business & Leadership",
+    activity:"My child willingly takes responsibility, makes decisions, or suggests ways to improve a project.",
+    description:"Leadership and improvement"
+  },
+  {
+    category:"Creative & Design",
+    activity:"My child voluntarily draws, designs, decorates, or creates visual materials.",
+    description:"Visual arts and design"
+  },
+  {
+    category:"Communication & Society",
+    activity:"My child enjoys writing, storytelling, photography, video, or other forms of media.",
+    description:"Writing and media"
+  },
+  {
+    category:"Communication & Society",
+    activity:"My child participates in conversations about current events, social issues, or community concerns.",
+    description:"Society and communication"
+  },
+  {
+    category:"Practical & Technical Work",
+    activity:"My child willingly participates in repairing, assembling, building, or operating equipment.",
+    description:"Hands-on and technical work"
+  },
+  {
+    category:"Practical & Technical Work",
+    activity:"My child shows patience when learning how to use tools or complete practical tasks.",
+    description:"Technical skills and practice"
   },
   {
     category:"Health & Service",
-    question:"What have you noticed about your child's interest in health, wellness, or caring for others?",
-    options:[
-      "Voluntarily learns or participates in related activities",
-      "Shows some interest when discussed",
-      "Rarely shows interest",
-      "I haven't observed this"
-    ]
+    activity:"My child shows concern when someone is sick, injured, or needs assistance.",
+    description:"Caregiving and compassion"
+  },
+  {
+    category:"Creative & Design",
+    activity:"My child enjoys performing, singing, dancing, acting, or participating in artistic activities.",
+    description:"Performing arts"
+  },
+  {
+    category:"Practical & Technical Work",
+    activity:"My child shows interest in cooking, preparing food, or learning practical household skills.",
+    description:"Practical and livelihood skills"
+  },
+  {
+    category:"Business & Leadership",
+    activity:"My child takes initiative when completing assigned responsibilities without frequent reminders.",
+    description:"Responsibility and initiative"
+  },
+  {
+    category:"Science & Investigation",
+    activity:"My child performs well in activities that involve calculations, patterns, or logical reasoning.",
+    description:"Mathematical reasoning"
+  },
+  {
+    category:"Health & Service",
+    activity:"My child willingly participates in activities that support the well-being of other people.",
+    description:"Community service"
+  },
+  {
+    category:"Communication & Society",
+    activity:"My child expresses ideas through speaking, presentations, debates, or group discussions.",
+    description:"Public speaking and communication"
   }
 ];
 
-/* =========================================
-   STUDENT ASSESSMENT
-   12 CAREER-DISCOVERY QUESTIONS
-   Students choose their own preferences.
-   This is NOT the parent's observation survey.
-========================================= */
+
+/* ==========================================
+   STUDENT SELF-ASSESSMENT
+   DIFFERENT QUESTIONS AND FORMAT
+   FIRST-PERSON CAREER PREFERENCES
+========================================== */
 
 const studentQuestions = [
   {
@@ -397,21 +625,21 @@ const studentQuestions = [
     ]
   },
   {
-    question:"Imagine you are working on a school project. Which role would you prefer?",
+    question:"Which role would you prefer in a group project?",
     options:[
-      {text:"Explaining the topic and helping classmates understand",category:"Helping & Teaching"},
-      {text:"Researching facts and finding accurate information",category:"Science & Investigation"},
+      {text:"Teaching or helping classmates understand the topic",category:"Helping & Teaching"},
+      {text:"Researching facts and investigating information",category:"Science & Investigation"},
       {text:"Creating the digital presentation or technical output",category:"Technology & Computing"},
       {text:"Leading the group and organizing the work",category:"Business & Leadership"}
     ]
   },
   {
-    question:"Which type of challenge would you enjoy solving?",
+    question:"Which challenge would you most enjoy solving?",
     options:[
-      {text:"Finding a creative way to communicate an idea",category:"Creative & Design"},
+      {text:"Creating an original design or creative solution",category:"Creative & Design"},
       {text:"Understanding people's opinions and social problems",category:"Communication & Society"},
       {text:"Figuring out how to repair or improve a machine",category:"Practical & Technical Work"},
-      {text:"Finding ways to improve someone's health or well-being",category:"Health & Service"}
+      {text:"Finding ways to improve people's health and well-being",category:"Health & Service"}
     ]
   },
   {
@@ -424,10 +652,10 @@ const studentQuestions = [
     ]
   },
   {
-    question:"Which kind of output would make you feel most accomplished?",
+    question:"Which output would make you feel most accomplished?",
     options:[
       {text:"An original artwork, design, or creative project",category:"Creative & Design"},
-      {text:"An article, speech, documentary, or communication project",category:"Communication & Society"},
+      {text:"An article, speech, documentary, or media project",category:"Communication & Society"},
       {text:"A completed product, machine, or practical project",category:"Practical & Technical Work"},
       {text:"A project that improves people's health or quality of life",category:"Health & Service"}
     ]
@@ -442,7 +670,7 @@ const studentQuestions = [
     ]
   },
   {
-    question:"Which task would you be most willing to practice for hours?",
+    question:"Which task would you willingly spend hours practicing?",
     options:[
       {text:"Designing, drawing, or editing creative materials",category:"Creative & Design"},
       {text:"Writing, speaking, or presenting ideas",category:"Communication & Society"},
@@ -460,10 +688,10 @@ const studentQuestions = [
     ]
   },
   {
-    question:"Which kind of work environment would fit your personality?",
+    question:"Which work environment would fit you best?",
     options:[
       {text:"A creative studio or design environment",category:"Creative & Design"},
-      {text:"A media office or environment with frequent communication",category:"Communication & Society"},
+      {text:"A media office or communication-focused workplace",category:"Communication & Society"},
       {text:"A workshop, construction site, or technical facility",category:"Practical & Technical Work"},
       {text:"A hospital, clinic, or health center",category:"Health & Service"}
     ]
@@ -478,7 +706,7 @@ const studentQuestions = [
     ]
   },
   {
-    question:"What would you most like people to recognize you for in your future career?",
+    question:"What would you most like people to recognize you for?",
     options:[
       {text:"My creativity and ability to produce original work",category:"Creative & Design"},
       {text:"My ability to communicate and understand society",category:"Communication & Society"},
@@ -488,176 +716,276 @@ const studentQuestions = [
   }
 ];
 
-/* =========================================
-   ASSESSMENT FUNCTIONS
-========================================= */
 
-let currentType = "";
+/* ==========================================
+   ASSESSMENT CONTROL
+========================================== */
+
 let currentAnswers = {};
+let currentType = "";
 
 function goTo(id){
   document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
-function startAssessment(type){
-  currentType = type;
-  currentAnswers = {};
+function startParentAssessment(){
+  currentType="parent";
+  currentAnswers={};
 
-  const area = document.getElementById("assessmentArea");
-  let html = "";
+  const area=document.getElementById("assessmentArea");
 
-  if(type === "parent"){
-    html += `
-      <div class="assessment-box">
-        <h3>Parent Assessment: How Well Do You Know Your Child?</h3>
-        <p class="muted">Answer based on your actual observations. Select the option that best describes what you have noticed.</p>
-        <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
-        <p id="progressText" class="muted">0 of ${parentQuestions.length} answered</p>
-    `;
-
-    parentQuestions.forEach((q,i)=>{
-      html += `
-        <div class="question">
-          <p>${i+1}. ${q.question}</p>
-          <div class="answer-options">
-      `;
-
-      q.options.forEach((option,j)=>{
-        html += `
-          <label>
-            <input type="radio" name="q${i}" value="${j}" onchange="recordAnswer(${i},${j})">
-            <span>${option}</span>
-          </label>
-        `;
-      });
-
-      html += `</div></div>`;
-    });
-
-  } else {
-    html += `
-      <div class="assessment-box">
-        <h3>Student Self-Assessment: Discover Your Career Preferences</h3>
-        <p class="muted">Choose the option that appeals to you the most. Think about what you genuinely enjoy, not what other people expect you to choose.</p>
-        <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
-        <p id="progressText" class="muted">0 of ${studentQuestions.length} answered</p>
-    `;
-
-    studentQuestions.forEach((q,i)=>{
-      html += `
-        <div class="question">
-          <p>${i+1}. ${q.question}</p>
-          <div class="answer-options">
-      `;
-
-      q.options.forEach((option,j)=>{
-        html += `
-          <label>
-            <input type="radio" name="q${i}" value="${j}" onchange="recordAnswer(${i},${j})">
-            <span>${option.text}</span>
-          </label>
-        `;
-      });
-
-      html += `</div></div>`;
-    });
-
-    html += `
-      <div class="recommendation">
-        <h4>Additional Reflection: What Influences Your Course Decision?</h4>
-        <p>Select all the factors that influence your decision. These answers are for reflection and do not affect your interest scores.</p>
-        <div style="margin-top:10px">
-          <label class="reflection-option"><input type="checkbox" class="influence" value="My parents or family have expectations about my course."> My parents or family have expectations about my course.</label><br>
-          <label class="reflection-option"><input type="checkbox" class="influence" value="My friends or classmates influence my decision."> My friends or classmates influence my decision.</label><br>
-          <label class="reflection-option"><input type="checkbox" class="influence" value="I do not have enough information about available courses and careers."> I do not have enough information about available courses and careers.</label><br>
-          <label class="reflection-option"><input type="checkbox" class="influence" value="I am still uncertain about what I want to pursue."> I am still uncertain about what I want to pursue.</label><br>
-          <label class="reflection-option"><input type="checkbox" class="influence" value="I am choosing based on my own interests and goals."> I am choosing based on my own interests and goals.</label>
-        </div>
+  let html=`
+    <div class="assessment-box">
+      <div class="assessment-header">
+        <div class="eyebrow">FOR PARENTS OR GUARDIANS</div>
+        <h2>How well do you know your child?</h2>
+        <p>Choose the activities you have genuinely noticed your child doing. It is okay not to know every answer.</p>
       </div>
-    `;
-  }
 
-  html += `
-      <div class="actions">
-        <button class="secondary" onclick="cancelAssessment()">Cancel</button>
-        <button class="primary" onclick="submitAssessment()">Submit Assessment</button>
+      <div class="assessment-body">
+        <div class="progress-info">
+          <span id="parentCount">0 activities selected</span>
+          <span>Choose up to 8</span>
+        </div>
+
+        <div class="progress">
+          <div class="progress-bar" id="parentProgress"></div>
+        </div>
+
+        <div class="limit-message">
+          Select only activities you have personally observed. Do not guess or select an activity simply because you want your child to pursue it.
+        </div>
+
+        <div class="selection-grid">
+  `;
+
+  parentActivities.forEach((item,i)=>{
+    html+=`
+      <label class="selection-card" id="parentCard${i}">
+        <input type="checkbox" name="parentActivity" value="${i}" onchange="updateParentSelection()">
+        <span>
+          <strong>${item.activity}</strong>
+          <small>${item.description}</small>
+        </span>
+      </label>
+    `;
+  });
+
+  html+=`
+        </div>
+
+        <div class="actions">
+          <button class="secondary" onclick="cancelAssessment()">Cancel</button>
+          <button class="primary" onclick="submitParentAssessment()">Submit Assessment</button>
+        </div>
       </div>
     </div>
   `;
 
-  area.innerHTML = html;
+  area.innerHTML=html;
   goTo("assessmentArea");
 }
 
-function recordAnswer(index,value){
-  currentAnswers[index] = value;
+function updateParentSelection(){
+  const checkboxes=Array.from(document.querySelectorAll('input[name="parentActivity"]'));
+  const selected=checkboxes.filter(x=>x.checked);
 
-  const total = currentType === "parent" ? parentQuestions.length : studentQuestions.length;
-  const answered = Object.keys(currentAnswers).length;
+  if(selected.length>8){
+    selected[selected.length-1].checked=false;
+    alert("You can select a maximum of 8 activities.");
+  }
 
-  document.getElementById("progressBar").style.width = (answered/total*100)+"%";
-  document.getElementById("progressText").textContent = `${answered} of ${total} answered`;
+  const current=checkboxes.filter(x=>x.checked);
+  document.getElementById("parentCount").textContent=
+    `${current.length} activities selected`;
+
+  document.getElementById("parentProgress").style.width=
+    (current.length/8*100)+"%";
+
+  checkboxes.forEach((checkbox,i)=>{
+    const card=document.getElementById("parentCard"+i);
+    card.classList.toggle("selected",checkbox.checked);
+    checkbox.disabled=!checkbox.checked && current.length>=8;
+  });
+}
+
+
+/* ==========================================
+   STUDENT ASSESSMENT
+========================================== */
+
+function startStudentAssessment(){
+  currentType="student";
+  currentAnswers={};
+
+  const area=document.getElementById("assessmentArea");
+
+  let html=`
+    <div class="assessment-box">
+      <div class="assessment-header">
+        <div class="eyebrow">FOR STUDENTS</div>
+        <h2>Discover Your Interests and Career Preferences</h2>
+        <p>Think about what you genuinely enjoy and the kind of future you want. Choose the answer that best represents you.</p>
+      </div>
+
+      <div class="assessment-body">
+        <div class="progress-info">
+          <span id="studentCount">0 of ${studentQuestions.length} answered</span>
+          <span>Choose one answer per question</span>
+        </div>
+
+        <div class="progress">
+          <div class="progress-bar" id="studentProgress"></div>
+        </div>
+  `;
+
+  studentQuestions.forEach((q,i)=>{
+    html+=`
+      <div class="question">
+        <p>${i+1}. ${q.question}</p>
+        <div class="answer-options">
+    `;
+
+    q.options.forEach((option,j)=>{
+      html+=`
+        <label class="answer-option">
+          <input type="radio" name="studentQ${i}" value="${j}" onchange="recordStudentAnswer(${i},${j})">
+          <span>${option.text}</span>
+        </label>
+      `;
+    });
+
+    html+=`</div></div>`;
+  });
+
+  html+=`
+      <div class="reflection">
+        <h3>Additional Reflection: What Influences Your Course Decision?</h3>
+        <p>Select all factors that influence your decision. These do not affect your interest scores.</p>
+
+        <label><input type="checkbox" class="influence" value="My parents or family have expectations about my course."> My parents or family have expectations about my course.</label>
+        <label><input type="checkbox" class="influence" value="My friends or classmates influence my decision."> My friends or classmates influence my decision.</label>
+        <label><input type="checkbox" class="influence" value="I do not have enough information about available courses and careers."> I do not have enough information about available courses and careers.</label>
+        <label><input type="checkbox" class="influence" value="I am still uncertain about what I want to pursue."> I am still uncertain about what I want to pursue.</label>
+        <label><input type="checkbox" class="influence" value="I am choosing based on my own interests and goals."> I am choosing based on my own interests and goals.</label>
+      </div>
+
+      <div class="actions">
+        <button class="secondary" onclick="cancelAssessment()">Cancel</button>
+        <button class="primary" onclick="submitStudentAssessment()">Submit Assessment</button>
+      </div>
+      </div>
+    </div>
+  `;
+
+  area.innerHTML=html;
+  goTo("assessmentArea");
+}
+
+function recordStudentAnswer(index,value){
+  currentAnswers[index]=value;
+
+  const answered=Object.keys(currentAnswers).length;
+  const total=studentQuestions.length;
+
+  document.getElementById("studentCount").textContent=
+    `${answered} of ${total} answered`;
+
+  document.getElementById("studentProgress").style.width=
+    (answered/total*100)+"%";
 }
 
 function cancelAssessment(){
-  document.getElementById("assessmentArea").innerHTML = "";
+  document.getElementById("assessmentArea").innerHTML="";
 }
 
-function submitAssessment(){
-  const questions = currentType === "parent" ? parentQuestions : studentQuestions;
 
-  if(Object.keys(currentAnswers).length !== questions.length){
+/* ==========================================
+   SUBMIT PARENT ASSESSMENT
+========================================== */
+
+function submitParentAssessment(){
+  const selected=Array.from(
+    document.querySelectorAll('input[name="parentActivity"]:checked')
+  ).map(x=>Number(x.value));
+
+  if(selected.length===0){
+    alert("Please select at least one activity you have observed.");
+    return;
+  }
+
+  const scores={};
+
+  categories.forEach(category=>{
+    const categoryTotal=parentActivities.filter(x=>x.category===category).length;
+    const categorySelected=selected.filter(i=>parentActivities[i].category===category).length;
+
+    scores[category]=Math.round(categorySelected/categoryTotal*100);
+  });
+
+  const result={
+    type:"parent",
+    scores:scores,
+    selectedActivities:selected.map(i=>parentActivities[i].activity),
+    date:new Date().toLocaleDateString()
+  };
+
+  localStorage.setItem("pathfinder_parent",JSON.stringify(result));
+  showResults(result);
+}
+
+
+/* ==========================================
+   SUBMIT STUDENT ASSESSMENT
+========================================== */
+
+function submitStudentAssessment(){
+  if(Object.keys(currentAnswers).length!==studentQuestions.length){
     alert("Please answer all questions before submitting.");
     return;
   }
 
-  let scores = {};
+  const counts={};
+  categories.forEach(category=>counts[category]=0);
 
-  categories.forEach(category=>{
-    if(currentType === "parent"){
-      const values = parentQuestions
-        .map((q,i)=>({category:q.category,answer:currentAnswers[i]}))
-        .filter(item=>item.category===category && item.answer!==3)
-        .map(item=>item.answer);
-
-      if(values.length===0){
-        scores[category]=null;
-      } else {
-        // Parent answers: 0=lowest observed, 1=middle, 2=highest observed.
-        const average = values.reduce((a,b)=>a+b,0)/values.length;
-        scores[category] = Math.round((average/2)*100);
-      }
-
-    } else {
-      const selected = studentQuestions
-        .map((q,i)=>q.options[currentAnswers[i]])
-        .filter(option=>option.category===category).length;
-
-      // Student scores show how often a category was selected.
-      scores[category] = Math.round((selected/studentQuestions.length)*100);
-    }
+  studentQuestions.forEach((q,i)=>{
+    const selectedOption=q.options[currentAnswers[i]];
+    counts[selectedOption.category]++;
   });
 
-  const influences = currentType==="student"
-    ? Array.from(document.querySelectorAll(".influence:checked")).map(x=>x.value)
-    : [];
+  const scores={};
 
-  const result = {
-    type:currentType,
+  categories.forEach(category=>{
+    scores[category]=Math.round(
+      counts[category]/studentQuestions.length*100
+    );
+  });
+
+  const influences=Array.from(
+    document.querySelectorAll(".influence:checked")
+  ).map(x=>x.value);
+
+  const result={
+    type:"student",
     scores:scores,
     influences:influences,
+    answers:studentQuestions.map((q,i)=>({
+      question:q.question,
+      answer:q.options[currentAnswers[i]].text
+    })),
     date:new Date().toLocaleDateString()
   };
 
-  localStorage.setItem("pathfinder_"+currentType,JSON.stringify(result));
+  localStorage.setItem("pathfinder_student",JSON.stringify(result));
   showResults(result);
 }
 
-/* =========================================
-   COURSE AND CAREER RECOMMENDATIONS
-========================================= */
 
-const recommendations = {
+/* ==========================================
+   COURSE AND CAREER RECOMMENDATIONS
+========================================== */
+
+const recommendations={
   "Helping & Teaching":{
     courses:["BSEd programs","BEEd - General Education","BECEd - Early Childhood Education","BA Psychology","Bachelor in Human Services"],
     careers:["Teacher","Guidance Counselor","Child Development Worker","Human Services Worker"]
@@ -692,9 +1020,10 @@ const recommendations = {
   }
 };
 
-/* =========================================
-   RESULTS DISPLAY
-========================================= */
+
+/* ==========================================
+   RESULT CODE FUNCTIONS
+========================================== */
 
 function encodeResult(result){
   return btoa(unescape(encodeURIComponent(JSON.stringify(result))));
@@ -706,96 +1035,6 @@ function decodeResult(code){
   }catch(e){
     return null;
   }
-}
-
-function showResults(result){
-  const area = document.getElementById("assessmentArea");
-
-  const ranked = Object.entries(result.scores)
-    .filter(([category,score])=>score!==null)
-    .sort((a,b)=>b[1]-a[1]);
-
-  let html = `
-    <div class="result-box">
-      <h3>${result.type==="parent"?"Parent Assessment Results":"Student Self-Assessment Results"}</h3>
-      <p class="muted">Completed: ${result.date}</p>
-      <br>
-      <p>${result.type==="parent"
-        ?"These results summarize the interests suggested by the parent's observations."
-        :"These results summarize the student's selected interests and career preferences."}</p>
-      <br>
-      <h3>Interest Areas</h3>
-  `;
-
-  categories.forEach(category=>{
-    const score=result.scores[category];
-
-    html += `
-      <div class="score-row">
-        <div class="score-label">
-          <strong>${category}</strong>
-          <span>${score===null?"Not enough observations":score+"%"}</span>
-        </div>
-        <div class="score-track">
-          <div class="score-fill" style="width:${score===null?0:score}%"></div>
-        </div>
-      </div>
-    `;
-  });
-
-  html += `<br><h3>Suggested Areas to Explore</h3>`;
-
-  if(ranked.length===0){
-    html += `<p>There is not enough information to calculate results.</p>`;
-  }
-
-  ranked.slice(0,3).forEach(([category,score],i)=>{
-    const data=recommendations[category];
-
-    html += `
-      <div class="recommendation">
-        <h4>${i+1}. ${category} (${score}%)</h4>
-        <p><strong>Suggested courses:</strong> ${data.courses.join(", ")}</p>
-        <p><strong>Possible careers:</strong> ${data.careers.join(", ")}</p>
-      </div>
-    `;
-  });
-
-  if(result.type==="student"){
-    html += `<br><h3>Factors Influencing Your Course Decision</h3>`;
-
-    if(result.influences.length){
-      html += "<ul style='margin-left:20px'>";
-      result.influences.forEach(x=>html+=`<li>${x}</li>`);
-      html += "</ul>";
-    }else{
-      html += "<p>No factors were selected.</p>";
-    }
-  }
-
-  const code=encodeResult(result);
-
-  html += `
-      <div class="recommendation">
-        <h4>Your Result Code</h4>
-        <p>Copy and share this code to compare your results with the other assessment.</p>
-        <input id="resultCode" value="${code}" readonly style="width:100%;padding:10px;margin:10px 0">
-        <button class="secondary" onclick="copyResultCode()">Copy Result Code</button>
-      </div>
-
-      <p class="muted" style="margin-top:15px">
-        These results are for educational exploration only. They are not a validated psychological test and do not determine which course a student must take. Admission requirements and program availability may vary.
-      </p>
-
-      <div class="actions">
-        <button class="primary" onclick="startAssessment('${result.type}')">Retake Assessment</button>
-        <button class="secondary" onclick="goTo('explorer')">Explore College Courses</button>
-      </div>
-    </div>
-  `;
-
-  area.innerHTML=html;
-  goTo("assessmentArea");
 }
 
 function copyResultCode(){
@@ -817,50 +1056,153 @@ function fallbackCopy(input){
   alert("Result code copied!");
 }
 
-/* =========================================
-   PARENT AND STUDENT COMPARISON
-========================================= */
+
+/* ==========================================
+   DISPLAY RESULTS
+========================================== */
+
+function showResults(result){
+  const area=document.getElementById("assessmentArea");
+
+  const ranked=Object.entries(result.scores)
+    .sort((a,b)=>b[1]-a[1]);
+
+  let html=`
+    <div class="result-box">
+      <h3>${result.type==="parent"?"Parent Assessment Results":"Student Self-Assessment Results"}</h3>
+      <p class="muted">Completed: ${result.date}</p>
+      <br>
+      <p>${result.type==="parent"
+        ?"This profile reflects the activities and behaviors selected by the parent based on personal observations."
+        :"This profile reflects the student's personal choices and career preferences."}</p>
+
+      <br>
+      <h3>Interest Profile</h3>
+  `;
+
+  categories.forEach(category=>{
+    const score=result.scores[category];
+
+    html+=`
+      <div class="score-row">
+        <div class="score-label">
+          <strong>${category}</strong>
+          <span>${score}%</span>
+        </div>
+        <div class="score-track">
+          <div class="score-fill" style="width:${score}%"></div>
+        </div>
+      </div>
+    `;
+  });
+
+  html+=`<br><h3>Suggested Areas to Explore</h3>`;
+
+  ranked.slice(0,3).forEach(([category,score],i)=>{
+    const data=recommendations[category];
+
+    html+=`
+      <div class="recommendation">
+        <h4>${i+1}. ${category}</h4>
+        <p><strong>Suggested courses:</strong> ${data.courses.join(", ")}</p>
+        <p><strong>Possible careers:</strong> ${data.careers.join(", ")}</p>
+      </div>
+    `;
+  });
+
+  if(result.type==="parent"){
+    html+=`
+      <br>
+      <h3>Activities Observed by the Parent</h3>
+      <ul style="margin:10px 0 0 20px;font-size:13px">
+    `;
+
+    result.selectedActivities.forEach(activity=>{
+      html+=`<li>${activity}</li>`;
+    });
+
+    html+=`</ul>`;
+  }
+
+  if(result.type==="student"){
+    html+=`
+      <br>
+      <h3>Factors Influencing the Student's Course Decision</h3>
+    `;
+
+    if(result.influences.length){
+      html+=`<ul style="margin:10px 0 0 20px;font-size:13px">`;
+      result.influences.forEach(x=>html+=`<li>${x}</li>`);
+      html+=`</ul>`;
+    }else{
+      html+=`<p class="muted">No factors were selected.</p>`;
+    }
+  }
+
+  const code=encodeResult(result);
+
+  html+=`
+      <div class="recommendation">
+        <h4>Your Result Code</h4>
+        <p>Copy this code and share it with the other person to compare assessment results.</p>
+        <input id="resultCode" value="${code}" readonly style="width:100%;padding:10px;margin:10px 0">
+        <button class="secondary" onclick="copyResultCode()">Copy Result Code</button>
+      </div>
+
+      <p class="muted" style="margin-top:15px">
+        PATHFINDER provides educational guidance, not a validated psychological or career aptitude test. The recommendations are suggestions for further exploration and should not determine a student's final course choice.
+      </p>
+
+      <div class="actions">
+        <button class="primary" onclick="${result.type==="parent"?"startParentAssessment()":"startStudentAssessment()"}">Retake Assessment</button>
+        <button class="secondary" onclick="goTo('explorer')">Explore College Courses</button>
+      </div>
+    </div>
+  `;
+
+  area.innerHTML=html;
+  goTo("assessmentArea");
+}
+
+
+/* ==========================================
+   COMPARE RESULTS
+========================================== */
 
 function compareResults(){
   const parent=decodeResult(document.getElementById("parentCode").value);
   const student=decodeResult(document.getElementById("studentCode").value);
   const output=document.getElementById("comparisonResult");
 
-  if(!parent || !student || parent.type!=="parent" || student.type!=="student"){
-    output.innerHTML="<p style='color:#a11;margin-top:15px'>Invalid result codes. Please enter a valid parent code and student code.</p>";
+  if(!parent||!student||parent.type!=="parent"||student.type!=="student"){
+    output.innerHTML=`
+      <p style="color:#a11;margin-top:15px">
+        Invalid result codes. Please enter a valid parent result code and student result code.
+      </p>`;
     return;
   }
 
   let html=`
     <div class="result-box">
       <h3>Parent and Student Comparison</h3>
-      <p class="muted">Parent scores represent observed behavior. Student scores represent selected personal preferences. Their scores are different kinds of indicators, so differences should be discussed rather than treated as proof of disagreement.</p>
+      <p class="muted">
+        Parent results represent observed activities. Student results represent personal preferences. These are different perspectives, not identical measurements.
+      </p>
   `;
 
   categories.forEach(category=>{
     const p=parent.scores[category];
     const s=student.scores[category];
-
-    if(p===null){
-      html+=`
-        <div class="recommendation">
-          <h4>${category}</h4>
-          <p>The parent did not have enough observations to calculate this category.</p>
-          <p>Student preference score: ${s}%</p>
-        </div>
-      `;
-      return;
-    }
-
     const difference=Math.abs(p-s);
-    let message;
+
+    let message="";
 
     if(difference<=10){
-      message="The scores are close. This may be a useful starting point for a conversation.";
+      message="The results are relatively close. This may be a shared area of interest worth exploring together.";
     }else if(s>p){
-      message="The student's selected interest is higher than the parent's observed score. The student may have interests that are not yet visible at home or school.";
+      message="The student's interest is higher than the parent's observed activity. The student may have interests that have not yet been noticed by the parent.";
     }else{
-      message="The parent's observed score is higher than the student's selected preference score. The child may show this ability without wanting to pursue it as a career.";
+      message="The parent's observations are higher than the student's personal preference. The student may demonstrate this ability without wanting to pursue it as a career.";
     }
 
     html+=`
@@ -876,7 +1218,7 @@ function compareResults(){
   html+=`
       <div class="recommendation">
         <h4>Suggested Next Step</h4>
-        <p>Discuss the results together. Ask the student which interests they genuinely want to explore, and allow the parent to share observations without deciding the student's course for them.</p>
+        <p>Discuss the results together. Parents can share what they have noticed, while students can explain what they genuinely enjoy and want to pursue. The final course decision should consider the student's interests, abilities, goals, and available educational opportunities.</p>
       </div>
     </div>
   `;
@@ -885,11 +1227,12 @@ function compareResults(){
   output.scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-/* =========================================
-   SHS PATHWAY EXPLORER
-========================================= */
 
-const pathways = {
+/* ==========================================
+   SHS PATHWAY EXPLORER
+========================================== */
+
+const pathways={
   "STEM":{
     description:"Science, Technology, Engineering, and Mathematics. For students interested in scientific, mathematical, and technical fields.",
     groups:{
@@ -997,7 +1340,12 @@ const pathways = {
   }
 };
 
-const courseJobs = {
+
+/* ==========================================
+   COURSE CAREER INFORMATION
+========================================== */
+
+const courseJobs={
   "BS Civil Engineering":["Civil Engineer","Construction Project Engineer","Structural Engineer"],
   "BS Electrical Engineering":["Electrical Engineer","Power Systems Engineer","Electrical Design Engineer"],
   "BS Electronics Engineering":["Electronics Engineer","Telecommunications Engineer","Electronics Technician"],
@@ -1046,6 +1394,11 @@ const courseJobs = {
   "Bachelor of Elementary Education":["Elementary School Teacher","Learning Support Teacher","Educational Assistant"],
   "Bachelor of Secondary Education":["Secondary School Teacher","Subject Coordinator","Educational Content Developer"]
 };
+
+
+/* ==========================================
+   DISPLAY SHS TRACKS
+========================================== */
 
 function displayTracks(){
   const container=document.getElementById("trackCards");
@@ -1110,6 +1463,7 @@ function showCareer(course){
   ];
 
   document.getElementById("modalTitle").textContent=course;
+
   document.getElementById("modalDescription").textContent=
     "This college program can provide knowledge and skills for different professional opportunities. Career paths depend on qualifications, experience, and applicable professional requirements.";
 
@@ -1133,7 +1487,13 @@ document.getElementById("careerModal").addEventListener("click",function(e){
   if(e.target===this)closeModal();
 });
 
+
+/* ==========================================
+   INITIALIZE
+========================================== */
+
 displayTracks();
+
 </script>
 </body>
 </html>
